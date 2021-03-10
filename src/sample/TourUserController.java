@@ -7,7 +7,7 @@ import javafx.fxml.Initializable;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class UserController implements Initializable {
+public class TourUserController implements Initializable {
 
     //private DataFactory dataFactory = new DataFactory();
     //private ObservableList<User> users = FXCollections.observableArrayList();
