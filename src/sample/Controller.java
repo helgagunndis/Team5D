@@ -5,8 +5,8 @@ import javafx.collections.ObservableList;
 
 import java.util.ArrayList;
 
-public class Database {
-    public Database() {
+public class Controller {
+    public Controller() {
     }
     public ObservableList<User> getUsers(){
         ObservableList<User> users = FXCollections.observableArrayList();
