@@ -33,6 +33,12 @@ public class TourDataFactory{
 
     }
 
+    public ArrayList<Tour> getPayments(){
+        ArrayList<Tour> payments = new ArrayList<>();
+        return payments;
+    }
+
+
     public ObservableList<User> getUsers() {
         ObservableList<User> users = FXCollections.observableArrayList();
         User user1 = new User(1,"Sigurður Jónsson","siggi@gmail.com","Furugrund 20 Kópavogur");
