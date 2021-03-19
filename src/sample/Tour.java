@@ -4,6 +4,7 @@ import java.util.Date;
 
 public class Tour {
     private int tourID;
+    private int prufa;
     private String tourName;
     private String tourInfo;
     private int availableSpots;
