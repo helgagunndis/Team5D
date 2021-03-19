@@ -13,7 +13,7 @@
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="377.0" prefWidth="590.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
    <left>
-      <AnchorPane prefHeight="377.0" prefWidth="144.0" BorderPane.alignment="CENTER">
+      <AnchorPane prefHeight="395.0" prefWidth="144.0" BorderPane.alignment="CENTER">
          <children>
             <SplitMenuButton layoutX="17.0" layoutY="66.0" mnemonicParsing="false" prefWidth="120.0" text="Region">
               <items>
@@ -55,7 +55,7 @@
                   <CheckMenuItem fx:id="filterServicesFamilyFriendly" mnemonicParsing="false" text="Family friendly" />
               </items>
             </SplitMenuButton>
-            <TextField fx:id="searchTextField" layoutX="17.0" layoutY="276.0" prefHeight="34.0" prefWidth="121.0" />
+            <TextField fx:id="searchTextField" layoutX="17.0" layoutY="245.0" prefHeight="65.0" prefWidth="121.0" />
             <Button fx:id="searchButton" layoutX="18.0" layoutY="320.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="119.0" text="Search" />
          </children>
       </AnchorPane>
@@ -71,15 +71,14 @@
                   <Font size="36.0" />
                </font>
             </Text>
-            <AnchorPane layoutX="13.0" layoutY="143.0" prefHeight="162.0" prefWidth="383.0">
+            <AnchorPane layoutX="23.0" layoutY="131.0" prefHeight="169.0" prefWidth="249.0">
                <children>
-                  <ListView fx:id="tourListView" layoutX="1.0" prefHeight="164.0" prefWidth="400.0" />
+                  <ListView fx:id="tourListView" layoutX="-6.0" layoutY="1.0" prefHeight="178.0" prefWidth="402.0" />
                </children>
             </AnchorPane>
-            <Button fx:id="buttonBookTour" layoutX="273.0" layoutY="325.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="144.0" text="Book Tour" />
             <Text layoutX="108.0" layoutY="74.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Day tours" />
-            <Text layoutX="299.0" layoutY="32.0" strokeType="OUTSIDE" strokeWidth="0.0" text="User" textAlignment="RIGHT" wrappingWidth="108.76513671875" />
-            <Button layoutX="53.0" layoutY="325.0" mnemonicParsing="false" text="Button" />
+            <Button fx:id="buttonSearchBookTour" layoutX="274.0" layoutY="328.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="144.0" text="Next step to book tour" />
+            <Button layoutX="329.0" layoutY="14.0" mnemonicParsing="false" text="administrator" />
          </children>
       </AnchorPane>
    </center>

@@ -3,29 +3,28 @@ package sample;
 import java.util.ArrayList;
 
 public class User {
-    private long userID;
+    private String userID;
     private String userName;
     private String userEmail;
-    private String userAdress;
     private ArrayList<Booking> bookings;
+
 
     @Override
     public String toString() {
         return userName;
     }
-    public User(long userID, String userName, String userEmail, String userAdress) {
+    public User(String userID, String userName, String userEmail) {
         this.userID = userID;
         this.userName = userName;
         this.userEmail = userEmail;
-        this.userAdress = userAdress;
         this.bookings = new ArrayList<>();
     }
 
-    public long getUserID() {
+    public String getUserID() {
         return userID;
     }
 
-    public void setUserID(long userID) {
+    public void setUserID(String userID) {
         this.userID = userID;
     }
 
@@ -45,14 +44,6 @@ public class User {
         this.userEmail = userEmail;
     }
 
-    public String getUserAdress() {
-        return userAdress;
-    }
-
-    public void setUserAdress(String userAdress) {
-        this.userAdress = userAdress;
-    }
-
     public ArrayList<Booking> getBookings() {
         return bookings;
     }
@@ -60,4 +51,5 @@ public class User {
     public void setBookings(ArrayList<Booking> bookings) {
         this.bookings = bookings;
     }
+
 }

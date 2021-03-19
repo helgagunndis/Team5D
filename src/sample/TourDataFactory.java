@@ -21,6 +21,7 @@ public class TourDataFactory{
 
         return bookings;
     }
+
     public ArrayList<Tour> getTours(){
         ArrayList<Tour> tours = new ArrayList<>();
         tours.add(new Tour(100, "Hestaferð","Komið með hlý föt",10,
@@ -30,16 +31,14 @@ public class TourDataFactory{
         tours.add(new Tour(200, "Kajakferð og fjör","Komið með hlý föt og nesti",8,
                 0, 1000,false,"East",3));
         return tours;
-
     }
-
 
 
     public ObservableList<User> getUsers() {
         ObservableList<User> users = FXCollections.observableArrayList();
-        User user1 = new User(1,"Sigurður Jónsson","siggi@gmail.com","Furugrund 20 Kópavogur");
-        User user2 = new User(2,"Andrea Ágústsdóttir","andrea90@hotmail.com","Geitland 15 Reykjavík");
-        User user3 = new User(3, "Guðrún Helga Traustadóttir","ghelga@gmail.com","Sjónarhóll 2 Garðabær");
+        User user1 = new User("1010942039","Sigurður Jónsson","siggi@gmail.com");
+        User user2 = new User("1703817529","Andrea Ágústsdóttir","andrea90@hotmail.com");
+        User user3 = new User("0201981719", "Guðrún Helga Traustadóttir","ghelga@gmail.com");
 
         ArrayList<Tour> tours = getTours(); // án í ferð
 
@@ -56,6 +55,7 @@ public class TourDataFactory{
         ArrayList<Booking> bookings3 = new ArrayList<>(); // tómur listi
         bookings3.add(new Booking(100, "Hestaferð",user2.getUserName(),true));
         user3.setBookings(bookings1);
+
         return users;
     }
 }
