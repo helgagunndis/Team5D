@@ -33,10 +33,6 @@ public class TourDataFactory{
 
     }
 
-    public ArrayList<Tour> getPayments(){
-        ArrayList<Tour> payments = new ArrayList<>();
-        return payments;
-    }
 
 
     public ObservableList<User> getUsers() {
