@@ -8,11 +8,11 @@ public class User {
     private String userEmail;
     private ArrayList<Booking> bookings;
 
-
     @Override
     public String toString() {
         return userName;
     }
+
     public User(String userID, String userName, String userEmail) {
         this.userID = userID;
         this.userName = userName;

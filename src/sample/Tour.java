@@ -6,6 +6,8 @@ public class Tour {
     private int tourID;
     private String tourName;
     private String tourInfo;
+    private Date startDate;
+    private Date endDate;
     private int availableSpots;
     private int bookedSports;
     private int tourPrice;

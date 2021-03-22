@@ -7,7 +7,6 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
-<?import javafx.scene.text.TextFlow?>
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="377.0" prefWidth="590.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
    <left>
@@ -19,7 +18,7 @@
                </font>
             </Text>
             <Text layoutX="108.0" layoutY="74.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Day tours" />
-            <TextFlow fx:id="informationTextFlow" layoutX="23.0" layoutY="145.0" prefHeight="200.0" prefWidth="147.0" textAlignment="RIGHT" />
+            <Button fx:id="backToMainPageButton" layoutX="37.0" layoutY="326.0" mnemonicParsing="false" onAction="#backToMainPageButtonOnAction" text="Back to main page" />
          </children>
       </AnchorPane>
    </left>
@@ -29,16 +28,16 @@
             <Text layoutX="54.0" layoutY="105.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Name" />
             <Text layoutX="58.0" layoutY="154.0" strokeType="OUTSIDE" strokeWidth="0.0" text="SSN" />
             <Text layoutX="56.0" layoutY="201.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Email" />
-            <TextField layoutX="102.0" layoutY="87.0" prefHeight="27.0" prefWidth="268.0" />
-            <TextField layoutX="103.0" layoutY="136.0" prefHeight="27.0" prefWidth="266.0" />
-            <TextField layoutX="104.0" layoutY="183.0" prefHeight="27.0" prefWidth="268.0" />
+            <TextField fx:id="bookingNameTextField" layoutX="102.0" layoutY="87.0" prefHeight="27.0" prefWidth="268.0" />
+            <TextField fx:id="bookingSSNTextField" layoutX="103.0" layoutY="136.0" prefHeight="27.0" prefWidth="266.0" />
+            <TextField fx:id="bookingEmailTextField" layoutX="104.0" layoutY="183.0" prefHeight="27.0" prefWidth="268.0" />
             <Button fx:id="bookTourButton" layoutX="221.0" layoutY="277.0" mnemonicParsing="false" onAction="#bookTourButtonOnAction" prefHeight="27.0" prefWidth="155.0" text="Book tour" />
             <Text layoutX="51.0" layoutY="48.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Booking informations" wrappingWidth="182.21630859375">
                <font>
                   <Font size="18.0" />
                </font>
             </Text>
-            <ChoiceBox layoutX="104.0" layoutY="229.0" prefHeight="27.0" prefWidth="269.0" />
+            <ChoiceBox fx:id="bookingSpotsTaken" layoutX="104.0" layoutY="229.0" prefHeight="27.0" prefWidth="269.0" />
             <Text layoutX="53.0" layoutY="247.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Persons" />
             <Text fx:id="showNameOnTour" layoutX="53.0" layoutY="75.0" strokeType="OUTSIDE" strokeWidth="0.0" text="HÉR KEMUR NAFIÐ Á FERÐINNI SEM ER VERIÐ AÐ BÓKA">
                <font>
