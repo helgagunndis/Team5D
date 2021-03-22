@@ -30,6 +30,7 @@ public class TourBookingController implements Initializable{
     @FXML
     private Button backToMainPageButton;
 
+
     public void initData(Tour tour) {
         selectedTour = tour;
         showNameOnTour.setText(selectedTour.getTourName());
@@ -57,5 +58,6 @@ public class TourBookingController implements Initializable{
 
 
     }
+
 
 }

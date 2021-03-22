@@ -65,7 +65,7 @@
                </children>
             </AnchorPane>
             <Text layoutX="108.0" layoutY="74.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Day tours" />
-            <Button fx:id="buttonSearchBookTour" layoutX="274.0" layoutY="306.0" mnemonicParsing="false" onAction="#addButtonOnActivityBookTour" prefHeight="27.0" prefWidth="144.0" text="Next step to book tour" />
+            <Button fx:id="buttonSearchBookTour" layoutX="274.0" layoutY="306.0" mnemonicParsing="false" onAction="#openBookingInformation" prefHeight="27.0" prefWidth="144.0" text="Next step to book tour" />
             <Button fx:id="buttonAdministrator" layoutX="329.0" layoutY="14.0" mnemonicParsing="false" onAction="#buttonAdministratorOnAction" text="Administrator" />
             <Text layoutX="17.0" layoutY="324.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Cancel your booking:" />
             <TextField fx:id="cancelBookingID" layoutX="16.0" layoutY="334.0" prefHeight="27.0" prefWidth="135.0" promptText="Enter your booking ID" />

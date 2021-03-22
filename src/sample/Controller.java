@@ -6,6 +6,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -14,6 +15,7 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 
 import java.io.IOException;
@@ -52,14 +54,41 @@ public class Controller implements Initializable {
     private TextField bookingNameTextField, bookingSSNTextField,bookingEmailTextField;
     @FXML
     private ChoiceBox bookingSpotsTaken;
-    @FXML
-    private Text showNameOnTour;
+    //@FXML
+    //private Text showNameOnTour;
     @FXML
     private Button backToMainPageButton,bookTourButto;
     @FXML
     private TextField cancelBookingID;
 
+    // This will pass the selected tour to the TourBookingController
+    public Stage passTourToTourBookingController(Tour tour) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("bookingInformation.fxml"));
 
+        Stage stage = new Stage(StageStyle.DECORATED);
+        stage.setScene(new Scene(loader.load()));
+
+        TourBookingController controller = loader.getController();
+        controller.initData(tourListView.getSelectionModel().getSelectedItem());
+
+        stage.show();
+
+        return stage;
+    }
+
+
+
+
+    // Open the TourBookingController to book selected tour.
+    public void openBookingInformation(ActionEvent actionEventBookTour) throws IOException {
+
+        Parent root = load(getClass().getResource("bookingInformation.fxml"));
+        Stage stage2 = new Stage();
+        stage2.setTitle("Day tour");
+        stage2.setScene(new Scene(root, 600, 400));
+        stage2.show();
+        //System.out.println("Bóka ferð");
+    }
 
     private TourDataFactory tourdataFactory = new TourDataFactory();
     private ObservableList<Tour> tours = FXCollections.observableArrayList();
@@ -68,29 +97,6 @@ public class Controller implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         tours = tourdataFactory.getTours();
         tourListView.setItems(tours);
-    }
-    // This will pass the selected tour to the TourBookingController
-    public void passTourToTourBookingController(ActionEvent actionEventBookTour) throws IOException {
-        FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource("bookingInformation.fxml"));
-        Parent root = loader.load();
-        Scene rootScene = new Scene(root);
-
-        // Access the controller and call a method
-        TourBookingController controller = loader.getController();
-        controller.initData(tourListView.getSelectionModel().getSelectedItem());
-
-    }
-
-    // Open the TourBookingController to book selected tour.
-    public void addButtonOnActivityBookTour(ActionEvent actionEventBookTour) throws IOException {
-        Tour tourToBook = (Tour) tourListView.getSelectionModel().getSelectedItem();
-        Parent root = load(getClass().getResource("bookingInformation.fxml"));
-        Stage stage2 = new Stage();
-        stage2.setTitle("Day tour");
-        stage2.setScene(new Scene(root, 600, 400));
-        stage2.show();
-        //System.out.println("Bóka ferð");
     }
 
     public void addButtonOnActivity(ActionEvent actionEvent) {
