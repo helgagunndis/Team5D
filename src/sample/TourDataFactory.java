@@ -12,22 +12,34 @@ import javafx.scene.input.MouseEvent;
 
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.ResourceBundle;
 
 public class TourDataFactory{
 
     public ArrayList<Booking> getBookings(){
         ArrayList<Booking> bookings = new ArrayList<>();
+
         return bookings;
     }
 
     public ObservableList<Tour> getTours(){
         ObservableList<Tour> tours = FXCollections.observableArrayList();
-        Tour tour1 = (new Tour(1, "Hestaferð","Komið með hlý föt",10,
+
+        Date startD1 = new Date(2021, 4, 05);
+        Date endD1 = new Date(2021, 8, 21);
+        Date startD2 = new Date(2021, 2, 15);
+        Date endD2 = new Date(2021, 12, 20);
+        Date startD3 = new Date(2021, 5, 25);
+        Date endD3 = new Date(2021, 9, 21);
+
+
+        Tour tour1 = (new Tour(1, "Hestaferð","Komið með hlý föt",startD1,endD1,10,
                 0, 5000,false,"North",1));
-        Tour tour2= (new Tour(2, "Fjórhjóla skemmtun","Ef einstaklingur er yngri en 18 ára þarf að vera í fylgt með forráðarmanni",10,
+        Tour tour2= (new Tour(2, "Fjórhjóla skemmtun","Ef einstaklingur er yngri en 18 ára þarf að vera í fylgt með forráðarmanni",
+                startD2,endD2,10,
                 0, 6000,false,"South",2));
-        Tour tour3=(new Tour(3, "Kajakferð og fjör","Komið með hlý föt og nesti",8,
+        Tour tour3=(new Tour(3, "Kajakferð og fjör","Komið með hlý föt og nesti",startD3,endD3,8,
                 0, 1000,false,"East",3));
         tours.add(tour1);
         tours.add(tour2);
@@ -53,12 +65,11 @@ public class TourDataFactory{
         ArrayList<Booking> bookings2 = new ArrayList<>(); // tómur listi
         bookings2.add(new Booking(3012314,user2,tours.get(1)));
         bookings2.add(new Booking(2231024,user2,tours.get(3)));
-        user2.setBookings(bookings1);
+        user2.setBookings(bookings2);
 
         ArrayList<Booking> bookings3 = new ArrayList<>(); // tómur listi
         bookings3.add(new Booking(3214982,user3,tours.get(2)));
-        user3.setBookings(bookings1);
-
+        user3.setBookings(bookings3);
          */
         users.add(user1);
         users.add(user2);

@@ -57,7 +57,7 @@ public class Controller implements Initializable {
     //@FXML
     //private Text showNameOnTour;
     @FXML
-    private Button backToMainPageButton,bookTourButto;
+    private Button backToMainPageButton,bookTourButton;
     @FXML
     private TextField cancelBookingID;
 

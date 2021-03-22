@@ -20,11 +20,12 @@ public class Tour {
         return tourName;
     }
 
-    /// ATH ég eyddi út date því ég vissi ekki hvernig ég átti að ská það í database-inn
-    public Tour(int tourID, String tourName, String tourInfo, int availableSpots, int bookedSpots, int tourPrice, boolean fullyBooked, String tourRegion, int duration) {
+    public Tour(int tourID, String tourName, String tourInfo, Date startDate, Date endDate, int availableSpots, int bookedSpots, int tourPrice, boolean fullyBooked, String tourRegion, int duration) {
         this.tourID = tourID;
         this.tourName = tourName;
         this.tourInfo = tourInfo;
+        this.startDate = startDate;
+        this.endDate = endDate;
         this.availableSpots = availableSpots;
         this.bookedSpots = bookedSpots;
         this.tourPrice = tourPrice;
@@ -32,6 +33,7 @@ public class Tour {
         this.tourRegion = tourRegion;
         this.duration = duration;
     }
+
 
     public int getTourID() {
         return tourID;
