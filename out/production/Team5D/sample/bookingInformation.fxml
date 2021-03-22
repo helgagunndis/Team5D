@@ -26,20 +26,26 @@
    <right>
       <AnchorPane prefHeight="377.0" prefWidth="403.0" BorderPane.alignment="CENTER">
          <children>
-            <Text layoutX="55.0" layoutY="83.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Name" />
-            <Text layoutX="51.0" layoutY="132.0" strokeType="OUTSIDE" strokeWidth="0.0" text="SSN" />
-            <Text layoutX="53.0" layoutY="179.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Email" />
-            <TextField layoutX="102.0" layoutY="65.0" prefHeight="27.0" prefWidth="268.0" />
-            <TextField layoutX="103.0" layoutY="114.0" prefHeight="27.0" prefWidth="266.0" />
-            <TextField layoutX="103.0" layoutY="161.0" prefHeight="27.0" prefWidth="268.0" />
-            <Button layoutX="216.0" layoutY="257.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="155.0" text="Book tour" />
+            <Text layoutX="54.0" layoutY="105.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Name" />
+            <Text layoutX="58.0" layoutY="154.0" strokeType="OUTSIDE" strokeWidth="0.0" text="SSN" />
+            <Text layoutX="56.0" layoutY="201.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Email" />
+            <TextField layoutX="102.0" layoutY="87.0" prefHeight="27.0" prefWidth="268.0" />
+            <TextField layoutX="103.0" layoutY="136.0" prefHeight="27.0" prefWidth="266.0" />
+            <TextField layoutX="104.0" layoutY="183.0" prefHeight="27.0" prefWidth="268.0" />
+            <Button fx:id="bookTourButton" layoutX="221.0" layoutY="277.0" mnemonicParsing="false" onAction="#bookTourButtonOnAction" prefHeight="27.0" prefWidth="155.0" text="Book tour" />
             <Text layoutX="51.0" layoutY="48.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Booking informations" wrappingWidth="182.21630859375">
                <font>
                   <Font size="18.0" />
                </font>
             </Text>
-            <ChoiceBox layoutX="103.0" layoutY="207.0" prefHeight="27.0" prefWidth="269.0" />
-            <Text layoutX="51.0" layoutY="225.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Persons" />
+            <ChoiceBox layoutX="104.0" layoutY="229.0" prefHeight="27.0" prefWidth="269.0" />
+            <Text layoutX="53.0" layoutY="247.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Persons" />
+            <Text fx:id="showNameOnTour" layoutX="53.0" layoutY="75.0" strokeType="OUTSIDE" strokeWidth="0.0" text="HÉR KEMUR NAFIÐ Á FERÐINNI SEM ER VERIÐ AÐ BÓKA">
+               <font>
+                  <Font size="11.0" />
+               </font>
+            </Text>
+            <Text layoutX="98.0" layoutY="335.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Þegar búið er að ýta á bóka-&gt; bókun tókst bókunar númerið þitt er:" wrappingWidth="245.21630859375" />
          </children>
       </AnchorPane>
    </right>
