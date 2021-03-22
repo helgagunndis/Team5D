@@ -61,37 +61,32 @@ public class Controller implements Initializable {
     @FXML
     private TextField cancelBookingID;
 
-    // This will pass the selected tour to the TourBookingController
-    public Stage passTourToTourBookingController(Tour tour) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("bookingInformation.fxml"));
-
-        Stage stage = new Stage(StageStyle.DECORATED);
-        stage.setScene(new Scene(loader.load()));
-
-        TourBookingController controller = loader.getController();
-        controller.initData(tourListView.getSelectionModel().getSelectedItem());
-
-        stage.show();
-
-        return stage;
-    }
-
-
-
-
-    // Open the TourBookingController to book selected tour.
-    public void openBookingInformation(ActionEvent actionEventBookTour) throws IOException {
-
-        Parent root = load(getClass().getResource("bookingInformation.fxml"));
-        Stage stage2 = new Stage();
-        stage2.setTitle("Day tour");
-        stage2.setScene(new Scene(root, 600, 400));
-        stage2.show();
-        //System.out.println("Bóka ferð");
-    }
+    /**
+     * When this method is called, it will pass the selected Person object to
+     * a the detailed view
+     */
 
     private TourDataFactory tourdataFactory = new TourDataFactory();
     private ObservableList<Tour> tours = FXCollections.observableArrayList();
+
+    public void openBookingInformation(ActionEvent event) throws IOException
+    {
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("bookingInformation.fxml"));
+        Parent tourSearchParent = loader.load();
+
+        Scene tableViewScene = new Scene(tourSearchParent);
+
+        //access the controller and call a method
+        TourBookingController controller = loader.getController();
+        controller.initData(tourListView.getSelectionModel().getSelectedItem());
+
+        //This line gets the Stage information
+        Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
+
+        window.setScene(tableViewScene);
+        window.show();
+    }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
