@@ -64,12 +64,12 @@ public class Tour {
         this.availableSpots = availableSpots;
     }
 
-    public int getBookedSports() {
+    public int getBookedSpots() {
         return bookedSpots;
     }
 
-    public void setBookedSports(int bookedSports) {
-        this.bookedSpots = bookedSports;
+    public void setBookedSpots(int bookedSpots) {
+        this.bookedSpots = bookedSpots;
     }
 
     public int getTourPrice() {
