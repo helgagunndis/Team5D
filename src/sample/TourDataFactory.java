@@ -26,7 +26,7 @@ public class TourDataFactory{
         ObservableList<Tour> tours = FXCollections.observableArrayList();
         tours.add(new Tour(1, "Hestaferð","Komið með hlý föt",10,
                 0, 5000,false,"North",1));
-        tours.add(new Tour(2, "Fjörhjólar skemmtun","Ef einstaklingur er yngri en 18 ára þarf að vera í fylgt með forráðarmanni",10,
+        tours.add(new Tour(2, "Fjórhjóla skemmtun","Ef einstaklingur er yngri en 18 ára þarf að vera í fylgt með forráðarmanni",10,
                 0, 6000,false,"South",2));
         tours.add(new Tour(3, "Kajakferð og fjör","Komið með hlý föt og nesti",8,
                 0, 1000,false,"East",3));
