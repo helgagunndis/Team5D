@@ -6,19 +6,26 @@ public class Tour {
     private int tourID;
     private String tourName;
     private String tourInfo;
+    private Date startDate;
+    private Date endDate;
     private int availableSpots;
-    private int bookedSports;
+    private int bookedSpots;
     private int tourPrice;
     private boolean fullyBooked;
     private String tourRegion;
 
-/// ATH ég eyddi út date því ég vissi ekki hvernig ég átti að ská það í database-inn
-    public Tour(int tourID, String tourName, String tourInfo, int availableSpots, int bookedSports, int tourPrice, boolean fullyBooked, String tourRegion, int duration) {
+    @Override
+    public String toString() {
+        return tourName;
+    }
+
+    /// ATH ég eyddi út date því ég vissi ekki hvernig ég átti að ská það í database-inn
+    public Tour(int tourID, String tourName, String tourInfo, int availableSpots, int bookedSpots, int tourPrice, boolean fullyBooked, String tourRegion, int duration) {
         this.tourID = tourID;
         this.tourName = tourName;
         this.tourInfo = tourInfo;
         this.availableSpots = availableSpots;
-        this.bookedSports = bookedSports;
+        this.bookedSpots = bookedSpots;
         this.tourPrice = tourPrice;
         this.fullyBooked = fullyBooked;
         this.tourRegion = tourRegion;
@@ -58,11 +65,11 @@ public class Tour {
     }
 
     public int getBookedSports() {
-        return bookedSports;
+        return bookedSpots;
     }
 
     public void setBookedSports(int bookedSports) {
-        this.bookedSports = bookedSports;
+        this.bookedSpots = bookedSports;
     }
 
     public int getTourPrice() {

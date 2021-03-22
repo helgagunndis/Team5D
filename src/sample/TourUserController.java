@@ -7,13 +7,8 @@ import javafx.fxml.Initializable;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class TourUserController implements Initializable {
+public class TourUserController {
 
-    //private DataFactory dataFactory = new DataFactory();
-    //private ObservableList<User> users = FXCollections.observableArrayList();
 
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
 
-    }
 }

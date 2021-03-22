@@ -1,18 +1,15 @@
 package sample;
 
-import java.util.ArrayList;
 
 public class Booking {
     private int bookingID;
-    private String tourName;
-    private String userName;
-    private boolean isPaid;
+    private User user;
+    private Tour tour;
 
-    public Booking(int bookingID, String tourName, String userName, boolean isPaid) {
+    public Booking(int bookingID, User user, Tour tour) {
         this.bookingID = bookingID;
-        this.tourName = tourName;
-        this.userName = userName;
-        this.isPaid = isPaid;
+        this.user = user;
+        this.tour = tour;
     }
 
     public int getBookingID() {
@@ -23,27 +20,19 @@ public class Booking {
         this.bookingID = bookingID;
     }
 
-    public String getTourName() {
-        return tourName;
+    public User getUser() {
+        return user;
     }
 
-    public void setTourName(String tourName) {
-        this.tourName = tourName;
+    public void setUser(User user) {
+        this.user = user;
     }
 
-    public String getUserName() {
-        return userName;
+    public Tour getTour() {
+        return tour;
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
-    }
-
-    public boolean isPaid() {
-        return isPaid;
-    }
-
-    public void setPaid(boolean paid) {
-        isPaid = paid;
+    public void setTour(Tour tour) {
+        this.tour = tour;
     }
 }

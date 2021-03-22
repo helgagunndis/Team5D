@@ -39,7 +39,7 @@
             </SplitMenuButton>
             <SplitMenuButton layoutX="17.0" layoutY="208.0" mnemonicParsing="false" prefWidth="120.0" text="Services">
               <items>
-                  <CheckMenuItem fx:id="filterServicesWheelchairAccessable" mnemonicParsing="false" text="Wheelchair accessable" />
+                  <CheckMenuItem fx:id="filterServicesWheelchairAccessibleAccessible" mnemonicParsing="false" text="Wheelchair accessible" />
                   <CheckMenuItem fx:id="filterServicesFamilyFriendly" mnemonicParsing="false" text="Family friendly" />
               </items>
             </SplitMenuButton>
@@ -51,10 +51,10 @@
    <center>
       <AnchorPane prefHeight="377.0" prefWidth="432.0" BorderPane.alignment="CENTER">
          <children>
-            <DatePicker fx:id="dateFrom" layoutX="14.0" layoutY="90.0" prefHeight="27.0" prefWidth="120.0" promptText="from" />
-            <DatePicker fx:id="dateTo" layoutX="154.0" layoutY="90.0" prefHeight="27.0" prefWidth="120.0" promptText="to" />
-            <Button fx:id="buttonFindTour" layoutX="290.0" layoutY="90.0" mnemonicParsing="false" onAction="#buttonFindTourOnAvtion" prefHeight="27.0" prefWidth="127.0" text="Find tour" />
-            <Text layoutX="14.0" layoutY="54.0" strokeType="OUTSIDE" strokeWidth="0.0" text=" ICELAND" wrappingWidth="164.00634765625">
+            <DatePicker layoutX="14.0" layoutY="90.0" prefHeight="27.0" prefWidth="120.0" promptText="from" />
+            <DatePicker layoutX="154.0" layoutY="90.0" prefHeight="27.0" prefWidth="120.0" promptText="to" />
+            <Button fx:id="buttonFindTour" layoutX="290.0" layoutY="90.0" mnemonicParsing="false" onAction="#addButtonOnActivity" prefHeight="27.0" prefWidth="127.0" text="Find tour" />
+            <Text layoutX="14.0" layoutY="54.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ICELAND" wrappingWidth="164.00634765625">
                <font>
                   <Font size="36.0" />
                </font>
@@ -65,11 +65,11 @@
                </children>
             </AnchorPane>
             <Text layoutX="108.0" layoutY="74.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Day tours" />
-            <Button fx:id="buttonSearchBookTour" layoutX="274.0" layoutY="306.0" mnemonicParsing="false" onAction="#buttonSearchBookTourOnAction" prefHeight="27.0" prefWidth="144.0" text="Next step to book tour" />
-            <Button fx:id="buttonAdministrator" layoutX="329.0" layoutY="14.0" mnemonicParsing="false" onAction="#buttonAdministratorOnAction" text="Administrator" />
+            <Button fx:id="buttonSearchBookTour" layoutX="274.0" layoutY="306.0" mnemonicParsing="false" onAction="#addButtonOnActivityBookTour" prefHeight="27.0" prefWidth="144.0" text="Next step to book tour" />
+            <Button fx:id="buttonAdministrator" layoutX="329.0" layoutY="14.0" mnemonicParsing="false" text="Administrator" />
             <Text layoutX="17.0" layoutY="324.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Cancel your booking:" />
             <TextField fx:id="cancelBookingID" layoutX="16.0" layoutY="334.0" prefHeight="27.0" prefWidth="135.0" promptText="Enter your booking ID" />
-            <Button fx:id="buttonCancel" layoutX="160.0" layoutY="334.0" mnemonicParsing="false" onAction="#buttonCancelOnAction" prefHeight="27.0" prefWidth="61.0" text="Cancel" />
+            <Button fx:id="buttonCancel" layoutX="160.0" layoutY="334.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="61.0" text="Cancel" />
          </children>
       </AnchorPane>
    </center>
