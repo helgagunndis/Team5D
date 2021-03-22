@@ -17,6 +17,4 @@ import java.util.ResourceBundle;
 public class TourController {
 
 
-
-
 }

@@ -18,18 +18,20 @@ public class TourDataFactory{
 
     public ArrayList<Booking> getBookings(){
         ArrayList<Booking> bookings = new ArrayList<>();
-
         return bookings;
     }
 
     public ObservableList<Tour> getTours(){
         ObservableList<Tour> tours = FXCollections.observableArrayList();
-        tours.add(new Tour(1, "Hestaferð","Komið með hlý föt",10,
+        Tour tour1 = (new Tour(1, "Hestaferð","Komið með hlý föt",10,
                 0, 5000,false,"North",1));
-        tours.add(new Tour(2, "Fjórhjóla skemmtun","Ef einstaklingur er yngri en 18 ára þarf að vera í fylgt með forráðarmanni",10,
+        Tour tour2= (new Tour(2, "Fjórhjóla skemmtun","Ef einstaklingur er yngri en 18 ára þarf að vera í fylgt með forráðarmanni",10,
                 0, 6000,false,"South",2));
-        tours.add(new Tour(3, "Kajakferð og fjör","Komið með hlý föt og nesti",8,
+        Tour tour3=(new Tour(3, "Kajakferð og fjör","Komið með hlý föt og nesti",8,
                 0, 1000,false,"East",3));
+        tours.add(tour1);
+        tours.add(tour2);
+        tours.add(tour3);
         return tours;
     }
 
@@ -40,7 +42,7 @@ public class TourDataFactory{
         User user2 = new User("1703817529","Andrea Ágústsdóttir","andrea90@hotmail.com");
         User user3 = new User("0201981719", "Guðrún Helga Traustadóttir","ghelga@gmail.com");
 
-        ObservableList<Tour> tours = getTours(); // án í ferð
+        /*ObservableList<Tour> tours = getTours(); // án í ferð
 
         ArrayList<Booking> bookings1 = new ArrayList<>(); // tómur listi
         bookings1.add(new Booking(4020423,user1,tours.get(1)));
@@ -56,6 +58,11 @@ public class TourDataFactory{
         ArrayList<Booking> bookings3 = new ArrayList<>(); // tómur listi
         bookings3.add(new Booking(3214982,user3,tours.get(2)));
         user3.setBookings(bookings1);
+
+         */
+        users.add(user1);
+        users.add(user2);
+        users.add(user3);
 
         return users;
     }

@@ -80,6 +80,7 @@ public class Controller implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         tours = tourdataFactory.getTours();
         tourListView.setItems(tours);
+
     }
     public void addButtonOnActivityBookTour(ActionEvent actionEventBookTour) {
         System.out.println("Bóka ferð");

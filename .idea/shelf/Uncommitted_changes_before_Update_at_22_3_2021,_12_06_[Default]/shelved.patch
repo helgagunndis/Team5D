@@ -1,0 +1,483 @@
+Index: src/sample/Tour.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/sample/Tour.java b/src/sample/Tour.java
+--- a/src/sample/Tour.java	(revision c0c283090ef443095ff72194ada2f1edd4c61e92)
++++ b/src/sample/Tour.java	(date 1616412693861)
+@@ -1,5 +1,7 @@
+ package sample;
+ 
++import javafx.scene.layout.ColumnConstraints;
++
+ import java.util.Date;
+ 
+ public class Tour {
+@@ -8,14 +10,20 @@
+     private String tourInfo;
+     private Date startDate;
+     private Date endDate;
+-    private int availableSpots;
++    private String availableSpots;
+     private int bookedSports;
+     private int tourPrice;
+     private boolean fullyBooked;
+     private String tourRegion;
+ 
++    @Override
++    public String toString() {
++        return tourName;
++    }
++
++
+ /// ATH ég eyddi út date því ég vissi ekki hvernig ég átti að ská það í database-inn
+-    public Tour(int tourID, String tourName, String tourInfo, int availableSpots, int bookedSports, int tourPrice, boolean fullyBooked, String tourRegion, int duration) {
++    public Tour(int tourID, String tourName, String tourInfo, String availableSpots, int bookedSports, int tourPrice, boolean fullyBooked, String tourRegion, int duration) {
+         this.tourID = tourID;
+         this.tourName = tourName;
+         this.tourInfo = tourInfo;
+@@ -51,11 +59,11 @@
+         this.tourInfo = tourInfo;
+     }
+ 
+-    public int getAvailableSpots() {
++    public String getAvailableSpots() {
+         return availableSpots;
+     }
+ 
+-    public void setAvailableSpots(int availableSpots) {
++    public void setAvailableSpots(String availableSpots) {
+         this.availableSpots = availableSpots;
+     }
+ 
+Index: src/sample/TourController.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/sample/TourController.java b/src/sample/TourController.java
+--- a/src/sample/TourController.java	(revision c0c283090ef443095ff72194ada2f1edd4c61e92)
++++ b/src/sample/TourController.java	(date 1616411913530)
+@@ -14,9 +14,9 @@
+ import java.util.Date;
+ import java.util.ResourceBundle;
+ 
+-public class TourController {
+-
++public class TourController extends Tour {
+ 
+-
+-
++    public TourController(int tourID, String tourName, String tourInfo, String availableSpots, int bookedSports, int tourPrice, boolean fullyBooked, String tourRegion, int duration) {
++        super(tourID, tourName, tourInfo, availableSpots, bookedSports, tourPrice, fullyBooked, tourRegion, duration);
++    }
+ }
+Index: src/sample/Controller.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/sample/Controller.java b/src/sample/Controller.java
+--- a/src/sample/Controller.java	(revision c0c283090ef443095ff72194ada2f1edd4c61e92)
++++ b/src/sample/Controller.java	(date 1616414664438)
+@@ -1,16 +1,22 @@
+ package sample;
+ 
++import javafx.application.Platform;
+ import javafx.collections.FXCollections;
+ import javafx.collections.ObservableList;
+ import javafx.event.ActionEvent;
+ import javafx.fxml.FXML;
++import javafx.fxml.FXMLLoader;
+ import javafx.fxml.Initializable;
+-import javafx.scene.control.Button;
+-import javafx.scene.control.ChoiceBox;
+-import javafx.scene.control.ListView;
+-import javafx.scene.control.TextField;
++import javafx.scene.Node;
++import javafx.scene.Parent;
++import javafx.scene.Scene;
++import javafx.scene.control.*;
++import javafx.scene.layout.AnchorPane;
+ import javafx.scene.text.Text;
++import javafx.stage.Stage;
++import javafx.stage.Window;
+ 
++import java.io.IOException;
+ import java.net.URL;
+ import java.util.ArrayList;
+ import java.util.Date;
+@@ -22,11 +28,7 @@
+     @FXML
+     private TextField searchTextField;
+     @FXML
+-    private Button searchButton;
+-    @FXML
+-    private Date dateFrom;
+-    @FXML
+-    private Date dateTo;
++    private Date dateFrom, dateTo;
+         /*filterNorthRegion;
+     filterEastRegion;
+     filterSouthRegion;
+@@ -42,42 +44,54 @@
+      */
+ 
+     @FXML
+-    private Button buttonFindTour;
+-    @FXML
+-    private Button buttonSearchBookTour;
+-    @FXML
+-    private Button buttonAdministrator;
+-
+-    @FXML
+-    private Button bookTourButton;
+-    @FXML
+-    private TextField bookingNameTextField;
+-    @FXML
+-    private TextField bookingSSNTextField;
++    private Button searchButton,buttonFindTour, buttonSearchBookTour, buttonAdministrator;
+     @FXML
+-    private TextField bookingEmailTextField;
++    private TextField bookingNameTextField, bookingSSNTextField, bookingEmailTextField;
+     @FXML
+     private ChoiceBox bookingSpotsTaken;
+     @FXML
+     private Text showNameOnTour;
+     @FXML
+-    private Button backToMainPageButton;
+-    @FXML
+     private TextField cancelBookingID;
+     @FXML
+-    private Button buttonCancel;
++    private Button bookTourButton, backToMainPageButton, buttonCancel;
+ 
+ 
+-    private TourDataFactory tourdataFactory = new TourDataFactory();
++
++    private TourDataFactory tourDataFactory = new TourDataFactory();
+     private ObservableList<Tour> tours = FXCollections.observableArrayList();
+ 
+     @Override
+     public void initialize(URL location, ResourceBundle resources) {
+-        tours = tourdataFactory.getTours();
++        tours = tourDataFactory.getTours();
++        System.out.println(tours);
+         tourListView.setItems(tours);
+     }
+ 
+-    public void addButtonOnActivity(ActionEvent actionEvent) {
++    public void addButtonOnActivity(ActionEvent actionEvent)throws IOException {
+         System.out.println("halló");
+     }
++
++    public void buttonSearchBookTourOnAction(ActionEvent actionEvent) throws IOException {
++        System.out.println("!");
++
++    }
++
++    public void ButtonAdministratorOnAction(ActionEvent actionEvent) throws IOException{
++    }
++
++    public void buttonCancelOnAction(ActionEvent actionEvent)throws IOException {
++    }
++
++    public void backToMainPageButtonOnAction(ActionEvent actionEvent)throws IOException {
++    }
++
++    public void bookTourButtonOnAction(ActionEvent actionEvent)throws IOException {
++    }
++
++    public void searchButtonOnAction(ActionEvent actionEvent)throws IOException {
++    }
++
++    public void columnTourListOnSort(SortEvent<TableView> tableViewSortEvent) {
++    }
+ }
+Index: src/sample/TourDataFactory.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/sample/TourDataFactory.java b/src/sample/TourDataFactory.java
+--- a/src/sample/TourDataFactory.java	(revision c0c283090ef443095ff72194ada2f1edd4c61e92)
++++ b/src/sample/TourDataFactory.java	(date 1616411888807)
+@@ -24,12 +24,18 @@
+ 
+     public ObservableList<Tour> getTours(){
+         ObservableList<Tour> tours = FXCollections.observableArrayList();
+-        tours.add(new Tour(1, "Hestaferð","Komið með hlý föt",10,
+-                0, 5000,false,"North",1));
+-        tours.add(new Tour(2, "Fjörhjólar skemmtun","Ef einstaklingur er yngri en 18 ára þarf að vera í fylgt með forráðarmanni",10,
+-                0, 6000,false,"South",2));
+-        tours.add(new Tour(3, "Kajakferð og fjör","Komið með hlý föt og nesti",8,
+-                0, 1000,false,"East",3));
++        Tour tour1 = new Tour(1, "Hestaferð","Komið með hlý föt","10",
++                0, 5000,false,"North",1);
++        Tour tour2 =new Tour(2, "Fjörhjólar skemmtun","Ef einstaklingur er " +
++                "yngri en 18 ára þarf að vera í fylgt með forráðarmanni","10",
++                0, 6000,false,"South",2);
++        Tour tour3= new Tour(3, "Kajakferð og fjör","Komið með hlý " +
++                "föt og nesti","8",
++                0, 1000,false,"East",3);
++        tours.add(tour1);
++        tours.add(tour2);
++        tours.add(tour3);
++
+         return tours;
+     }
+ 
+@@ -40,7 +46,7 @@
+         User user2 = new User("1703817529","Andrea Ágústsdóttir","andrea90@hotmail.com");
+         User user3 = new User("0201981719", "Guðrún Helga Traustadóttir","ghelga@gmail.com");
+ 
+-        ObservableList<Tour> tours = getTours(); // án í ferð
++        /*ObservableList<Tour> tours = getTours(); // án í ferð
+ 
+         ArrayList<Booking> bookings1 = new ArrayList<>(); // tómur listi
+         bookings1.add(new Booking(4020423,user1,tours.get(1)));
+@@ -51,12 +57,15 @@
+         ArrayList<Booking> bookings2 = new ArrayList<>(); // tómur listi
+         bookings2.add(new Booking(3012314,user2,tours.get(1)));
+         bookings2.add(new Booking(2231024,user2,tours.get(3)));
+-        user2.setBookings(bookings1);
++        user2.setBookings(bookings2);
+ 
+         ArrayList<Booking> bookings3 = new ArrayList<>(); // tómur listi
+         bookings3.add(new Booking(3214982,user3,tours.get(2)));
+-        user3.setBookings(bookings1);
++        user3.setBookings(bookings3);*/
+ 
++        users.add(user1);
++        users.add(user2);
++        users.add(user3);
+         return users;
+     }
+ }
+Index: src/sample/TourUserController.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/sample/TourUserController.java b/src/sample/TourUserController.java
+--- a/src/sample/TourUserController.java	(revision c0c283090ef443095ff72194ada2f1edd4c61e92)
++++ b/src/sample/TourUserController.java	(date 1616409255178)
+@@ -7,8 +7,15 @@
+ import java.net.URL;
+ import java.util.ResourceBundle;
+ 
+-public class TourUserController {
++public class TourUserController extends User implements Initializable{
+ 
+ 
++    public TourUserController(String userID, String userName, String userEmail) {
++        super(userID, userName, userEmail);
++    }
+ 
++    @Override
++    public void initialize(URL location, ResourceBundle resources) {
++
++    }
+ }
+Index: src/sample/Booking.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/sample/Booking.java b/src/sample/Booking.java
+--- a/src/sample/Booking.java	(revision c0c283090ef443095ff72194ada2f1edd4c61e92)
++++ b/src/sample/Booking.java	(date 1616410618843)
+@@ -6,6 +6,7 @@
+     private User user;
+     private Tour tour;
+ 
++
+     public Booking(int bookingID, User user, Tour tour) {
+         this.bookingID = bookingID;
+         this.user = user;
+Index: src/sample/search.fxml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/sample/search.fxml b/src/sample/search.fxml
+--- a/src/sample/search.fxml	(revision c0c283090ef443095ff72194ada2f1edd4c61e92)
++++ b/src/sample/search.fxml	(date 1616414429426)
+@@ -44,7 +44,7 @@
+               </items>
+             </SplitMenuButton>
+             <TextField fx:id="searchTextField" layoutX="17.0" layoutY="245.0" prefHeight="65.0" prefWidth="121.0" />
+-            <Button fx:id="searchButton" layoutX="18.0" layoutY="320.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="119.0" text="Search" />
++            <Button fx:id="searchButton" layoutX="18.0" layoutY="320.0" mnemonicParsing="false" onAction="#searchButtonOnAction" prefHeight="27.0" prefWidth="119.0" text="Search" />
+          </children>
+       </AnchorPane>
+    </left>
+@@ -65,11 +65,11 @@
+                </children>
+             </AnchorPane>
+             <Text layoutX="108.0" layoutY="74.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Day tours" />
+-            <Button fx:id="buttonSearchBookTour" layoutX="274.0" layoutY="306.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="144.0" text="Next step to book tour" />
+-            <Button fx:id="buttonAdministrator" layoutX="329.0" layoutY="14.0" mnemonicParsing="false" text="Administrator" />
++            <Button fx:id="buttonSearchBookTour" layoutX="274.0" layoutY="306.0" mnemonicParsing="false" onAction="#buttonSearchBookTourOnAction" prefHeight="27.0" prefWidth="144.0" text="Next step to book tour" />
++            <Button fx:id="buttonAdministrator" layoutX="329.0" layoutY="14.0" mnemonicParsing="false" onAction="#ButtonAdministratorOnAction" text="Administrator" />
+             <Text layoutX="17.0" layoutY="324.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Cancel your booking:" />
+             <TextField fx:id="cancelBookingID" layoutX="16.0" layoutY="334.0" prefHeight="27.0" prefWidth="135.0" promptText="Enter your booking ID" />
+-            <Button fx:id="buttonCancel" layoutX="160.0" layoutY="334.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="61.0" text="Cancel" />
++            <Button fx:id="buttonCancel" layoutX="160.0" layoutY="334.0" mnemonicParsing="false" onAction="#buttonCancelOnAction" prefHeight="27.0" prefWidth="61.0" text="Cancel" />
+          </children>
+       </AnchorPane>
+    </center>
+Index: src/sample/Main.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/sample/Main.java b/src/sample/Main.java
+--- a/src/sample/Main.java	(revision c0c283090ef443095ff72194ada2f1edd4c61e92)
++++ b/src/sample/Main.java	(date 1616408430098)
+@@ -16,7 +16,6 @@
+         primaryStage.show();
+     }
+ 
+-
+     public static void main(String[] args) {
+         launch(args);
+     }
+Index: src/sample/TourBookingController.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/sample/TourBookingController.java b/src/sample/TourBookingController.java
+--- a/src/sample/TourBookingController.java	(revision c0c283090ef443095ff72194ada2f1edd4c61e92)
++++ b/src/sample/TourBookingController.java	(date 1616402221545)
+@@ -10,6 +10,7 @@
+ import javafx.scene.text.Text;
+ 
+ import java.net.URL;
++import java.util.ArrayList;
+ import java.util.Random;
+ import java.util.ResourceBundle;
+ import java.util.stream.Collectors;
+@@ -18,7 +19,7 @@
+ 
+ 
+ 
+-    private void getRandomNum() {
++    private String getRandomNum() {
+         int length = 8;
+         String chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+                 + "abcdefghijklmnopqrstuvwxyz"
+@@ -26,6 +27,7 @@
+         String str = new Random().ints(length, 0, chars.length())
+                 .mapToObj(i -> "" + chars.charAt(i))
+                 .collect(Collectors.joining());
++        return str;
+     }
+ 
+ 
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	(revision c0c283090ef443095ff72194ada2f1edd4c61e92)
++++ b/.idea/workspace.xml	(date 1616414758036)
+@@ -4,22 +4,22 @@
+     <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="">
+       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/out/production/Team5D/sample/Booking.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Team5D/sample/Booking.class" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/out/production/Team5D/sample/Controller.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Team5D/sample/Controller.class" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/out/production/Team5D/sample/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Team5D/sample/Main.class" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/out/production/Team5D/sample/Tour.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Team5D/sample/Tour.class" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/out/production/Team5D/sample/TourBookingController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Team5D/sample/TourBookingController.class" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/out/production/Team5D/sample/TourController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Team5D/sample/TourController.class" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/out/production/Team5D/sample/TourDataFactory.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Team5D/sample/TourDataFactory.class" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/out/production/Team5D/sample/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Team5D/sample/User.class" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/out/production/Team5D/sample/bookingInformation.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Team5D/sample/bookingInformation.fxml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/out/production/Team5D/sample/loginInformation.fxml" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/out/production/Team5D/sample/TourUserController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Team5D/sample/TourUserController.class" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/out/production/Team5D/sample/search.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Team5D/sample/search.fxml" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/src/sample/Booking.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/Booking.java" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/src/sample/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/Controller.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/sample/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/Main.java" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/src/sample/Tour.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/Tour.java" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/src/sample/TourBookingController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/TourBookingController.java" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/src/sample/TourController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/TourController.java" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/src/sample/TourDataFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/TourDataFactory.java" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/src/sample/TourUserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/TourUserController.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/sample/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/User.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/sample/bookingInformation.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/bookingInformation.fxml" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/src/sample/search.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/search.fxml" afterDir="false" />
+     </list>
+     <option name="SHOW_DIALOG" value="false" />
+@@ -172,6 +172,7 @@
+     <property name="node.js.path.for.package.tslint" value="project" />
+     <property name="node.js.selected.package.eslint" value="(autodetect)" />
+     <property name="node.js.selected.package.tslint" value="(autodetect)" />
++    <property name="nodejs_package_manager_path" value="npm" />
+     <property name="project.structure.last.edited" value="Modules" />
+     <property name="project.structure.proportion" value="0.15429688" />
+     <property name="project.structure.side.proportion" value="0.2" />
+@@ -230,13 +231,15 @@
+         <option name="Make" enabled="true" />
+       </method>
+     </configuration>
+-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
++    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
+       <option name="arquillianRunConfiguration">
+         <value>
+           <option name="containerStateName" value="" />
+         </value>
+       </option>
+-      <option name="TEST_OBJECT" value="class" />
++      <option name="TEST_OBJECT" value="CLASS" />
++      <properties />
++      <listeners />
+       <method v="2">
+         <option name="Make" enabled="true" />
+       </method>
+@@ -292,7 +295,8 @@
+       <workItem from="1616150534994" duration="8000" />
+       <workItem from="1616150565979" duration="281000" />
+       <workItem from="1616168004749" duration="316000" />
+-      <workItem from="1616363421224" duration="7118000" />
++      <workItem from="1616363421224" duration="7200000" />
++      <workItem from="1616401599334" duration="12019000" />
+     </task>
+     <servers />
+   </component>
+Index: out/production/Team5D/sample/search.fxml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/out/production/Team5D/sample/search.fxml b/out/production/Team5D/sample/search.fxml
+--- a/out/production/Team5D/sample/search.fxml	(revision c0c283090ef443095ff72194ada2f1edd4c61e92)
++++ b/out/production/Team5D/sample/search.fxml	(date 1616414587461)
+@@ -44,7 +44,7 @@
+               </items>
+             </SplitMenuButton>
+             <TextField fx:id="searchTextField" layoutX="17.0" layoutY="245.0" prefHeight="65.0" prefWidth="121.0" />
+-            <Button fx:id="searchButton" layoutX="18.0" layoutY="320.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="119.0" text="Search" />
++            <Button fx:id="searchButton" layoutX="18.0" layoutY="320.0" mnemonicParsing="false" onAction="#searchButtonOnAction" prefHeight="27.0" prefWidth="119.0" text="Search" />
+          </children>
+       </AnchorPane>
+    </left>
+@@ -65,11 +65,11 @@
+                </children>
+             </AnchorPane>
+             <Text layoutX="108.0" layoutY="74.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Day tours" />
+-            <Button fx:id="buttonSearchBookTour" layoutX="274.0" layoutY="306.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="144.0" text="Next step to book tour" />
+-            <Button fx:id="buttonAdministrator" layoutX="329.0" layoutY="14.0" mnemonicParsing="false" text="Administrator" />
++            <Button fx:id="buttonSearchBookTour" layoutX="274.0" layoutY="306.0" mnemonicParsing="false" onAction="#buttonSearchBookTourOnAction" prefHeight="27.0" prefWidth="144.0" text="Next step to book tour" />
++            <Button fx:id="buttonAdministrator" layoutX="329.0" layoutY="14.0" mnemonicParsing="false" onAction="#ButtonAdministratorOnAction" text="Administrator" />
+             <Text layoutX="17.0" layoutY="324.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Cancel your booking:" />
+             <TextField fx:id="cancelBookingID" layoutX="16.0" layoutY="334.0" prefHeight="27.0" prefWidth="135.0" promptText="Enter your booking ID" />
+-            <Button fx:id="buttonCancel" layoutX="160.0" layoutY="334.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="61.0" text="Cancel" />
++            <Button fx:id="buttonCancel" layoutX="160.0" layoutY="334.0" mnemonicParsing="false" onAction="#buttonCancelOnAction" prefHeight="27.0" prefWidth="61.0" text="Cancel" />
+          </children>
+       </AnchorPane>
+    </center>

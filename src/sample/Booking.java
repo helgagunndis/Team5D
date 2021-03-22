@@ -6,6 +6,7 @@ public class Booking {
     private User user;
     private Tour tour;
 
+
     public Booking(int bookingID, User user, Tour tour) {
         this.bookingID = bookingID;
         this.user = user;

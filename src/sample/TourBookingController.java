@@ -10,6 +10,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.Random;
 import java.util.ResourceBundle;
 import java.util.stream.Collectors;
@@ -18,7 +19,7 @@ public class TourBookingController {
 
 
 
-    private void getRandomNum() {
+    private String getRandomNum() {
         int length = 8;
         String chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
                 + "abcdefghijklmnopqrstuvwxyz"
@@ -26,6 +27,7 @@ public class TourBookingController {
         String str = new Random().ints(length, 0, chars.length())
                 .mapToObj(i -> "" + chars.charAt(i))
                 .collect(Collectors.joining());
+        return str;
     }
 
 
