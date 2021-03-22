@@ -4,6 +4,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
+import javafx.scene.text.Text;
 
 import java.net.URL;
 import java.util.Random;
@@ -15,7 +16,9 @@ public class TourBookingController implements Initializable{
     private Tour selectedTour;
 
     @FXML
-    private Label bookingNameLabel;
+    private Text showNameOnTour;
+    @FXML
+    private TextField bookingNameTextField;
     @FXML
     private TextField bookingSSNTextField;
     @FXML
@@ -29,7 +32,7 @@ public class TourBookingController implements Initializable{
 
     public void initData(Tour tour) {
         selectedTour = tour;
-        bookingNameLabel.setText(selectedTour.getTourName());
+        showNameOnTour.setText(selectedTour.getTourName());
     }
 
     private String getRandomNum() {
