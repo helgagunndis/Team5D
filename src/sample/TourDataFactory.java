@@ -36,13 +36,29 @@ public class TourDataFactory{
 
         Tour tour1 = (new Tour( "Hestaferð","Komið með hlý föt",10, 5000,startD1,endD1,
                 "North",0));
+        tour1.setTourID(1);
+        tours.add(tour1);
         Tour tour2= (new Tour( "Fjórhjóla skemmtun","Ef einstaklingur er yngri en 18 ára þarf að vera í fylgt með forráðarmanni",
                 20,7000,startD2,endD2, "South",0));
+        tour2.setTourID(2);
+        tours.add(tour2);
         Tour tour3=(new Tour( "Kajakferð og fjör","Komið með hlý föt og nesti",22,10000,startD3,endD3,
                 "East", 3));
-        tours.add(tour1);
-        tours.add(tour2);
+        tour3.setTourID(3);
         tours.add(tour3);
+        Tour tour4=(new Tour( "Gönguferð um Skaftafell","Komið með hlý föt og nesti",12,10000,startD2,endD2,
+                "South", 5));
+        tour4.setTourID(4);
+        tours.add(tour4);
+        Tour tour5=(new Tour( "Kafað í Silfru","Komið með föt til skiptanna",6,25000,startD1,endD1,
+                "South", 4));
+        tour5.setTourID(5);
+        tours.add(tour5);
+        Tour tour6=(new Tour( "Vélsleðaferð uppá Snæfellsjökul","Koma þarf með hlý útivistarföt",10,25000,startD2,endD2,
+                "West", 6));
+        tour6.setTourID(6);
+        tours.add(tour6);
+
         return tours;
     }
 

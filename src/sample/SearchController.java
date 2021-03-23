@@ -2,17 +2,17 @@ package sample;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
 import javafx.event.ActionEvent;
+import javafx.event.Event;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.ListView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
@@ -29,39 +29,35 @@ public class SearchController implements Initializable {
     @FXML
     private ListView<Tour> tourListView;
     @FXML
-    private TextField searchTextField;
-    @FXML
-    private Button searchButton;
-    @FXML
     private Date dateFrom, dateTo;
-        /*filterNorthRegion;
-    filterEastRegion;
-    filterSouthRegion;
-    filterWestRegion;
-
-    filterToThreeHours;
-    filterThreeToFiveHours;
-    filterFiveToSevenHours;
-    filterFullDay;
-
-    filterServicesWheelchairAccessible;
-    filterServicesFamilyFriendly;
-     */
-
     @FXML
-    private Button buttonFindTour,buttonSearchBookTour,buttonAdministrator,buttonCancel;
-    @FXML
-    private TextField bookingNameTextField, bookingSSNTextField,bookingEmailTextField;
+    private Button buttonFindTour,buttonBookTour, buttonAdministrator,buttonCancel;
     @FXML
     private TextField cancelBookingID;
+    @FXML
+    private TextField showFilterTextField;
+    @FXML
+    private SplitMenuButton regionSplitMenuButton;
+    @FXML
+    private SplitMenuButton durationSplitMenuButton;
+    @FXML
+    private SplitMenuButton servicesSplitMenuButton;
+    @FXML
+    private CheckMenuItem filterNorthRegion;
+    @FXML
+    private CheckMenuItem filterSouthRegion;
+    @FXML
+    private CheckMenuItem filterWestRegion;
+    @FXML
+    private CheckMenuItem filterEastRegion;
 
-    /**
-     * When this method is called, it will pass the selected Person object to
-     * a the detailed view
-     */
 
     private TourDataFactory tourdataFactory = new TourDataFactory();
     private ObservableList<Tour> tours = FXCollections.observableArrayList();
+
+    FilteredList<Tour> filteredTours = new FilteredList<>(tourdataFactory.getTours());
+
+
 
     public void openBookingInformation(ActionEvent event) throws IOException
     {
@@ -84,8 +80,47 @@ public class SearchController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        tours = tourdataFactory.getTours();
-        tourListView.setItems(tours);
+        //tours = tourdataFactory.getTours();
+
+            filterNorthRegion.setOnAction(new EventHandler() {
+                @Override
+                public void handle(Event event) {
+                    showFilterTextField.setText("North");
+                }
+            });
+            filterSouthRegion.setOnAction(new EventHandler() {
+                @Override
+                public void handle(Event event) {
+                    showFilterTextField.setText("South");
+                }
+            });
+            filterWestRegion.setOnAction(new EventHandler() {
+                @Override
+                public void handle(Event event) {
+                    showFilterTextField.setText("West");
+                }
+            });
+            filterEastRegion.setOnAction(new EventHandler() {
+                @Override
+                public void handle(Event event) {
+                    showFilterTextField.setText("East");
+                }
+            });
+        /*
+        showFilterTextField.textProperty().addListener(obs->{
+            String filter = showFilterTextField.getText();
+            if(filter == null || filter.length() == 0) {
+                filteredTours.setPredicate(s -> true);
+            }
+            else {
+                filteredTours.setPredicate(s -> s.contains(filter));
+            }
+        });
+
+         */
+
+
+        tourListView.setItems(filteredTours);
     }
 
     public void addButtonOnActivity(ActionEvent actionEvent) {

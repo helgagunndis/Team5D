@@ -87,7 +87,7 @@ public class Tour {
         this.fullyBooked = fullyBooked;
     }
 
-    public String getTourRegion() {
+    public String getTourRegion(String tourRegion) {
         return tourRegion;
     }
 

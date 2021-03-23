@@ -16,7 +16,7 @@
    <left>
       <AnchorPane prefHeight="395.0" prefWidth="144.0" BorderPane.alignment="CENTER">
          <children>
-            <SplitMenuButton layoutX="17.0" layoutY="88.0" mnemonicParsing="false" prefWidth="120.0" text="Region">
+            <SplitMenuButton fx:id="regionSplitMenuButton" layoutX="17.0" layoutY="137.0" mnemonicParsing="false" prefWidth="120.0" text="Region">
               <items>
                   <CheckMenuItem fx:id="filterNorthRegion" mnemonicParsing="false" text="North" />
                   <CheckMenuItem fx:id="filterEastRegion" mnemonicParsing="false" text="East" />
@@ -27,7 +27,7 @@
                   <Font size="14.0" />
                </font>
             </SplitMenuButton>
-            <SplitMenuButton layoutX="18.0" layoutY="149.0" mnemonicParsing="false" prefWidth="120.0" text="Duration">
+            <SplitMenuButton fx:id="durationSplitMenuButton" layoutX="17.0" layoutY="189.0" mnemonicParsing="false" prefWidth="120.0" text="Duration">
               <items>
                   <CheckMenuItem fx:id="filterToThreeHours" mnemonicParsing="false" text="0-3 hours" />
                   <CheckMenuItem fx:id="filterThreeToFiveHours" mnemonicParsing="false" text="3-5 hours" />
@@ -38,14 +38,13 @@
                   <Font size="14.0" />
                </font>
             </SplitMenuButton>
-            <SplitMenuButton layoutX="17.0" layoutY="208.0" mnemonicParsing="false" prefWidth="120.0" text="Services">
+            <SplitMenuButton fx:id="servicesSplitMenuButton" layoutX="17.0" layoutY="238.0" mnemonicParsing="false" prefWidth="120.0" text="Services">
               <items>
                   <CheckMenuItem fx:id="filterServicesWheelchairAccessibleAccessible" mnemonicParsing="false" text="Wheelchair accessible" />
                   <CheckMenuItem fx:id="filterServicesFamilyFriendly" mnemonicParsing="false" text="Family friendly" />
               </items>
             </SplitMenuButton>
-            <TextField fx:id="searchTextField" layoutX="17.0" layoutY="245.0" prefHeight="65.0" prefWidth="121.0" />
-            <Button fx:id="buttonSearch" layoutX="18.0" layoutY="320.0" mnemonicParsing="false" onAction="#buttonSearchOnAction" prefHeight="27.0" prefWidth="119.0" text="Search" />
+            <TextField fx:id="showFilterTextField" layoutX="17.0" layoutY="293.0" prefHeight="39.0" prefWidth="120.0" />
          </children>
       </AnchorPane>
    </left>
@@ -66,7 +65,7 @@
                </children>
             </AnchorPane>
             <Text layoutX="108.0" layoutY="74.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Day tours" />
-            <Button fx:id="buttonSearchBookTour" layoutX="274.0" layoutY="306.0" mnemonicParsing="false" onAction="#openBookingInformation" prefHeight="27.0" prefWidth="144.0" text="Next step to book tour" />
+            <Button fx:id="buttonBookTour" layoutX="274.0" layoutY="306.0" mnemonicParsing="false" onAction="#openBookingInformation" prefHeight="27.0" prefWidth="144.0" text="Next step to book tour" />
             <Button fx:id="buttonAdministrator" layoutX="329.0" layoutY="14.0" mnemonicParsing="false" onAction="#buttonAdministratorOnAction" text="Administrator" />
             <Text layoutX="17.0" layoutY="324.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Cancel your booking:" />
             <TextField fx:id="cancelBookingID" layoutX="16.0" layoutY="334.0" prefHeight="27.0" prefWidth="135.0" promptText="Enter your booking ID" />
