@@ -14,6 +14,7 @@ public class Tour {
     private boolean fullyBooked;
     private String tourRegion;
     private int duration;
+    private String services;
 
     @Override
     public String toString() {
@@ -118,5 +119,10 @@ public class Tour {
     public void setEndDate(Date endDate) {
         this.endDate = endDate;
     }
+
+    public String getServices() {
+        return services;
+    }
+
 }
 

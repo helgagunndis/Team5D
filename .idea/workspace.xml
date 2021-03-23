@@ -9,8 +9,12 @@
       <change beforePath="$PROJECT_DIR$/out/production/Team5D/sample/SearchController$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Team5D/sample/SearchController$4.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Team5D/sample/SearchController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Team5D/sample/SearchController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Team5D/sample/Tour.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Team5D/sample/Tour.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Team5D/sample/TourDataFactory.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Team5D/sample/TourDataFactory.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Team5D/sample/search.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Team5D/sample/search.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/sample/SearchController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/SearchController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/sample/Tour.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/Tour.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/TourDataFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/TourDataFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/search.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/search.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -358,12 +362,6 @@
           <properties class="java.lang.NullPointerException" package="java.lang" />
           <option name="timeStamp" value="2" />
         </breakpoint>
-        <line-breakpoint enabled="true" type="java-field">
-          <url>file://$PROJECT_DIR$/src/sample/Tour.java</url>
-          <line>12</line>
-          <properties field="tourPrice" class="sample.Tour" />
-          <option name="timeStamp" value="3" />
-        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
   </component>

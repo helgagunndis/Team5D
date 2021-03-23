@@ -1,5 +1,6 @@
 package sample;
 
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
@@ -20,6 +21,7 @@ import javafx.stage.StageStyle;
 
 import java.io.IOException;
 import java.net.URL;
+import java.time.Instant;
 import java.util.Date;
 import java.util.ResourceBundle;
 
@@ -29,6 +31,8 @@ public class SearchController implements Initializable {
     @FXML
     private ListView<Tour> tourListView;
     @FXML
+    private TextArea infoOnTourTextArea;
+    @FXML
     private Date dateFrom, dateTo;
     @FXML
     private Button buttonFindTour,buttonBookTour, buttonAdministrator,buttonCancel;
@@ -36,6 +40,10 @@ public class SearchController implements Initializable {
     private TextField cancelBookingID;
     @FXML
     private TextField showFilterTextField;
+    @FXML
+    private DatePicker startDatePicker;
+    @FXML
+    private DatePicker endDatePicker;
     @FXML
     private SplitMenuButton regionSplitMenuButton;
     @FXML
@@ -50,6 +58,18 @@ public class SearchController implements Initializable {
     private CheckMenuItem filterWestRegion;
     @FXML
     private CheckMenuItem filterEastRegion;
+    @FXML
+    private CheckMenuItem filterToThreeHours;
+    @FXML
+    private CheckMenuItem filterThreeToFiveHours;
+    @FXML
+    private CheckMenuItem filterFiveToSevenHours;
+    @FXML
+    private CheckMenuItem filterFullDay;
+    @FXML
+    private CheckMenuItem filterServicesWheelchairAccessible;
+    @FXML
+    private CheckMenuItem filterServicesFamilyFriendly;
 
 
     private TourDataFactory tourdataFactory = new TourDataFactory();
@@ -62,6 +82,38 @@ public class SearchController implements Initializable {
         ObservableList<Tour> result = FXCollections.observableArrayList();
         for (Tour tour : full) {
             if (tour.getTourRegion().contains(region)) {
+                result.add(tour);
+            }
+        }
+        return result;
+    }
+
+    ObservableList<Tour> tourDurationSearch(int duration1, int duration2, ObservableList<Tour> full) {
+        ObservableList<Tour> result = FXCollections.observableArrayList();
+        for (Tour tour : full) {
+            if (tour.getDuration() > duration1 && tour.getDuration() <= duration2 ) {
+                result.add(tour);
+            }
+        }
+        return result;
+    }
+
+    ObservableList<Tour> tourServicesSearch(String service, ObservableList<Tour> full) {
+        ObservableList<Tour> result = FXCollections.observableArrayList();
+        for (Tour tour : full) {
+            if (tour.getServices().contains(service) ) {
+                result.add(tour);
+            }
+        }
+        return result;
+    }
+
+    ObservableList<Tour> tourDateSearch(ObservableList<Tour> full) {
+
+        ObservableList<Tour> result = FXCollections.observableArrayList();
+        for (Tour tour : full) {
+            if (tour.getStartDate().toInstant().isAfter(Instant.from(startDatePicker.getValue())) &&
+                tour.getEndDate().toInstant().isBefore(Instant.from(endDatePicker.getValue()))) {
                 result.add(tour);
             }
         }
@@ -88,9 +140,23 @@ public class SearchController implements Initializable {
         window.show();
     }
 
+    public void buttonFindTourOnAction(ActionEvent actionEvent) {
+        filteredTours = tourDateSearch(allTours);
+        tourListView.setItems(filteredTours);
+    }
+
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        //tours = tourdataFactory.getTours();
+            /*
+            buttonFindTour.setOnAction(new EventHandler<ActionEvent>() {
+                @Override
+                public void handle(ActionEvent event) {
+                    filteredTours = tourDateSearch(allTours);
+                    tourListView.setItems(filteredTours);
+                }
+            });
+             */
 
             filterNorthRegion.setOnAction(new EventHandler() {
                 @Override
@@ -98,7 +164,6 @@ public class SearchController implements Initializable {
                     filteredTours = tourRegionSearch("Akureyri", allTours );
                     showFilterTextField.setText("Akureyri");
                     tourListView.setItems(filteredTours);
-
                 }
             });
             filterSouthRegion.setOnAction(new EventHandler() {
@@ -107,7 +172,6 @@ public class SearchController implements Initializable {
                     filteredTours = tourRegionSearch("Reykjavík", allTours );
                     showFilterTextField.setText("Reykjavík");
                     tourListView.setItems(filteredTours);
-
                 }
             });
             filterWestRegion.setOnAction(new EventHandler() {
@@ -126,16 +190,71 @@ public class SearchController implements Initializable {
                     tourListView.setItems(filteredTours);
                 }
             });
+        filterToThreeHours.setOnAction(new EventHandler() {
+            @Override
+            public void handle(Event event) {
+                filteredTours = tourDurationSearch(0, 3, allTours );
+                showFilterTextField.setText("1 to 3 hours");
+                tourListView.setItems(filteredTours);
+            }
+        });
+        filterThreeToFiveHours.setOnAction(new EventHandler() {
+            @Override
+            public void handle(Event event) {
+                filteredTours = tourDurationSearch(3, 5, allTours );
+                showFilterTextField.setText("3 to 5 hours");
+                tourListView.setItems(filteredTours);
+            }
+        });
+        filterFiveToSevenHours.setOnAction(new EventHandler() {
+            @Override
+            public void handle(Event event) {
+                filteredTours = tourDurationSearch(5, 7, allTours );
+                showFilterTextField.setText("5 to 7 hours");
+                tourListView.setItems(filteredTours);
+            }
+        });
+        filterFullDay.setOnAction(new EventHandler() {
+            @Override
+            public void handle(Event event) {
+                filteredTours = tourDurationSearch(7, 24, allTours );
+                showFilterTextField.setText("Full day (7+ hours)");
+                tourListView.setItems(filteredTours);
+            }
+        });
+        filterServicesWheelchairAccessible.setOnAction(new EventHandler() {
+            @Override
+            public void handle(Event event) {
+                filteredTours = tourServicesSearch("Wheelchair accessible", allTours);
+                showFilterTextField.setText("Wheelchair accessible");
+                tourListView.setItems(filteredTours);
+            }
+        });
+        filterServicesFamilyFriendly.setOnAction(new EventHandler() {
+            @Override
+            public void handle(Event event) {
+                filteredTours = tourServicesSearch("Family friendly", allTours);
+                showFilterTextField.setText("Family friendly");
+                tourListView.setItems(filteredTours);
+            }
+        });
 
         tourListView.setItems(allTours);
+
+
+        tourListView.getSelectionModel().selectedItemProperty().addListener((ObservableValue<? extends Tour> observable, Tour oldValue, Tour newValue) -> {
+            if(tourListView.isFocused()){
+                String info = String.format(newValue.getTourName() + "\n" +
+                        newValue.getTourInfo());
+                infoOnTourTextArea.setText(info);
+            }
+        });
     }
 
     public void addButtonOnActivity(ActionEvent actionEvent) {
         System.out.println("halló");
     }
 
-    public void buttonFindTourOnAction(ActionEvent actionEvent) {
-    }
 
     public void buttonAdministratorOnAction(ActionEvent actionEvent) {
     }

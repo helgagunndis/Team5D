@@ -27,19 +27,19 @@ public class TourDataFactory{
         ObservableList<Tour> tours = FXCollections.observableArrayList();
 
         Date startD1 = new Date(2021, 4, 05);
-        Date endD1 = new Date(2021, 8, 21);
-        Date startD2 = new Date(2021, 2, 15);
-        Date endD2 = new Date(2021, 12, 20);
-        Date startD3 = new Date(2021, 5, 25);
-        Date endD3 = new Date(2021, 9, 21);
-        Date startD4 = new Date(2021, 6, 01);
-        Date endD4 = new Date(2021, 7, 31);
-        Date startD5 = new Date(2021, 1, 15);
-        Date endD5 = new Date(2021, 4, 15);
+        Date endD1 = new Date(2021, 4, 05);
+        Date startD2 = new Date(2021, 5, 15);
+        Date endD2 = new Date(2021, 5, 15);
+        Date startD3 = new Date(2021, 6, 25);
+        Date endD3 = new Date(2021, 6, 25);
+        Date startD4 = new Date(2021, 7, 01);
+        Date endD4 = new Date(2021, 7, 02);
+        Date startD5 = new Date(2021, 8, 15);
+        Date endD5 = new Date(2021, 8, 15);
 
 
         Tour tour1 = (new Tour( "Hestaferð","Komið með hlý föt",10, 5000,startD1,endD1,
-                "Akureyri",0));
+                "Akureyri",7));
         tour1.setTourID(1);
         tours.add(tour1);
         Tour tour2= (new Tour( "Fjórhjóla skemmtun","Ef einstaklingur er yngri en 18 ára þarf að vera í fylgd með forráðarmanni.",
