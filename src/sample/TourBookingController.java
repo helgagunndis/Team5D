@@ -13,34 +13,34 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.Random;
 import java.util.ResourceBundle;
 import java.util.stream.Collectors;
 
-public class TourBookingController implements Initializable{
+public class TourBookingController{
 
-    private Tour selectedTour;
-
-    @FXML
-    private Text showNameOnTour;
-    @FXML
-    private TextField bookingNameTextField;
-    @FXML
-    private TextField bookingSSNTextField;
-    @FXML
-    private TextField bookingEmailTextField;
-    @FXML
-    private ChoiceBox bookingSpotsTaken;
-    @FXML
-    private Button bookTourButton;
-    @FXML
-    private Button backToMainPageButton;
-
-
-    public void initData(Tour tour) {
-        selectedTour = tour;
-        showNameOnTour.setText(selectedTour.getTourName());
+    public void addBooking(User user) {
+        String bookingID= getRandomNum();
+        String name= user.getUserName();
+        String SSN= user.getUserID();
+        String email= user.getUserEmail();
+        // nú þarf að setja þetta inn í data base-inn hjá User og bookingdafd
+        System.out.println(name);
     }
+    public ArrayList<Booking> getBooking(Booking booking){
+        ArrayList<Booking> bookings = new ArrayList<>();
+
+        return bookings;
+    }
+    public void deleteBooking(Booking booking){
+
+    }
+    public ArrayList<Booking> totalBookings(Tour tour) {
+        ArrayList<Booking> bookings = new ArrayList<>();
+        return bookings;
+    }
+
 
     private String getRandomNum() {
         int length = 8;
@@ -52,26 +52,4 @@ public class TourBookingController implements Initializable{
                 .collect(Collectors.joining());
         return str;
     }
-
-
-    public void backToMainPageButtonOnAction(ActionEvent event) throws IOException {
-        FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource("search.fxml"));
-        Parent searchPanel = loader.load();
-        Scene tableViewScene = new Scene(searchPanel);
-        Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
-
-        window.setScene(tableViewScene);
-        window.show();
-    }
-
-    public void bookTourButtonOnAction(ActionEvent actionEvent) {
-    }
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
-
-
-    }
-
-
 }

@@ -25,7 +25,7 @@ import java.util.ResourceBundle;
 
 import static javafx.fxml.FXMLLoader.load;
 
-public class Controller implements Initializable {
+public class SearchController implements Initializable {
     @FXML
     private ListView<Tour> tourListView;
     @FXML
@@ -53,12 +53,6 @@ public class Controller implements Initializable {
     @FXML
     private TextField bookingNameTextField, bookingSSNTextField,bookingEmailTextField;
     @FXML
-    private ChoiceBox bookingSpotsTaken;
-    //@FXML
-    //private Text showNameOnTour;
-    @FXML
-    private Button backToMainPageButton,bookTourButton;
-    @FXML
     private TextField cancelBookingID;
 
     /**
@@ -72,13 +66,13 @@ public class Controller implements Initializable {
     public void openBookingInformation(ActionEvent event) throws IOException
     {
         FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource("bookingInformation.fxml"));
+        loader.setLocation(getClass().getResource("bookingInfo.fxml"));
         Parent tourSearchParent = loader.load();
 
         Scene tableViewScene = new Scene(tourSearchParent);
 
         //access the controller and call a method
-        TourBookingController controller = loader.getController();
+        BookingInfoController controller = loader.getController();
         controller.initData(tourListView.getSelectionModel().getSelectedItem());
 
         //This line gets the Stage information
