@@ -20,6 +20,8 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class BookingInfoController implements Initializable {
+    ObservableList<String> bookingSpotsList = FXCollections.observableArrayList("1","2","3","4","5","6","7","8","9","10");
+
     @FXML
     private Text showNameOnTour;
     @FXML
@@ -63,7 +65,7 @@ public class BookingInfoController implements Initializable {
     }
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-
+        bookingSpotsTaken.setItems(bookingSpotsList);
 
     }
 }
