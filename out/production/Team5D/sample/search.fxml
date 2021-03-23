@@ -18,10 +18,10 @@
          <children>
             <SplitMenuButton fx:id="regionSplitMenuButton" layoutX="17.0" layoutY="137.0" mnemonicParsing="false" prefWidth="120.0" text="Region">
               <items>
-                  <CheckMenuItem fx:id="filterNorthRegion" mnemonicParsing="false" text="North" />
-                  <CheckMenuItem fx:id="filterEastRegion" mnemonicParsing="false" text="East" />
-                  <CheckMenuItem fx:id="filterSouthRegion" mnemonicParsing="false" text="South" />
-                  <CheckMenuItem fx:id="filterWestRegion" mnemonicParsing="false" text="West" />
+                  <CheckMenuItem fx:id="filterNorthRegion" mnemonicParsing="false" text="Akureyri" />
+                  <CheckMenuItem fx:id="filterEastRegion" mnemonicParsing="false" text="Egilsstaðir" />
+                  <CheckMenuItem fx:id="filterSouthRegion" mnemonicParsing="false" text="Reykjavík" />
+                  <CheckMenuItem fx:id="filterWestRegion" mnemonicParsing="false" text="Vestfirðir" />
               </items>
                <font>
                   <Font size="14.0" />

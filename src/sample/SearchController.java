@@ -85,25 +85,25 @@ public class SearchController implements Initializable {
             filterNorthRegion.setOnAction(new EventHandler() {
                 @Override
                 public void handle(Event event) {
-                    showFilterTextField.setText("North");
+                    showFilterTextField.setText("Akureyri");
                 }
             });
             filterSouthRegion.setOnAction(new EventHandler() {
                 @Override
                 public void handle(Event event) {
-                    showFilterTextField.setText("South");
+                    showFilterTextField.setText("Reykjavík");
                 }
             });
             filterWestRegion.setOnAction(new EventHandler() {
                 @Override
                 public void handle(Event event) {
-                    showFilterTextField.setText("West");
+                    showFilterTextField.setText("Vestfirðir");
                 }
             });
             filterEastRegion.setOnAction(new EventHandler() {
                 @Override
                 public void handle(Event event) {
-                    showFilterTextField.setText("East");
+                    showFilterTextField.setText("Egilsstaðir");
                 }
             });
         /*

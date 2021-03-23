@@ -32,32 +32,48 @@ public class TourDataFactory{
         Date endD2 = new Date(2021, 12, 20);
         Date startD3 = new Date(2021, 5, 25);
         Date endD3 = new Date(2021, 9, 21);
+        Date startD4 = new Date(2021, 6, 01);
+        Date endD4 = new Date(2021, 7, 31);
+        Date startD5 = new Date(2021, 1, 15);
+        Date endD5 = new Date(2021, 4, 15);
 
 
         Tour tour1 = (new Tour( "Hestaferð","Komið með hlý föt",10, 5000,startD1,endD1,
-                "North",0));
+                "Akureyri",0));
         tour1.setTourID(1);
         tours.add(tour1);
-        Tour tour2= (new Tour( "Fjórhjóla skemmtun","Ef einstaklingur er yngri en 18 ára þarf að vera í fylgt með forráðarmanni",
-                20,7000,startD2,endD2, "South",0));
+        Tour tour2= (new Tour( "Fjórhjóla skemmtun","Ef einstaklingur er yngri en 18 ára þarf að vera í fylgd með forráðarmanni.",
+                20,7000,startD2,endD2, "Reykjavík",0));
         tour2.setTourID(2);
         tours.add(tour2);
-        Tour tour3=(new Tour( "Kajakferð og fjör","Komið með hlý föt og nesti",22,10000,startD3,endD3,
-                "East", 3));
+        Tour tour3=(new Tour( "Kajakferð og fjör","Komið með hlý föt og nesti.",22,10000,startD3,endD3,
+                "Egilsstaðir", 3));
         tour3.setTourID(3);
         tours.add(tour3);
-        Tour tour4=(new Tour( "Gönguferð um Skaftafell","Komið með hlý föt og nesti",12,10000,startD2,endD2,
-                "South", 5));
+        Tour tour4=(new Tour( "Gönguferð um Skaftafell","Komið með hlý föt og nesti.",12,10000,startD2,endD2,
+                "Reykjavík", 5));
         tour4.setTourID(4);
         tours.add(tour4);
-        Tour tour5=(new Tour( "Kafað í Silfru","Komið með föt til skiptanna",6,25000,startD1,endD1,
-                "South", 4));
+        Tour tour5=(new Tour( "Kafað í Silfru","Komið með föt til skiptanna.",6,25000,startD1,endD1,
+                "Reykjavík", 4));
         tour5.setTourID(5);
         tours.add(tour5);
-        Tour tour6=(new Tour( "Vélsleðaferð uppá Snæfellsjökul","Koma þarf með hlý útivistarföt",10,25000,startD2,endD2,
-                "West", 6));
+        Tour tour6=(new Tour( "Vélsleðaferð uppá Snæfellsjökul","Koma þarf með hlý útivistarföt.",10,25000,startD2,endD2,
+                "Vestfirðir", 6));
         tour6.setTourID(6);
         tours.add(tour6);
+        Tour tour7 = (new Tour( "Skoðunarferð um miðbæinn","Komið klædd eftir veðri.",30, 1000,startD1,endD1,
+                "Reykjavík",2));
+        tour1.setTourID(7);
+        tours.add(tour7);
+        Tour tour8 = (new Tour( "Hjólaferð á Þingvelli","Vinsamlegast mætið í viðeigandi klæðnaði. Hægt er að leigja hjól fyrir þá sem ekki eiga.",10, 15000,startD4,endD4,
+                "Reykjavík",8));
+        tour1.setTourID(8);
+        tours.add(tour8);
+        Tour tour9 = (new Tour( "Skíðaferð í Hlíðarfjall","Hægt er að leigja skíði og skíðaskó á staðnum.",20, 10000,startD5,endD5,
+                "Akureyri",5));
+        tour1.setTourID(9);
+        tours.add(tour9);
 
         return tours;
     }
