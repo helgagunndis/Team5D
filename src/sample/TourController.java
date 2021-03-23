@@ -1,20 +1,39 @@
 package sample;
 
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.ListView;
-import javafx.scene.control.TextField;
-
-import java.net.URL;
 import java.util.ArrayList;
-import java.util.Date;
-import java.util.ResourceBundle;
+
 
 public class TourController {
 
+    public ArrayList<User> getTourEmailList(String tourID){
+        ArrayList<User> users = new ArrayList<>();
+
+        return users;
+    }
+
+    public ArrayList<Tour> findTourByName(String tourName){
+        ArrayList<Tour> tours = new ArrayList<>();
+
+        return tours;
+    }
+    public ArrayList<Tour> findTourByRegion(String tourRegion){
+        ArrayList<Tour> tours = new ArrayList<>();
+
+        return tours;
+    }
+    public ArrayList<Tour> findTourByServices(String tourService){
+        ArrayList<Tour> tours = new ArrayList<>();
+
+        return tours;
+    }
+    public void addTour(Tour tour) {
+
+    }
+    public void deleteTour(int tourID) {
+
+    }
+    public Boolean isFullyBooked(int tourID){
+        return false;
+    }
 
 }

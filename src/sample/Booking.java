@@ -5,12 +5,12 @@ public class Booking {
     private int bookingID;
     private User user;
     private Tour tour;
+    private int spotsPerBooking;
 
-
-    public Booking(int bookingID, User user, Tour tour) {
-        this.bookingID = bookingID;
+    public Booking(User user, Tour tour,int spotsPerBooking) {
         this.user = user;
         this.tour = tour;
+        this.spotsPerBooking=spotsPerBooking;
     }
 
     public int getBookingID() {
@@ -35,5 +35,13 @@ public class Booking {
 
     public void setTour(Tour tour) {
         this.tour = tour;
+    }
+
+    public int getSpotsPerBooking() {
+        return spotsPerBooking;
+    }
+
+    public void setSpotsPerBooking(int spotsPerBooking) {
+        this.spotsPerBooking = spotsPerBooking;
     }
 }

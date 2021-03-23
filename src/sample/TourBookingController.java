@@ -1,42 +1,25 @@
 package sample;
 
-import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
-import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.scene.control.*;
-import javafx.scene.text.Text;
-import javafx.stage.Stage;
 
-import java.io.IOException;
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.Random;
-import java.util.ResourceBundle;
 import java.util.stream.Collectors;
 
 public class TourBookingController{
 
-    public void addBooking(User user) {
+    public void addBooking(Booking booking) {
         String bookingID= getRandomNum();
-        String name= user.getUserName();
-        String SSN= user.getUserID();
-        String email= user.getUserEmail();
-        // nú þarf að setja þetta inn í data base-inn hjá User og bookingdafd
-        System.out.println(name);
+
     }
-    public ArrayList<Booking> getBooking(Booking booking){
+    public ArrayList<Booking> getBooking(String tourID){
         ArrayList<Booking> bookings = new ArrayList<>();
 
         return bookings;
     }
-    public void deleteBooking(Booking booking){
+    public void deleteBooking(String bookingID){
 
     }
-    public ArrayList<Booking> totalBookings(Tour tour) {
+    public ArrayList<Booking> totalBookings(String tourID) {
         ArrayList<Booking> bookings = new ArrayList<>();
         return bookings;
     }

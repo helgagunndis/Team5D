@@ -34,13 +34,12 @@ public class TourDataFactory{
         Date endD3 = new Date(2021, 9, 21);
 
 
-        Tour tour1 = (new Tour(1, "Hestaferð","Komið með hlý föt",startD1,endD1,10,
-                0, 5000,false,"North",1));
-        Tour tour2= (new Tour(2, "Fjórhjóla skemmtun","Ef einstaklingur er yngri en 18 ára þarf að vera í fylgt með forráðarmanni",
-                startD2,endD2,10,
-                0, 6000,false,"South",2));
-        Tour tour3=(new Tour(3, "Kajakferð og fjör","Komið með hlý föt og nesti",startD3,endD3,8,
-                0, 1000,false,"East",3));
+        Tour tour1 = (new Tour( "Hestaferð","Komið með hlý föt",10, 5000,startD1,endD1,
+                "North",0));
+        Tour tour2= (new Tour( "Fjórhjóla skemmtun","Ef einstaklingur er yngri en 18 ára þarf að vera í fylgt með forráðarmanni",
+                20,7000,startD2,endD2, "South",0));
+        Tour tour3=(new Tour( "Kajakferð og fjör","Komið með hlý föt og nesti",22,10000,startD3,endD3,
+                "East", 3));
         tours.add(tour1);
         tours.add(tour2);
         tours.add(tour3);

@@ -53,12 +53,13 @@ public class BookingInfoController implements Initializable {
     }
 
     public void bookTourButtonOnAction(ActionEvent actionEvent) {
-        TourBookingController controller= new TourBookingController();
+        TourUserController controller= new TourUserController();
         String SSN= bookingSSNTextField.getText();
         String name= bookingNameTextField.getText();
         String email= bookingEmailTextField.getText();
         User user1 = new User(SSN,name,email);
-        controller.addBooking(user1);
+        controller.addUser(user1);
+
     }
     @Override
     public void initialize(URL location, ResourceBundle resources) {

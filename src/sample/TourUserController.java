@@ -1,21 +1,18 @@
 package sample;
 
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
-import javafx.fxml.Initializable;
 
-import java.net.URL;
-import java.util.ResourceBundle;
+public class TourUserController{
 
-public class TourUserController extends User implements Initializable{
-
-
-    public TourUserController(String userID, String userName, String userEmail) {
-        super(userID, userName, userEmail);
+    public void addUser(User user) {
+        String name= user.getUserName();
+        String SSN= user.getUserID();
+        String email= user.getUserEmail();
+        // nú þarf að setja þetta inn í data base-inn hjá User og bookingdafd
+        System.out.println(name);
+    }
+    public User findUserByID(String userID){
+        User user= new User(" ","","");
+        return user;
     }
 
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
-
-    }
 }
