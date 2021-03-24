@@ -60,7 +60,7 @@ public class BookingInfoController implements Initializable {
         String name= bookingNameTextField.getText();
         String email= bookingEmailTextField.getText();
         User user1 = new User(SSN,name,email);
-        controller.addUser(user1);
+        controller.addNewUser(user1);
 
 
     }

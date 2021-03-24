@@ -9,30 +9,6 @@ public class TourUserController {
     private TourDataFactory tourdataFactory = new TourDataFactory();
     ObservableList<User> users= tourdataFactory.getUsers();
 
-    public void addUser(User user) {
-        String name= user.getUserName();
-        String SSN= user.getUserID();
-        String email= user.getUserEmail();
-        AtomicReference<Boolean> newUser= new AtomicReference<>(true);
-        users.forEach((tab) -> {
-            String userID=tab.getUserID();
-            if (userID==SSN){
-                newUser.set(false);
-                String nameID=tab.getUserName();
-                if (nameID!=name){
-                    tab.setUserName(nameID);
-                }
-                String emailID= tab.getUserEmail();
-                if (emailID!=email){
-                    tab.setUserEmail(emailID);
-                }
-                return;
-            }
-        });
-        if (newUser.get()){
-            users.add(user);
-        }
-    }
     public User findUserByID(String ID){
         AtomicReference<User> user = null;
         users.forEach((tab) -> {
@@ -43,6 +19,20 @@ public class TourUserController {
             }
         });
         return user.get();
+    }
+
+    public void addNewUser(User user) {
+        users.add(user);
+    }
+
+    public void updateUser(String userID) {
+        users.forEach((tab) -> {
+            String ID = tab.getUserID();
+            if (userID == ID) {
+                tab.setUserName(tab.getUserName());
+                tab.setUserEmail(tab.getUserEmail());
+            }
+        });
     }
 
 }
