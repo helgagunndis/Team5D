@@ -26,52 +26,52 @@ public class TourDataFactory{
     public ObservableList<Tour> getTours(){
         ObservableList<Tour> tours = FXCollections.observableArrayList();
 
-        Date startD1 = new Date(2021, 4, 05);
-        Date endD1 = new Date(2021, 4, 05);
-        Date startD2 = new Date(2021, 5, 15);
-        Date endD2 = new Date(2021, 5, 15);
-        Date startD3 = new Date(2021, 6, 25);
-        Date endD3 = new Date(2021, 6, 25);
-        Date startD4 = new Date(2021, 7, 01);
-        Date endD4 = new Date(2021, 7, 02);
-        Date startD5 = new Date(2021, 8, 15);
-        Date endD5 = new Date(2021, 8, 15);
+        Date d1 = new Date(2021, 4, 05);
+        Date d2 = new Date(2021, 4, 05);
+        Date d3 = new Date(2021, 5, 15);
+        Date d4 = new Date(2021, 5, 15);
+        Date d5 = new Date(2021, 6, 25);
+        Date d6 = new Date(2021, 6, 25);
+        Date d7 = new Date(2021, 7, 01);
+        Date d8 = new Date(2021, 7, 02);
+        Date d9 = new Date(2021, 8, 15);
+        Date d10 = new Date(2021, 8, 15);
 
 
-        Tour tour1 = (new Tour( "Hestaferð","Komið með hlý föt",10, 5000,startD1,endD1,
-                "Akureyri",7));
+        Tour tour1 = (new Tour( "Horseriding in Eyjafjörður","Bring warm clothes",d1, 10,10000,
+                "Akureyri",7,"Family friendly"));
         tour1.setTourID(1);
         tours.add(tour1);
-        Tour tour2= (new Tour( "Fjórhjóla skemmtun","Ef einstaklingur er yngri en 18 ára þarf að vera í fylgd með forráðarmanni.",
-                20,7000,startD2,endD2, "Reykjavík",0));
+        Tour tour2= (new Tour( "Buggy Tour in Rauðhólar","Children must be under parent supervision",
+                d2,20,20000, "Reykjavík",5, "Action"));
         tour2.setTourID(2);
         tours.add(tour2);
-        Tour tour3=(new Tour( "Kajakferð og fjör","Komið með hlý föt og nesti.",22,10000,startD3,endD3,
-                "Egilsstaðir", 3));
+        Tour tour3=(new Tour( "Kajaking in Lagarfljót","Bring warm clothes, you could get wet.",d3,10,15000,
+                "Egilsstaðir", 3, "Family friendly"));
         tour3.setTourID(3);
         tours.add(tour3);
-        Tour tour4=(new Tour( "Gönguferð um Skaftafell","Komið með hlý föt og nesti.",12,10000,startD2,endD2,
-                "Reykjavík", 5));
+        Tour tour4=(new Tour( "Walk around Skaftafell","Bring warm clothes and packed lunch.",d4,50,20000,
+                "Reykjavík", 15, "Family friendly"));
         tour4.setTourID(4);
         tours.add(tour4);
-        Tour tour5=(new Tour( "Kafað í Silfru","Komið með föt til skiptanna.",6,25000,startD1,endD1,
-                "Reykjavík", 4));
+        Tour tour5=(new Tour( "Diving in Silfra","Bring dry clothes.",d5,25,18000,
+                "Reykjavík", 6, "Action"));
         tour5.setTourID(5);
         tours.add(tour5);
-        Tour tour6=(new Tour( "Vélsleðaferð uppá Snæfellsjökul","Koma þarf með hlý útivistarföt.",10,25000,startD2,endD2,
-                "Vestfirðir", 6));
+        Tour tour6=(new Tour( "Snowmobil trip","Bring warm clothes.",d6,15,25000,
+                "Vestfirðir", 6, "Action"));
         tour6.setTourID(6);
         tours.add(tour6);
-        Tour tour7 = (new Tour( "Skoðunarferð um miðbæinn","Komið klædd eftir veðri.",30, 1000,startD1,endD1,
-                "Reykjavík",2));
+        Tour tour7 = (new Tour( "Walk around Reykjavík","Come dressed according to weather.",d7, 25,7000,
+                "Reykjavík",2, "Wheelchair accessible"));
         tour1.setTourID(7);
         tours.add(tour7);
-        Tour tour8 = (new Tour( "Hjólaferð á Þingvelli","Vinsamlegast mætið í viðeigandi klæðnaði. Hægt er að leigja hjól fyrir þá sem ekki eiga.",10, 15000,startD4,endD4,
-                "Reykjavík",8));
+        Tour tour8 = (new Tour( "Biking around Þingvellir","Bring warm clothes. Bikes are available for rent.",d8, 15,10000,
+                "Reykjavík",8, "Family friendly"));
         tour1.setTourID(8);
         tours.add(tour8);
-        Tour tour9 = (new Tour( "Skíðaferð í Hlíðarfjall","Hægt er að leigja skíði og skíðaskó á staðnum.",20, 10000,startD5,endD5,
-                "Akureyri",5));
+        Tour tour9 = (new Tour( "Skiing in Hlíðarfjall","Skiing accuipment is available for rent",d9, 20,15000,
+                "Akureyri",5, "Action"));
         tour1.setTourID(9);
         tours.add(tour9);
 

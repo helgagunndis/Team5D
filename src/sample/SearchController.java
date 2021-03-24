@@ -112,8 +112,8 @@ public class SearchController implements Initializable {
 
         ObservableList<Tour> result = FXCollections.observableArrayList();
         for (Tour tour : full) {
-            if (tour.getStartDate().toInstant().isAfter(Instant.from(startDatePicker.getValue())) &&
-                tour.getEndDate().toInstant().isBefore(Instant.from(endDatePicker.getValue()))) {
+            if (tour.getTourDate().toInstant().isAfter(Instant.from(startDatePicker.getValue())) &&
+                tour.getTourDate().toInstant().isBefore(Instant.from(endDatePicker.getValue()))) {
                 result.add(tour);
             }
         }

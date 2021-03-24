@@ -6,8 +6,7 @@ public class Tour {
     private int tourID;
     private String tourName;
     private String tourInfo;
-    private Date startDate;
-    private Date endDate;
+    private Date tourDate;
     private int availableSpots;
     private int bookedSpots;
     private int tourPrice;
@@ -21,15 +20,15 @@ public class Tour {
         return tourName;
     }
 
-    public Tour(String tourName, String tourInfo, int availableSpots, int tourPrice,Date startDate, Date endDate, String tourRegion, int duration) {
+    public Tour(String tourName, String tourInfo, Date tourDate, int availableSpots, int tourPrice, String tourRegion, int duration, String services) {
         this.tourName = tourName;
         this.tourInfo = tourInfo;
-        this.startDate = startDate;
-        this.endDate = endDate;
+        this.tourDate = tourDate;
         this.availableSpots = availableSpots;
         this.tourPrice = tourPrice;
         this.tourRegion = tourRegion;
         this.duration = duration;
+        this.services = services;
     }
 
     public int getTourID() {
@@ -54,6 +53,14 @@ public class Tour {
 
     public void setTourInfo(String tourInfo) {
         this.tourInfo = tourInfo;
+    }
+
+    public Date getTourDate() {
+        return tourDate;
+    }
+
+    public void setTourDate(Date tourDate) {
+        this.tourDate = tourDate;
     }
 
     public int getAvailableSpots() {
@@ -104,25 +111,12 @@ public class Tour {
         this.duration = duration;
     }
 
-    public Date getStartDate() {
-        return startDate;
-    }
-
-    public void setStartDate(Date startDate) {
-        this.startDate = startDate;
-    }
-
-    public Date getEndDate() {
-        return endDate;
-    }
-
-    public void setEndDate(Date endDate) {
-        this.endDate = endDate;
-    }
-
     public String getServices() {
         return services;
     }
 
+    public void setServices(String services) {
+        this.services = services;
+    }
 }
 
