@@ -10,7 +10,7 @@ public class User {
 
     @Override
     public String toString() {
-        return userName;
+        return userID;
     }
 
     public User(String userID, String userName, String userEmail) {

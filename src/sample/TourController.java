@@ -1,5 +1,9 @@
 package sample;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+
+import java.time.Instant;
 import java.util.ArrayList;
 
 
@@ -16,16 +20,6 @@ public class TourController {
 
         return tours;
     }
-    public ArrayList<Tour> findTourByRegion(String tourRegion){
-        ArrayList<Tour> tours = new ArrayList<>();
-
-        return tours;
-    }
-    public ArrayList<Tour> findTourByServices(String tourService){
-        ArrayList<Tour> tours = new ArrayList<>();
-
-        return tours;
-    }
     public void addTour(Tour tour) {
 
     }
@@ -35,5 +29,6 @@ public class TourController {
     public Boolean isFullyBooked(int tourID){
         return false;
     }
+
 
 }

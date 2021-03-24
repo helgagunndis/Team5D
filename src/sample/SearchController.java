@@ -113,7 +113,7 @@ public class SearchController implements Initializable {
         ObservableList<Tour> result = FXCollections.observableArrayList();
         for (Tour tour : full) {
             if (tour.getTourDate().toInstant().isAfter(Instant.from(startDatePicker.getValue())) &&
-                tour.getTourDate().toInstant().isBefore(Instant.from(endDatePicker.getValue()))) {
+                    tour.getTourDate().toInstant().isBefore(Instant.from(endDatePicker.getValue()))) {
                 result.add(tour);
             }
         }
@@ -158,38 +158,38 @@ public class SearchController implements Initializable {
             });
              */
 
-            filterNorthRegion.setOnAction(new EventHandler() {
-                @Override
-                public void handle(Event event) {
-                    filteredTours = tourRegionSearch("Akureyri", allTours );
-                    showFilterTextField.setText("Akureyri");
-                    tourListView.setItems(filteredTours);
-                }
-            });
-            filterSouthRegion.setOnAction(new EventHandler() {
-                @Override
-                public void handle(Event event) {
-                    filteredTours = tourRegionSearch("Reykjavík", allTours );
-                    showFilterTextField.setText("Reykjavík");
-                    tourListView.setItems(filteredTours);
-                }
-            });
-            filterWestRegion.setOnAction(new EventHandler() {
-                @Override
-                public void handle(Event event) {
-                    filteredTours = tourRegionSearch("Vestfirðir", allTours );
-                    showFilterTextField.setText("Vestfirðir");
-                    tourListView.setItems(filteredTours);
-                }
-            });
-            filterEastRegion.setOnAction(new EventHandler() {
-                @Override
-                public void handle(Event event) {
-                    filteredTours = tourRegionSearch("Vestfirðir", allTours );
-                    showFilterTextField.setText("Egilsstaðir");
-                    tourListView.setItems(filteredTours);
-                }
-            });
+        filterNorthRegion.setOnAction(new EventHandler() {
+            @Override
+            public void handle(Event event) {
+                filteredTours = tourRegionSearch("Akureyri", allTours );
+                showFilterTextField.setText("Akureyri");
+                tourListView.setItems(filteredTours);
+            }
+        });
+        filterSouthRegion.setOnAction(new EventHandler() {
+            @Override
+            public void handle(Event event) {
+                filteredTours = tourRegionSearch("Reykjavík", allTours );
+                showFilterTextField.setText("Reykjavík");
+                tourListView.setItems(filteredTours);
+            }
+        });
+        filterWestRegion.setOnAction(new EventHandler() {
+            @Override
+            public void handle(Event event) {
+                filteredTours = tourRegionSearch("Vestfirðir", allTours );
+                showFilterTextField.setText("Vestfirðir");
+                tourListView.setItems(filteredTours);
+            }
+        });
+        filterEastRegion.setOnAction(new EventHandler() {
+            @Override
+            public void handle(Event event) {
+                filteredTours = tourRegionSearch("Vestfirðir", allTours );
+                showFilterTextField.setText("Egilsstaðir");
+                tourListView.setItems(filteredTours);
+            }
+        });
         filterToThreeHours.setOnAction(new EventHandler() {
             @Override
             public void handle(Event event) {

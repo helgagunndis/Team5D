@@ -62,10 +62,10 @@ public class BookingInfoController implements Initializable {
         User user1 = new User(SSN,name,email);
         controller.addUser(user1);
 
+
     }
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         bookingSpotsTaken.setItems(bookingSpotsList);
-
     }
 }
