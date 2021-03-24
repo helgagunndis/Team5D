@@ -12,8 +12,7 @@ public class TourUserController {
     public User findUserByID(String ID){
         AtomicReference<User> user = null;
         users.forEach((tab) -> {
-            String userID=tab.getUserID();
-            if (userID==ID){
+            if (tab.getUserID()==ID){
                 user.set(new User(tab.getUserID(), tab.getUserName(), tab.getUserEmail()));
                 return;
             }
@@ -24,15 +23,4 @@ public class TourUserController {
     public void addNewUser(User user) {
         users.add(user);
     }
-
-    public void updateUser(String userID) {
-        users.forEach((tab) -> {
-            String ID = tab.getUserID();
-            if (userID == ID) {
-                tab.setUserName(tab.getUserName());
-                tab.setUserEmail(tab.getUserEmail());
-            }
-        });
-    }
-
 }
