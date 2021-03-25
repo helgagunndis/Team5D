@@ -258,11 +258,10 @@ public class SearchController implements Initializable {
 
         tourListView.setItems(allTours);
 
-
-        tourListView.getSelectionModel().selectedItemProperty().addListener((ObservableValue<? extends Tour> observable, Tour oldValue, Tour newValue) -> {
+        tourListView.getSelectionModel().selectedItemProperty().addListener((ObservableValue<? extends Tour> observable, Tour newValue, Tour oldValue) -> {
             if(tourListView.isFocused()){
-                String info = String.format(newValue.getTourName() + "\n" +
-                        newValue.getTourInfo());
+                String info = String.format(newValue.getTourName() + "\n" + "\n" +
+                        newValue.getTourInfo() + "\n" + "\n" + "Tour Date: " + newValue.getTourDate() + "\n" + "\n" + "Tour Price: " + newValue.getTourPrice() + " ISK");
                 infoOnTourTextArea.setText(info);
             }
         });
