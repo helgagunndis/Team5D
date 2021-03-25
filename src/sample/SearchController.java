@@ -22,7 +22,10 @@ import javafx.stage.StageStyle;
 import java.io.IOException;
 import java.net.URL;
 import java.time.Instant;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
+import java.util.Locale;
 import java.util.ResourceBundle;
 
 import static javafx.fxml.FXMLLoader.load;
@@ -112,8 +115,10 @@ public class SearchController implements Initializable {
     }
 
     ObservableList<Tour> tourDateSearch(ObservableList<Tour> full) {
-
         ObservableList<Tour> result = FXCollections.observableArrayList();
+        //DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd", Locale.US);
+        LocalDate formattedValueStart = startDatePicker.getValue();
+        LocalDate formattedValueEnd = endDatePicker.getValue();
         for (Tour tour : full) {
             if (tour.getTourDate().toInstant().isAfter(Instant.from(startDatePicker.getValue())) &&
                     tour.getTourDate().toInstant().isBefore(Instant.from(endDatePicker.getValue()))) {

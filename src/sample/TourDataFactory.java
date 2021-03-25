@@ -26,16 +26,16 @@ public class TourDataFactory{
     public ObservableList<Tour> getTours(){
         ObservableList<Tour> tours = FXCollections.observableArrayList();
 
-        Date d1 = new Date(2021, 4, 05);
-        Date d2 = new Date(2021, 4, 05);
-        Date d3 = new Date(2021, 5, 15);
-        Date d4 = new Date(2021, 5, 15);
-        Date d5 = new Date(2021, 6, 25);
-        Date d6 = new Date(2021, 6, 25);
-        Date d7 = new Date(2021, 7, 01);
-        Date d8 = new Date(2021, 7, 02);
-        Date d9 = new Date(2021, 8, 15);
-        Date d10 = new Date(2021, 8, 15);
+        Date d1 = new Date(2021/4/05);
+        Date d2 = new Date(2021/4/05);
+        Date d3 = new Date(2021/5/15);
+        Date d4 = new Date(2021/5/15);
+        Date d5 = new Date(2021/6/25);
+        Date d6 = new Date(2021/6/25);
+        Date d7 = new Date(2021/7/01);
+        Date d8 = new Date(2021/7/02);
+        Date d9 = new Date(2021/8/15);
+        Date d10 = new Date(2021/8/15);
 
 
         Tour tour1 = (new Tour( "Horseriding in Eyjafjörður","Bring warm clothes",d1, 10,10000,
