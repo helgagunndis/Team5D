@@ -51,7 +51,7 @@ public class TourDataFactory{
         tour5.setTourID(5);
         tours.add(tour5);
         Tour tour6=(new Tour( "Snowmobil trip","Bring warm clothes.",d6,15,25000,
-                "Vestfirðir", 6, "Action"));
+                "Ísafjörður", 6, "Action"));
         tour6.setTourID(6);
         tours.add(tour6);
         Tour tour7 = (new Tour( "Walk around Reykjavík","Come dressed according to weather.",d7, 25,7000,

@@ -22,6 +22,7 @@
                   <MenuItem fx:id="filterEgilsstadirRegion" mnemonicParsing="false" text="Egilsstaðir" />
                   <MenuItem fx:id="filterReykjavikRegion" mnemonicParsing="false" text="Reykjavík" />
                   <MenuItem fx:id="filterIsafjordurRegion" mnemonicParsing="false" text="Ísafjörður" />
+                  <MenuItem fx:id="filterAllRegions" mnemonicParsing="false" text="All regions" />
               </items>
                <font>
                   <Font size="14.0" />
@@ -33,6 +34,7 @@
                   <MenuItem fx:id="filterThreeToFiveHours" mnemonicParsing="false" text="3-5 hours" />
                   <MenuItem fx:id="filterFiveToSevenHours" mnemonicParsing="false" text="5-7 hours" />
                   <MenuItem fx:id="filterFullDay" mnemonicParsing="false" text="Full day (7+ hours)" />
+                  <MenuItem fx:id="filterAllDurations" mnemonicParsing="false" text="All durations" />
               </items>
                <font>
                   <Font size="14.0" />
@@ -43,6 +45,7 @@
                   <MenuItem fx:id="filterServicesFamilyFriendly" mnemonicParsing="false" text="Family friendly" />
                   <MenuItem fx:id="filterServicesWheelchairAccessible" mnemonicParsing="false" text="Wheelchair accessible" />
                   <MenuItem fx:id="filterServicesAction" mnemonicParsing="false" text="Action" />
+                  <MenuItem fx:id="filterAllServices" mnemonicParsing="false" text="All services" />
               </items>
             </SplitMenuButton>
             <TextField fx:id="showFilterTextField" layoutX="17.0" layoutY="293.0" prefHeight="39.0" prefWidth="120.0" />
