@@ -50,26 +50,29 @@ public class SearchController implements Initializable {
     private SplitMenuButton durationSplitMenuButton;
     @FXML
     private SplitMenuButton servicesSplitMenuButton;
+
     @FXML
-    private CheckMenuItem filterNorthRegion;
+    private MenuItem filterAkureyriRegion;
     @FXML
-    private CheckMenuItem filterSouthRegion;
+    private MenuItem filterEgilsstadirRegion;
     @FXML
-    private CheckMenuItem filterWestRegion;
+    private MenuItem filterReykjavikRegion;
     @FXML
-    private CheckMenuItem filterEastRegion;
+    private MenuItem filterIsafjordurRegion;
     @FXML
-    private CheckMenuItem filterToThreeHours;
+    private MenuItem filterToThreeHours;
     @FXML
-    private CheckMenuItem filterThreeToFiveHours;
+    private MenuItem filterThreeToFiveHours;
     @FXML
-    private CheckMenuItem filterFiveToSevenHours;
+    private MenuItem filterFiveToSevenHours;
     @FXML
-    private CheckMenuItem filterFullDay;
+    private MenuItem filterFullDay;
     @FXML
-    private CheckMenuItem filterServicesWheelchairAccessible;
+    private MenuItem filterServicesWheelchairAccessible;
     @FXML
-    private CheckMenuItem filterServicesFamilyFriendly;
+    private MenuItem filterServicesFamilyFriendly;
+    @FXML
+    private MenuItem filterServicesAction;
 
 
     private TourDataFactory tourdataFactory = new TourDataFactory();
@@ -157,36 +160,37 @@ public class SearchController implements Initializable {
                 }
             });
              */
-
-        filterNorthRegion.setOnAction(new EventHandler() {
+        filterAkureyriRegion.setOnAction(new EventHandler<ActionEvent>() {
             @Override
-            public void handle(Event event) {
+            public void handle(ActionEvent event) {
                 filteredTours = tourRegionSearch("Akureyri", allTours );
                 showFilterTextField.setText("Akureyri");
                 tourListView.setItems(filteredTours);
             }
         });
-        filterSouthRegion.setOnAction(new EventHandler() {
+
+        filterEgilsstadirRegion.setOnAction(new EventHandler<ActionEvent>() {
             @Override
-            public void handle(Event event) {
+            public void handle(ActionEvent event) {
+                filteredTours = tourRegionSearch("Egilsstaðir", allTours );
+                showFilterTextField.setText("Egilsstaðir");
+                tourListView.setItems(filteredTours);
+            }
+        });
+
+        filterReykjavikRegion.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
                 filteredTours = tourRegionSearch("Reykjavík", allTours );
                 showFilterTextField.setText("Reykjavík");
                 tourListView.setItems(filteredTours);
             }
         });
-        filterWestRegion.setOnAction(new EventHandler() {
+        filterIsafjordurRegion.setOnAction(new EventHandler<ActionEvent>() {
             @Override
-            public void handle(Event event) {
+            public void handle(ActionEvent event) {
                 filteredTours = tourRegionSearch("Vestfirðir", allTours );
                 showFilterTextField.setText("Vestfirðir");
-                tourListView.setItems(filteredTours);
-            }
-        });
-        filterEastRegion.setOnAction(new EventHandler() {
-            @Override
-            public void handle(Event event) {
-                filteredTours = tourRegionSearch("Vestfirðir", allTours );
-                showFilterTextField.setText("Egilsstaðir");
                 tourListView.setItems(filteredTours);
             }
         });
@@ -235,6 +239,14 @@ public class SearchController implements Initializable {
             public void handle(Event event) {
                 filteredTours = tourServicesSearch("Family friendly", allTours);
                 showFilterTextField.setText("Family friendly");
+                tourListView.setItems(filteredTours);
+            }
+        });
+        filterServicesAction.setOnAction(new EventHandler() {
+            @Override
+            public void handle(Event event) {
+                filteredTours = tourServicesSearch("Action", allTours);
+                showFilterTextField.setText("Action");
                 tourListView.setItems(filteredTours);
             }
         });

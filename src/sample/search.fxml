@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.CheckMenuItem?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.SplitMenuButton?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
@@ -18,10 +18,10 @@
          <children>
             <SplitMenuButton fx:id="regionSplitMenuButton" layoutX="17.0" layoutY="137.0" mnemonicParsing="false" prefWidth="120.0" text="Region">
               <items>
-                  <CheckMenuItem fx:id="filterNorthRegion" mnemonicParsing="false" text="Akureyri" />
-                  <CheckMenuItem fx:id="filterEastRegion" mnemonicParsing="false" text="Egilsstaðir" />
-                  <CheckMenuItem fx:id="filterSouthRegion" mnemonicParsing="false" text="Reykjavík" />
-                  <CheckMenuItem fx:id="filterWestRegion" mnemonicParsing="false" text="Vestfirðir" />
+                  <MenuItem fx:id="filterAkureyriRegion" mnemonicParsing="false" text="Akureyri " />
+                  <MenuItem fx:id="filterEgilsstadirRegion" mnemonicParsing="false" text="Egilsstaðir" />
+                  <MenuItem fx:id="filterReykjavikRegion" mnemonicParsing="false" text="Reykjavík" />
+                  <MenuItem fx:id="filterIsafjordurRegion" mnemonicParsing="false" text="Ísafjörður" />
               </items>
                <font>
                   <Font size="14.0" />
@@ -29,10 +29,10 @@
             </SplitMenuButton>
             <SplitMenuButton fx:id="durationSplitMenuButton" layoutX="17.0" layoutY="189.0" mnemonicParsing="false" prefWidth="120.0" text="Duration">
               <items>
-                  <CheckMenuItem fx:id="filterToThreeHours" mnemonicParsing="false" text="0-3 hours" />
-                  <CheckMenuItem fx:id="filterThreeToFiveHours" mnemonicParsing="false" text="3-5 hours" />
-                  <CheckMenuItem fx:id="filterFiveToSevenHours" mnemonicParsing="false" text="5-7 hours" />
-                  <CheckMenuItem fx:id="filterFullDay" mnemonicParsing="false" text="Full day (7+ hours)" />
+                  <MenuItem fx:id="filterToThreeHours" mnemonicParsing="false" text="0-3 hours" />
+                  <MenuItem fx:id="filterThreeToFiveHours" mnemonicParsing="false" text="3-5 hours" />
+                  <MenuItem fx:id="filterFiveToSevenHours" mnemonicParsing="false" text="5-7 hours" />
+                  <MenuItem fx:id="filterFullDay" mnemonicParsing="false" text="Full day (7+ hours)" />
               </items>
                <font>
                   <Font size="14.0" />
@@ -40,8 +40,9 @@
             </SplitMenuButton>
             <SplitMenuButton fx:id="servicesSplitMenuButton" layoutX="17.0" layoutY="238.0" mnemonicParsing="false" prefWidth="120.0" text="Services">
               <items>
-                  <CheckMenuItem fx:id="filterServicesWheelchairAccessible" mnemonicParsing="false" text="Wheelchair accessible" />
-                  <CheckMenuItem fx:id="filterServicesFamilyFriendly" mnemonicParsing="false" text="Family friendly" />
+                  <MenuItem fx:id="filterServicesFamilyFriendly" mnemonicParsing="false" text="Family friendly" />
+                  <MenuItem fx:id="filterServicesWheelchairAccessible" mnemonicParsing="false" text="Wheelchair accessible" />
+                  <MenuItem fx:id="filterServicesAction" mnemonicParsing="false" text="Action" />
               </items>
             </SplitMenuButton>
             <TextField fx:id="showFilterTextField" layoutX="17.0" layoutY="293.0" prefHeight="39.0" prefWidth="120.0" />

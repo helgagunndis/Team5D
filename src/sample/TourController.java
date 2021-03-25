@@ -11,6 +11,8 @@ public class TourController {
     private TourDataFactory tourdataFactory = new TourDataFactory();
     ObservableList<Tour> tours= tourdataFactory.getTours();
 
+
+
     public ArrayList<User> getTourEmailList(String tourID){
         ArrayList<User> users = new ArrayList<>();
 
