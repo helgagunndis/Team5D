@@ -117,11 +117,11 @@ public class SearchController implements Initializable {
     ObservableList<Tour> tourDateSearch(ObservableList<Tour> full) {
         ObservableList<Tour> result = FXCollections.observableArrayList();
         //DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd", Locale.US);
-        LocalDate formattedValueStart = startDatePicker.getValue();
-        LocalDate formattedValueEnd = endDatePicker.getValue();
+        LocalDate valueStart = startDatePicker.getValue();
+        LocalDate valueEnd = endDatePicker.getValue();
         for (Tour tour : full) {
-            if (tour.getTourDate().toInstant().isAfter(Instant.from(startDatePicker.getValue())) &&
-                    tour.getTourDate().toInstant().isBefore(Instant.from(endDatePicker.getValue()))) {
+            if (valueStart.isBefore(tour.getTourDate()) &&
+                    (valueEnd.isAfter(tour.getTourDate()))) {
                 result.add(tour);
             }
         }

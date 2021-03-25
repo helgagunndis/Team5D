@@ -2,18 +2,10 @@ package sample;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.ListView;
-import javafx.scene.control.TextField;
-import javafx.scene.input.MouseEvent;
 
-import java.net.URL;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.ResourceBundle;
 
 public class TourDataFactory{
 
@@ -26,16 +18,16 @@ public class TourDataFactory{
     public ObservableList<Tour> getTours(){
         ObservableList<Tour> tours = FXCollections.observableArrayList();
 
-        Date d1 = new Date(2021/4/05);
-        Date d2 = new Date(2021/4/05);
-        Date d3 = new Date(2021/5/15);
-        Date d4 = new Date(2021/5/15);
-        Date d5 = new Date(2021/6/25);
-        Date d6 = new Date(2021/6/25);
-        Date d7 = new Date(2021/7/01);
-        Date d8 = new Date(2021/7/02);
-        Date d9 = new Date(2021/8/15);
-        Date d10 = new Date(2021/8/15);
+        LocalDate d1 = LocalDate.of(2021,4,01);
+        LocalDate d2 = LocalDate.of(2021,4,05);
+        LocalDate d3 = LocalDate.of(2021,5,11);
+        LocalDate d4 = LocalDate.of(2021,5,21);
+        LocalDate d5 = LocalDate.of(2021,6,04);
+        LocalDate d6 = LocalDate.of(2021,6,16);
+        LocalDate d7 = LocalDate.of(2021,7,10);
+        LocalDate d8 = LocalDate.of(2021,7,11);
+        LocalDate d9 = LocalDate.of(2021,8,07);
+        LocalDate d10 = LocalDate.of(2021,8,24);
 
 
         Tour tour1 = (new Tour( "Horseriding in Eyjafjörður","Bring warm clothes",d1, 10,10000,
