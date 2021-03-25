@@ -256,7 +256,14 @@ public class SearchController implements Initializable {
     }
 
 
-    public void buttonAdministratorOnAction(ActionEvent actionEvent) {
+    public void buttonAdministratorOnAction(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("adminLogin.fxml"));
+        Parent searchPanel = loader.load();
+        Scene tableViewScene = new Scene(searchPanel);
+        Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
+        window.setScene(tableViewScene);
+        window.show();
     }
 
     public void buttonCancelOnAction(ActionEvent actionEvent) {
