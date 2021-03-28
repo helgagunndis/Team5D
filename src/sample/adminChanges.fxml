@@ -22,7 +22,7 @@
       </AnchorPane>
    </left>
    <center>
-      <AnchorPane prefHeight="377.0" prefWidth="403.0" BorderPane.alignment="CENTER">
+      <AnchorPane fx:id="backToMainPageButton" onDragDetected="#backToMainPageButtonAdminCOnAction" prefHeight="377.0" prefWidth="403.0" BorderPane.alignment="CENTER">
          <children>
             <Text layoutX="19.0" layoutY="71.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tour Name" />
             <Text layoutX="22.0" layoutY="106.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tour price" />
