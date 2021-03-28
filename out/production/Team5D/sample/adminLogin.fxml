@@ -24,11 +24,12 @@
    <right>
       <AnchorPane prefHeight="377.0" prefWidth="403.0" BorderPane.alignment="CENTER">
          <children>
-            <Text layoutX="48.0" layoutY="73.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Username:"  />
+            <Text layoutX="48.0" layoutY="73.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Username:" />
             <Text layoutX="48.0" layoutY="104.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Password:" />
-            <TextField layoutX="121.0" layoutY="55.0" prefHeight="27.0" prefWidth="208.0" />
-            <TextField layoutX="121.0" layoutY="86.0" prefHeight="27.0" prefWidth="209.0" />
+            <TextField fx:id="adminUsername" layoutX="121.0" layoutY="55.0" prefHeight="27.0" prefWidth="208.0" />
+            <TextField fx:id="adminPassword" layoutX="121.0" layoutY="86.0" prefHeight="27.0" prefWidth="209.0" />
             <Button fx:id="buttonAdminLogin" layoutX="284.0" layoutY="127.0" mnemonicParsing="false" onAction="#buttonAdminLoginOnAction" text="login" />
+            <Text fx:id="textWrongPassword" layoutX="96.0" layoutY="145.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="177.21630859375" />
          </children>
       </AnchorPane>
    </right>

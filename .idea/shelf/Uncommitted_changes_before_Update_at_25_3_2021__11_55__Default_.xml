@@ -1,0 +1,14 @@
+<changelist name="Uncommitted_changes_before_Update_at_25_3_2021,_11_55_[Default]" date="1616673337489" recycled="true" deleted="true">
+  <option name="PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_25_3_2021,_11_55_[Default]/shelved.patch" />
+  <option name="DESCRIPTION" value="Uncommitted changes before Update at 25.3.2021, 11:55 [Default]" />
+  <binary>
+    <option name="BEFORE_PATH" value="out/production/Team5D/sample/SearchController.class" />
+    <option name="AFTER_PATH" value="out/production/Team5D/sample/SearchController.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_25_3_2021,_11_55_[Default]/SearchController.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="out/production/Team5D/sample/TourController.class" />
+    <option name="AFTER_PATH" value="out/production/Team5D/sample/TourController.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_25_3_2021,_11_55_[Default]/TourController.class" />
+  </binary>
+</changelist>

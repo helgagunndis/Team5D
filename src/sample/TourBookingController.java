@@ -1,6 +1,8 @@
 package sample;
 
 
+import javafx.collections.ObservableList;
+
 import java.util.ArrayList;
 import java.util.Random;
 import java.util.stream.Collectors;

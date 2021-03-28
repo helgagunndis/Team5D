@@ -1,0 +1,178 @@
+Index: src/sample/TourController.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/sample/TourController.java b/src/sample/TourController.java
+--- a/src/sample/TourController.java	(revision 0720dc10febbe541a3b17c6a159f406dc89d50cc)
++++ b/src/sample/TourController.java	(date 1616687473042)
+@@ -9,7 +9,20 @@
+ 
+ public class TourController {
+     private TourDataFactory tourdataFactory = new TourDataFactory();
+-    ObservableList<Tour> tours= tourdataFactory.getTours();
++    private ObservableList<Tour> tours= tourdataFactory.getTours();
++    private ObservableList<Tour> filteredTours = FXCollections.observableArrayList();
++
++
++    public ObservableList<Tour> tourRegionSearch(String region) {
++        ObservableList<Tour> result = FXCollections.observableArrayList();
++        tours.forEach((tab) -> {
++            if (tab.getTourRegion().equals(region)){
++                result.add(tab);
++            }
++        });
++        return  result;
++    }
++
+ 
+ 
+ 
+Index: src/sample/SearchController.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/sample/SearchController.java b/src/sample/SearchController.java
+--- a/src/sample/SearchController.java	(revision 0720dc10febbe541a3b17c6a159f406dc89d50cc)
++++ b/src/sample/SearchController.java	(date 1616687473015)
+@@ -83,17 +83,6 @@
+     private ObservableList<Tour> filteredTours = FXCollections.observableArrayList();
+ 
+ 
+-
+-    ObservableList<Tour> tourRegionSearch(String region, ObservableList<Tour> full) {
+-        ObservableList<Tour> result = FXCollections.observableArrayList();
+-        for (Tour tour : full) {
+-            if (tour.getTourRegion().contains(region)) {
+-                result.add(tour);
+-            }
+-        }
+-        return result;
+-    }
+-
+     ObservableList<Tour> tourDurationSearch(int duration1, int duration2, ObservableList<Tour> full) {
+         ObservableList<Tour> result = FXCollections.observableArrayList();
+         for (Tour tour : full) {
+@@ -152,6 +141,7 @@
+         filteredTours = tourDateSearch(allTours);
+         tourListView.setItems(filteredTours);
+     }
++    TourController.
+ 
+ 
+     @Override
+@@ -168,7 +158,7 @@
+         filterAkureyriRegion.setOnAction(new EventHandler<ActionEvent>() {
+             @Override
+             public void handle(ActionEvent event) {
+-                filteredTours = tourRegionSearch("Akureyri", allTours );
++                filteredTours = TourController.tourRegionSearch("Akureyri");
+                 showFilterTextField.setText("Akureyri");
+                 tourListView.setItems(filteredTours);
+             }
+@@ -177,7 +167,7 @@
+         filterEgilsstadirRegion.setOnAction(new EventHandler<ActionEvent>() {
+             @Override
+             public void handle(ActionEvent event) {
+-                filteredTours = tourRegionSearch("Egilsstaðir", allTours );
++                filteredTours = TourController.tourRegionSearch("Egilsstaðir");
+                 showFilterTextField.setText("Egilsstaðir");
+                 tourListView.setItems(filteredTours);
+             }
+@@ -186,7 +176,7 @@
+         filterReykjavikRegion.setOnAction(new EventHandler<ActionEvent>() {
+             @Override
+             public void handle(ActionEvent event) {
+-                filteredTours = tourRegionSearch("Reykjavík", allTours );
++                filteredTours = TourController.tourRegionSearch("Reykjavík");
+                 showFilterTextField.setText("Reykjavík");
+                 tourListView.setItems(filteredTours);
+             }
+@@ -194,7 +184,7 @@
+         filterIsafjordurRegion.setOnAction(new EventHandler<ActionEvent>() {
+             @Override
+             public void handle(ActionEvent event) {
+-                filteredTours = tourRegionSearch("Vestfirðir", allTours );
++                filteredTours = TourController.tourRegionSearch("Vestfirðir");
+                 showFilterTextField.setText("Vestfirðir");
+                 tourListView.setItems(filteredTours);
+             }
+Index: src/sample/TourBookingController.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/sample/TourBookingController.java b/src/sample/TourBookingController.java
+--- a/src/sample/TourBookingController.java	(revision 0720dc10febbe541a3b17c6a159f406dc89d50cc)
++++ b/src/sample/TourBookingController.java	(date 1616686331561)
+@@ -1,6 +1,8 @@
+ package sample;
+ 
+ 
++import javafx.collections.ObservableList;
++
+ import java.util.ArrayList;
+ import java.util.Random;
+ import java.util.stream.Collectors;
+Index: src/sample/TourUserController.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/sample/TourUserController.java b/src/sample/TourUserController.java
+--- a/src/sample/TourUserController.java	(revision 0720dc10febbe541a3b17c6a159f406dc89d50cc)
++++ b/src/sample/TourUserController.java	(date 1616687473032)
+@@ -7,7 +7,7 @@
+ 
+ public class TourUserController {
+     private TourDataFactory tourdataFactory = new TourDataFactory();
+-    ObservableList<User> users= tourdataFactory.getUsers();
++    private ObservableList<User> users= tourdataFactory.getUsers();
+ 
+     public User findUserByID(String ID){
+         AtomicReference<User> user = null;
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	(revision 0720dc10febbe541a3b17c6a159f406dc89d50cc)
++++ b/.idea/workspace.xml	(date 1616746869524)
+@@ -3,23 +3,11 @@
+   <component name="ChangeListManager">
+     <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="">
+       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/out/production/Team5D/sample/SearchController$1.class" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/out/production/Team5D/sample/SearchController$10.class" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/out/production/Team5D/sample/SearchController$11.class" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/out/production/Team5D/sample/SearchController$2.class" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/out/production/Team5D/sample/SearchController$3.class" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/out/production/Team5D/sample/SearchController$4.class" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/out/production/Team5D/sample/SearchController$5.class" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/out/production/Team5D/sample/SearchController$6.class" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/out/production/Team5D/sample/SearchController$7.class" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/out/production/Team5D/sample/SearchController$8.class" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/out/production/Team5D/sample/SearchController$9.class" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/out/production/Team5D/sample/SearchController.class" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/out/production/Team5D/sample/Tour.class" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/out/production/Team5D/sample/adminLogin.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Team5D/sample/adminLogin.fxml" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/out/production/Team5D/sample/TourController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Team5D/sample/TourController.class" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/src/sample/SearchController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/SearchController.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/sample/Tour.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/Tour.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/sample/TourDataFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/TourDataFactory.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/sample/TourBookingController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/TourBookingController.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/sample/TourController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/TourController.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/sample/TourUserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/TourUserController.java" afterDir="false" />
+     </list>
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+@@ -294,6 +282,7 @@
+       <workItem from="1616363421224" duration="7118000" />
+       <workItem from="1616493994414" duration="2594000" />
+       <workItem from="1616511359321" duration="7630000" />
++      <workItem from="1616686583408" duration="1049000" />
+     </task>
+     <servers />
+   </component>

@@ -7,7 +7,7 @@ import java.util.concurrent.atomic.AtomicReference;
 
 public class TourUserController {
     private TourDataFactory tourdataFactory = new TourDataFactory();
-    ObservableList<User> users= tourdataFactory.getUsers();
+    private ObservableList<User> users= tourdataFactory.getUsers();
 
     public User findUserByID(String ID){
         AtomicReference<User> user = null;

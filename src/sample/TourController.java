@@ -10,7 +10,20 @@ import java.util.ArrayList;
 
 public class TourController {
     private TourDataFactory tourdataFactory = new TourDataFactory();
-    ObservableList<Tour> tours= tourdataFactory.getTours();
+    private ObservableList<Tour> tours= tourdataFactory.getTours();
+    private ObservableList<Tour> filteredTours = FXCollections.observableArrayList();
+
+
+    public ObservableList<Tour> tourRegionSearch(String region) {
+        ObservableList<Tour> result = FXCollections.observableArrayList();
+        tours.forEach((tab) -> {
+            if (tab.getTourRegion().equals(region)){
+                result.add(tab);
+            }
+        });
+        return  result;
+    }
+
 
 
 
