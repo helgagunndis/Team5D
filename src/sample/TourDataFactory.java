@@ -9,8 +9,22 @@ import java.util.Date;
 
 public class TourDataFactory{
 
-    public ArrayList<Booking> getBookings(){
-        ArrayList<Booking> bookings = new ArrayList<>();
+    public ObservableList<Booking> getBookings(){
+        ObservableList<Booking> bookings = FXCollections.observableArrayList();
+
+        ObservableList<User> users = getUsers(); // án í alla notendur
+        int bookingNum =1000;
+
+        for (int i = 0; i <= users.size(); i++) {
+            User eachUser = users.get( i );
+            for (int j = 0; j <= eachUser.getBookings().size(); j++) {
+                Booking data = eachUser.getBookings().get(j);
+                Booking eachBooking = new Booking(data.getUser(),data.getTour(),data.getSpotsPerBooking());
+                eachBooking.setBookingID(bookingNum);
+                bookingNum++;
+                bookings.add(eachBooking);
+            }
+        }
 
         return bookings;
     }
@@ -77,23 +91,23 @@ public class TourDataFactory{
         User user2 = new User("1703817529","Andrea Ágústsdóttir","andrea90@hotmail.com");
         User user3 = new User("0201981719", "Guðrún Helga Traustadóttir","ghelga@gmail.com");
 
-        /*ObservableList<Tour> tours = getTours(); // án í ferð
+        ObservableList<Tour> tours = getTours(); // án í ferð
 
-        ArrayList<Booking> bookings1 = new ArrayList<>(); // tómur listi
-        bookings1.add(new Booking(4020423,user1,tours.get(1)));
-        bookings1.add(new Booking(4025321,user1,tours.get(2)));
-        bookings1.add(new Booking(2341234,user1,tours.get(3)));
+        ArrayList<Booking> bookings1= new ArrayList<>(); // tómur listi
+        bookings1.add(new Booking(user1, tours.get(1),2));
+        bookings1.add(new Booking(user1,tours.get(2),1));
+        bookings1.add(new Booking(user1,tours.get(3),4));
         user1.setBookings(bookings1);
 
         ArrayList<Booking> bookings2 = new ArrayList<>(); // tómur listi
-        bookings2.add(new Booking(3012314,user2,tours.get(1)));
-        bookings2.add(new Booking(2231024,user2,tours.get(3)));
+        bookings2.add(new Booking(user2,tours.get(1),6));
+        bookings2.add(new Booking(user2,tours.get(3),2));
         user2.setBookings(bookings2);
 
         ArrayList<Booking> bookings3 = new ArrayList<>(); // tómur listi
-        bookings3.add(new Booking(3214982,user3,tours.get(2)));
+        bookings3.add(new Booking(user3,tours.get(2),2));
         user3.setBookings(bookings3);
-         */
+
         users.add(user1);
         users.add(user2);
         users.add(user3);

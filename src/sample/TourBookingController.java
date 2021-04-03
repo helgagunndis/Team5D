@@ -2,39 +2,55 @@ package sample;
 
 
 import javafx.collections.ObservableList;
-
 import java.util.ArrayList;
-import java.util.Random;
-import java.util.stream.Collectors;
+
 
 public class TourBookingController{
+    private TourDataFactory tourdataFactory = new TourDataFactory();
+    private ObservableList<Booking> bookings= tourdataFactory.getBookings();
+    private ObservableList<Tour> tours= tourdataFactory.getTours();
+    private int numForBooking=2000; // þarf að breyta!
+
 
     public void addBooking(Booking booking) {
-        String bookingID= getRandomNum();
-
+        booking.setBookingID(numForBooking);
+        numForBooking++;
+        bookings.add(booking);
     }
-    public ArrayList<Booking> getBooking(String tourID){
+
+    public ArrayList<Booking> getBooking(int tourID){
         ArrayList<Booking> bookings = new ArrayList<>();
+        bookings.forEach((tab) -> {
+             if (tab.getTour().getTourID() == tourID){
+                 bookings.add(tab);
+             }
+        });
 
         return bookings;
     }
-    public void deleteBooking(String bookingID){
+    public void deleteBooking(int bookingID){
+        bookings.forEach((tab) -> {
+            if (tab.getBookingID()== bookingID){
+                // bæta við sætum í ferð sem er afbókuð
+                Tour theTour =tab.getTour();
+                int spots= theTour.getAvailableSpots();
+                theTour.setAvailableSpots(spots + tab.getSpotsPerBooking());
 
+                // Eyða bókunarnúmeri á User
+                User theUser =tab.getUser();
+                ArrayList<Booking> theUserBookings = theUser.getBookings();
+                theUserBookings.remove(bookingID);
+
+                bookings.remove(bookingID);
+            }
+        });
     }
-    public ArrayList<Booking> totalBookings(String tourID) {
-        ArrayList<Booking> bookings = new ArrayList<>();
-        return bookings;
+    public int totalBookings(int tourID) {
+        int total= bookings.stream().filter(tab -> tab.getTour().getTourID() == tourID)
+                .mapToInt(Booking::getSpotsPerBooking).sum();
+        return total;
     }
 
 
-    private String getRandomNum() {
-        int length = 8;
-        String chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-                + "abcdefghijklmnopqrstuvwxyz"
-                + "0123456789";
-        String str = new Random().ints(length, 0, chars.length())
-                .mapToObj(i -> "" + chars.charAt(i))
-                .collect(Collectors.joining());
-        return str;
-    }
+
 }
