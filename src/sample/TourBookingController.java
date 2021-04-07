@@ -9,7 +9,7 @@ public class TourBookingController{
     private TourDataFactory tourdataFactory = new TourDataFactory();
     private ObservableList<Booking> bookings= tourdataFactory.getBookings();
     private ObservableList<Tour> tours= tourdataFactory.getTours();
-    private int numForBooking=2000; // þarf að breyta!
+    private int numForBooking=1000; // þarf að breyta!
 
 
     public void addBooking(Booking booking) {
@@ -25,7 +25,6 @@ public class TourBookingController{
                  bookings.add(tab);
              }
         });
-
         return bookings;
     }
     public void deleteBooking(int bookingID){
@@ -42,14 +41,13 @@ public class TourBookingController{
                 User theUser =booking.getUser();
                 System.out.println(theUser.toString());
                 ArrayList<Booking> theUserBookings = theUser.getBookings();
+                //theUserBookings.remove(booking);
+
+                //Eyða Bókun
+                //bookings.remove(booking);
             }
         });
-        //Eyða út bókunarnúmeri í bókununum.
-        for (int i = 0; i <= bookings.size()-1; i++) {
-            if(bookings.get(i).getBookingID()==bookingID){
-                bookings.remove(i); // veit ekki alveg hvernig á að eyða
-            }
-        }
+
     }
     public int totalBookings(int tourID) {
         int total= bookings.stream().filter(tab -> tab.getTour().getTourID() == tourID)

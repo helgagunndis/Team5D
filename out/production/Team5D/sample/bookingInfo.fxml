@@ -43,7 +43,7 @@
                   <Font size="11.0" />
                </font>
             </Text>
-            <Text layoutX="98.0" layoutY="335.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Þegar búið er að ýta á bóka-&gt; bókun tókst bókunar númerið þitt er:" wrappingWidth="245.21630859375" />
+            <Text fx:id="bookingConfirmed" layoutX="97.0" layoutY="331.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="245.21630859375" />
             <TextField fx:id="bookingNameTextField" layoutX="103.0" layoutY="87.0" prefHeight="27.0" prefWidth="263.0" />
          </children>
       </AnchorPane>

@@ -11,20 +11,22 @@ public class TourDataFactory{
 
     public ObservableList<Booking> getBookings(){
         ObservableList<Booking> bookings = FXCollections.observableArrayList();
-
+        //TourBookingController bookingController= new TourBookingController();
         ObservableList<User> users = getUsers(); // án í alla notendur
         int bookingNum =1000;  // þarf að laga
 
-        for (int i = 0; i <= users.size()-1; i++) {
+
+       /* for (int i = 0; i <= users.size()-1; i++) {
             User eachUser = users.get( i );
             for (int j = 0; j <= eachUser.getBookings().size()-1; j++) {
                 Booking data = eachUser.getBookings().get(j);
+                bookingController.addBooking(data);
                 Booking eachBooking = new Booking(data.getUser(),data.getTour(),data.getSpotsPerBooking());
                 eachBooking.setBookingID(bookingNum);
                 bookingNum++;
-                bookings.add(eachBooking);
+                bookings.add(data);
             }
-        }
+        }*/
         return bookings;
     }
 

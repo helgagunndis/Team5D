@@ -23,7 +23,7 @@ public class BookingInfoController implements Initializable {
     ObservableList<String> bookingSpotsList = FXCollections.observableArrayList("1","2","3","4","5","6","7","8","9","10");
 
     @FXML
-    private Text showNameOnTour;
+    private Text showNameOnTour, bookingConfirmed;
     @FXML
     private TextField bookingNameTextField;
     @FXML
@@ -55,14 +55,21 @@ public class BookingInfoController implements Initializable {
     }
 
     public void bookTourButtonOnAction(ActionEvent actionEvent) {
-        TourUserController controller= new TourUserController();
+        TourUserController userController= new TourUserController();
+        TourBookingController bookingController= new TourBookingController();
         String SSN= bookingSSNTextField.getText();
         String name= bookingNameTextField.getText();
         String email= bookingEmailTextField.getText();
         User user1 = new User(SSN,name,email);
-        controller.addNewUser(user1);
+        userController.addNewUser(user1);
 
-
+        String s=bookingSpotsTaken.getValue().toString();
+        int pax= Integer.parseInt(s);
+        Booking booking= new Booking(user1,selectedTour,pax);
+        bookingController.addBooking(booking);
+        int bookingID=booking.getBookingID();
+        System.out.print(bookingID);
+        bookingConfirmed.setText("Your booking number is : "+ bookingID);
     }
     @Override
     public void initialize(URL location, ResourceBundle resources) {
