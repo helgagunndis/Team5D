@@ -13,11 +13,11 @@ public class TourDataFactory{
         ObservableList<Booking> bookings = FXCollections.observableArrayList();
 
         ObservableList<User> users = getUsers(); // án í alla notendur
-        int bookingNum =1000;
+        int bookingNum =1000;  // þarf að laga
 
-        for (int i = 0; i <= users.size(); i++) {
+        for (int i = 0; i <= users.size()-1; i++) {
             User eachUser = users.get( i );
-            for (int j = 0; j <= eachUser.getBookings().size(); j++) {
+            for (int j = 0; j <= eachUser.getBookings().size()-1; j++) {
                 Booking data = eachUser.getBookings().get(j);
                 Booking eachBooking = new Booking(data.getUser(),data.getTour(),data.getSpotsPerBooking());
                 eachBooking.setBookingID(bookingNum);
@@ -25,7 +25,6 @@ public class TourDataFactory{
                 bookings.add(eachBooking);
             }
         }
-
         return bookings;
     }
 
@@ -94,18 +93,18 @@ public class TourDataFactory{
         ObservableList<Tour> tours = getTours(); // án í ferð
 
         ArrayList<Booking> bookings1= new ArrayList<>(); // tómur listi
-        bookings1.add(new Booking(user1, tours.get(1),2));
+        bookings1.add(new Booking(user1, tours.get(0),2));
         bookings1.add(new Booking(user1,tours.get(2),1));
         bookings1.add(new Booking(user1,tours.get(3),4));
         user1.setBookings(bookings1);
 
         ArrayList<Booking> bookings2 = new ArrayList<>(); // tómur listi
         bookings2.add(new Booking(user2,tours.get(1),6));
-        bookings2.add(new Booking(user2,tours.get(3),2));
+        bookings2.add(new Booking(user2,tours.get(6),2));
         user2.setBookings(bookings2);
 
         ArrayList<Booking> bookings3 = new ArrayList<>(); // tómur listi
-        bookings3.add(new Booking(user3,tours.get(2),2));
+        bookings3.add(new Booking(user3,tours.get(3),2));
         user3.setBookings(bookings3);
 
         users.add(user1);

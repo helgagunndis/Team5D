@@ -29,28 +29,31 @@ public class TourBookingController{
         return bookings;
     }
     public void deleteBooking(int bookingID){
-        bookings.forEach((tab) -> {
-            if (tab.getBookingID()== bookingID){
-                // bæta við sætum í ferð sem er afbókuð
-                Tour theTour =tab.getTour();
+        bookings.forEach((booking) -> {
+            if (booking.getBookingID()== bookingID){
+
+                //bæta við sætum í ferð sem er afbókuð
+                Tour theTour =booking.getTour();
+                //System.out.println(totalBookings(theTour.getTourID()));
                 int spots= theTour.getAvailableSpots();
-                theTour.setAvailableSpots(spots + tab.getSpotsPerBooking());
+                theTour.setAvailableSpots(spots + booking.getSpotsPerBooking());
 
                 // Eyða bókunarnúmeri á User
-                User theUser =tab.getUser();
+                User theUser =booking.getUser();
+                System.out.println(theUser.toString());
                 ArrayList<Booking> theUserBookings = theUser.getBookings();
-                theUserBookings.remove(bookingID);
-
-                bookings.remove(bookingID);
             }
         });
+        //Eyða út bókunarnúmeri í bókununum.
+        for (int i = 0; i <= bookings.size()-1; i++) {
+            if(bookings.get(i).getBookingID()==bookingID){
+                bookings.remove(i); // veit ekki alveg hvernig á að eyða
+            }
+        }
     }
     public int totalBookings(int tourID) {
         int total= bookings.stream().filter(tab -> tab.getTour().getTourID() == tourID)
                 .mapToInt(Booking::getSpotsPerBooking).sum();
         return total;
     }
-
-
-
 }

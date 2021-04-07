@@ -7,7 +7,12 @@ public class Booking {
     private Tour tour;
     private int spotsPerBooking;
 
-    public Booking(User user, Tour tour,int spotsPerBooking) {
+    @Override
+    public String toString() {
+        return String.valueOf(bookingID);
+    }
+
+    public Booking(User user, Tour tour, int spotsPerBooking) {
         this.user = user;
         this.tour = tour;
         this.spotsPerBooking=spotsPerBooking;
