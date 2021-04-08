@@ -45,7 +45,7 @@ public class TourDataFactory{
         LocalDate d10 = LocalDate.of(2021,8,24);
 
 
-        Tour tour1 = (new Tour( "Horseriding in Eyjafjörður","Bring warm clothes",d1, 10,10000,
+        Tour tour1 = (new Tour( "Horse riding in Eyjafjörður","Bring warm clothes",d1, 10,10000,
                 "Akureyri",7,"Family friendly"));
         tour1.setTourID(1);
         tours.add(tour1);
@@ -77,7 +77,7 @@ public class TourDataFactory{
                 "Reykjavík",8, "Family friendly"));
         tour1.setTourID(8);
         tours.add(tour8);
-        Tour tour9 = (new Tour( "Skiing in Hlíðarfjall","Skiing accuipment is available for rent",d9, 20,15000,
+        Tour tour9 = (new Tour( "Skiing in Hlíðarfjall","Skiing equipment is available for rent",d9, 20,15000,
                 "Akureyri",5, "Action"));
         tour1.setTourID(9);
         tours.add(tour9);

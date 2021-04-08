@@ -30,11 +30,11 @@
             <Text layoutX="14.0" layoutY="189.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Max booking" />
             <Text layoutX="31.0" layoutY="227.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tour Info" />
             <TextField layoutX="94.0" layoutY="53.0" prefHeight="27.0" prefWidth="263.0" />
+            <TextField layoutX="95.0" layoutY="95.0" prefHeight="27.0" prefWidth="261.0" />
             <TextField layoutX="95.0" layoutY="129.0" prefHeight="27.0" prefWidth="262.0" />
             <TextField layoutX="95.0" layoutY="171.0" prefHeight="27.0" prefWidth="262.0" />
             <TextField layoutX="95.0" layoutY="209.0" prefHeight="27.0" prefWidth="261.0" />
             <Button layoutX="280.0" layoutY="246.0" mnemonicParsing="false" text="Add Tour" />
-            <TextField layoutX="95.0" layoutY="95.0" prefHeight="27.0" prefWidth="261.0" />
             <Label layoutX="22.0" layoutY="100.0" text="Tour Date" />
          </children>
       </AnchorPane>
