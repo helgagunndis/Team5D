@@ -1,5 +1,6 @@
 package sample;
 
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -13,8 +14,11 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 public class adminChangesController {
+    private TourDataFactory tourdataFactory = new TourDataFactory();
+    private ObservableList<Tour> tours= tourdataFactory.getTours();
+
     @FXML
-    private Button buttonCancelTour;
+    private Button buttonDeleteTour;
     @FXML
     private Button buttonAddTour;
     @FXML
@@ -30,9 +34,6 @@ public class adminChangesController {
     @FXML
     private TextField textTourID;
 
-    /*public adminChangesController(Button buttonAddTour) {
-        this.buttonAddTour = buttonAddTour;
-    }*/
 
     public void backToMainPageButtonAdminCOnAction(ActionEvent actionEvent) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("search.fxml"));
@@ -42,15 +43,17 @@ public class adminChangesController {
         window.show();
     }
 
-    public void buttonAddTourOnAction(ActionEvent actionEvent) {
+    public void buttonAddTourOnAction(ActionEvent event) {
         String tourName = textTourName.getText();
         String tourDate = textTourDate.getText();
         String tourPrice = textTourPrice.getText();
         String maxBooking = textMaxBooking.getText();
         String tourInfo = textTourInfo.getText();
+
+        System.out.println(tourName);
     }
 
-    public void buttonCancelTourOnAction(ActionEvent event) {
+    public void buttonDeleteTourOnAction(ActionEvent event) {
         String tourID = textTourID.getText();
 
     }
