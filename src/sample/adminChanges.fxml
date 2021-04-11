@@ -19,6 +19,7 @@
             </Text>
             <Text layoutX="109.0" layoutY="91.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Day tours" />
             <Button fx:id="backToMainPageButtonAdminC" layoutX="37.0" layoutY="326.0" mnemonicParsing="false" onAction="#backToMainPageButtonAdminCOnAction" text="Back to main page" />
+            <Label layoutX="24.0" layoutY="14.0" text="Admin" />
          </children>
       </AnchorPane>
    </left>
@@ -29,13 +30,26 @@
             <Text layoutX="22.0" layoutY="147.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tour price" />
             <Text layoutX="14.0" layoutY="189.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Max booking" />
             <Text layoutX="31.0" layoutY="227.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tour Info" />
-            <TextField layoutX="94.0" layoutY="53.0" prefHeight="27.0" prefWidth="263.0" />
-            <TextField layoutX="95.0" layoutY="95.0" prefHeight="27.0" prefWidth="261.0" />
-            <TextField layoutX="95.0" layoutY="129.0" prefHeight="27.0" prefWidth="262.0" />
-            <TextField layoutX="95.0" layoutY="171.0" prefHeight="27.0" prefWidth="262.0" />
-            <TextField layoutX="95.0" layoutY="209.0" prefHeight="27.0" prefWidth="261.0" />
-            <Button layoutX="280.0" layoutY="246.0" mnemonicParsing="false" text="Add Tour" />
+            <TextField fx:id="textTourName" layoutX="94.0" layoutY="53.0" prefHeight="27.0" prefWidth="263.0" />
+            <TextField fx:id="textTourDate" layoutX="95.0" layoutY="95.0" prefHeight="27.0" prefWidth="261.0" />
+            <TextField fx:id="textTourPrice" layoutX="95.0" layoutY="129.0" prefHeight="27.0" prefWidth="262.0" />
+            <TextField fx:id="textMaxBooking" layoutX="95.0" layoutY="171.0" prefHeight="27.0" prefWidth="262.0" />
+            <TextField fx:id="textTourInfo" layoutX="95.0" layoutY="209.0" prefHeight="27.0" prefWidth="261.0" />
+            <Button fx:id="buttonAddTour" layoutX="280.0" layoutY="246.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="75.0" text="Add" />
             <Label layoutX="22.0" layoutY="100.0" text="Tour Date" />
+            <TextField fx:id="textTourID" layoutX="139.0" layoutY="322.0" prefHeight="27.0" prefWidth="130.0" />
+            <Button fx:id="buttonCancelTour" layoutX="280.0" layoutY="321.0" mnemonicParsing="false" prefHeight="28.0" prefWidth="77.0" text="Cancel" />
+            <Label layoutX="22.0" layoutY="284.0" prefHeight="23.0" prefWidth="133.0" text="Cancel Tour">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="77.0" layoutY="327.0" text="Tour ID" />
+            <Label layoutX="22.0" layoutY="14.0" prefHeight="23.0" prefWidth="79.0" text="Add Tour">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
          </children>
       </AnchorPane>
    </center>
