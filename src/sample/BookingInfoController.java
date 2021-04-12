@@ -70,6 +70,7 @@ public class BookingInfoController implements Initializable {
         int bookingID=booking.getBookingID();
         System.out.print(bookingID);
         bookingConfirmed.setText("Your booking number is : "+ bookingID);
+
     }
     @Override
     public void initialize(URL location, ResourceBundle resources) {

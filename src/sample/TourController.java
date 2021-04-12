@@ -14,6 +14,7 @@ public class TourController {
     private ObservableList<Tour> filteredTours = FXCollections.observableArrayList();
 
 
+
     public ObservableList<Tour> tourRegionSearch(String region) {
         ObservableList<Tour> result = FXCollections.observableArrayList();
         tours.forEach((tab) -> {
@@ -23,8 +24,6 @@ public class TourController {
         });
         return  result;
     }
-
-
 
 
     public ArrayList<User> getTourEmailList(String tourID){

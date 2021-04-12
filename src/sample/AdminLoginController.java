@@ -37,6 +37,7 @@ public class AdminLoginController {
             adminUsername.setText("");
             adminPassword.setText("");
     }
+
     private void changesPages(String pages, ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource(pages));
         Scene tableViewScene = new Scene(root);
