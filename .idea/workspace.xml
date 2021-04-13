@@ -2,15 +2,19 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/lib.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/Team5D.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Team5D.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/lib1.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/138d4a61-cb95-4233-bf33-07293b7b62bd.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/138d4a61-cb95-4233-bf33-07293b7b62bd.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Team5D/sample/adminChangesController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Team5D/sample/adminChangesController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/adminChanges.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/adminChanges.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/adminChangesController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/adminChangesController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/Team5D.DB" beforeDir="false" afterPath="$PROJECT_DIR$/database/Team5D.DB" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Team5D/sample/BookingInfoController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Team5D/sample/BookingInfoController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Team5D/sample/TourBookingController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Team5D/sample/TourBookingController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Team5D/sample/TourDataFactory.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Team5D/sample/TourDataFactory.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/prufuDatabase.db" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/BookingInfoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/BookingInfoController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/TourBookingController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/TourBookingController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/TourDataFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/TourDataFactory.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -151,6 +155,7 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="DatabaseDriversLRU" value="sqlite" />
     <property name="GoToClass.includeLibraries" value="false" />
     <property name="GoToClass.toSaveIncludeLibraries" value="false" />
     <property name="GoToFile.includeJavaFiles" value="false" />
@@ -172,7 +177,7 @@
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="project.structure.last.edited" value="Libraries" />
+    <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15429688" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="recentsLimit" value="5" />
@@ -227,6 +232,17 @@
     </configuration>
     <configuration default="true" type="Application" factoryName="Application">
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -292,6 +308,7 @@
       <workItem from="1617915042832" duration="1606000" />
       <workItem from="1617917181748" duration="1385000" />
       <workItem from="1618166486765" duration="6929000" />
+      <workItem from="1618339354418" duration="10811000" />
     </task>
     <servers />
   </component>

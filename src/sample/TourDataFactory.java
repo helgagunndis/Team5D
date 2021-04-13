@@ -14,19 +14,26 @@ import java.sql.*;
 
 public class TourDataFactory{
 
-    private Connection connect() throws SQLException, ClassNotFoundException {
+    private final static String url = "jdbc:sqlite:/Tolvunarfraedi/vor2021/HBV401G-Throun_hugbunadar/Team5D-new/Team5D/database/Team5D.DB";
 
-        Connection conn;
+    private Connection connect() {
+        // SQLite connection string
 
-        Class.forName("org.sqlite.JDBC");		// fyrir SQLite
-        conn = DriverManager.getConnection("jdbc:sqlite:Team5D.DB.db");
+        Connection conn = null;
 
+        try {
+
+            conn = DriverManager.getConnection(url);
+            System.out.println("connection to database has been estableshed");
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
         return conn;
     }
-
+/*
     public void insert(int tourID, String tourName, String tourInfo, int availableSpots, int bookedSpots,
-                       int tourPrice, boolean fullyBooked, String tourRegion, int duration, String services) {
-        String sql = "INSERT INTO tours(tourName,tourID,availableSpots,bookedSpots) VALUES(?,?,?,?,?,?,?,?,?,?)";
+                       int tourPrice, boolean fullyBooked, String tourRegion, int duration, String services, String date) {
+        String sql = "INSERT INTO tours(tourID, tourName,tourInfo,availableSpots,bookedSpots,tourPrice, fullyBooked, tourRegion, duration, services) VALUES(?,?,?,?,?,?,?,?,?,?)";
 
         try (Connection conn = this.connect();
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
@@ -40,8 +47,26 @@ public class TourDataFactory{
             pstmt.setString(8, tourRegion);
             pstmt.setInt(9, duration);
             pstmt.setString(10, services);
+            pstmt.setString(11, date);
             pstmt.executeUpdate();
         } catch (SQLException | ClassNotFoundException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+ */
+
+    public void insert(String testTourName, int testTourID) {
+        String sql = "INSERT INTO testTour VALUES(?,?)";
+
+        try (Connection conn = this.connect();
+             PreparedStatement pstmt = conn.prepareStatement(sql)) {
+
+            pstmt.setString(1, testTourName);
+            pstmt.setInt(2, testTourID);
+            pstmt.executeUpdate();
+            System.out.println("hallo");
+        } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
     }
