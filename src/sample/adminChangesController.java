@@ -8,14 +8,16 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 
 public class adminChangesController {
+
     private TourDataFactory tourdataFactory = new TourDataFactory();
-    private ObservableList<Tour> tours= tourdataFactory.getTours();
+    private ObservableList<Tour> tours = tourdataFactory.getTours();
 
     @FXML
     private Button buttonDeleteTour;
@@ -38,7 +40,7 @@ public class adminChangesController {
     public void backToMainPageButtonAdminCOnAction(ActionEvent actionEvent) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("search.fxml"));
         Scene tableViewScene = new Scene(root);
-        Stage window = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
+        Stage window = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
         window.setScene(tableViewScene);
         window.show();
     }
@@ -54,7 +56,13 @@ public class adminChangesController {
     }
 
     public void buttonDeleteTourOnAction(ActionEvent event) {
-        String tourID = textTourID.getText();
-
+        String s = textTourID.getText();
+        int enteredTourID = Integer.parseInt(s);
+        tours.forEach((tour) -> {
+            if (enteredTourID == tour.getTourID()) {
+                tours.remove(tour);
+            }
+        });
+        //System.out.print(enteredTourID);
     }
 }
