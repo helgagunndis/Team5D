@@ -16,6 +16,7 @@ public class TourBookingController{
         booking.setBookingID(numForBooking);
         numForBooking++;
         bookings.add(booking);
+        tourdataFactory.insert(12345, "kajakferd",  "taka med fot", 2, 3, 15000, false, "Akureri", 4, "Family friendly");
     }
 
     public ArrayList<Booking> getBooking(int tourID){

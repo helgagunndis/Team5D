@@ -7,7 +7,44 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.*;
+
 public class TourDataFactory{
+
+    private Connection connect() throws SQLException, ClassNotFoundException {
+
+        Connection conn;
+
+        Class.forName("org.sqlite.JDBC");		// fyrir SQLite
+        conn = DriverManager.getConnection("jdbc:sqlite:Team5D.DB.db");
+
+        return conn;
+    }
+
+    public void insert(int tourID, String tourName, String tourInfo, int availableSpots, int bookedSpots,
+                       int tourPrice, boolean fullyBooked, String tourRegion, int duration, String services) {
+        String sql = "INSERT INTO tours(tourName,tourID,availableSpots,bookedSpots) VALUES(?,?,?,?,?,?,?,?,?,?)";
+
+        try (Connection conn = this.connect();
+             PreparedStatement pstmt = conn.prepareStatement(sql)) {
+            pstmt.setInt(1, tourID);
+            pstmt.setString(2, tourName);
+            pstmt.setString(3, tourInfo);
+            pstmt.setInt(4, availableSpots);
+            pstmt.setInt(5, bookedSpots);
+            pstmt.setInt(6, tourPrice);
+            pstmt.setBoolean(7, fullyBooked);
+            pstmt.setString(8, tourRegion);
+            pstmt.setInt(9, duration);
+            pstmt.setString(10, services);
+            pstmt.executeUpdate();
+        } catch (SQLException | ClassNotFoundException e) {
+            System.out.println(e.getMessage());
+        }
+    }
 
     public ObservableList<Booking> getBookings(){
         ObservableList<Booking> bookings = FXCollections.observableArrayList();
@@ -29,6 +66,7 @@ public class TourDataFactory{
         }*/
         return bookings;
     }
+
 
     public ObservableList<Tour> getTours(){
         ObservableList<Tour> tours = FXCollections.observableArrayList();
