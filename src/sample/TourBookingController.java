@@ -2,6 +2,8 @@ package sample;
 
 
 import javafx.collections.ObservableList;
+
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 
@@ -16,7 +18,8 @@ public class TourBookingController{
         booking.setBookingID(numForBooking);
         numForBooking++;
         bookings.add(booking);
-        tourdataFactory.insert(12345, "kajakferd",  "taka med fot", 2, 3, 15000, false, "Akureri", 4, "Family friendly");
+        //LocalDate d1 = LocalDate.of(2021,4,01);
+
     }
 
     public ArrayList<Booking> getBooking(int tourID){
