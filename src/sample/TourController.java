@@ -54,10 +54,11 @@ public class TourController {
     }
 
     public void addTour(Tour tour) {
-        tourdataFactory.insertTour( tour.getTourID(),tour.getTourName(),
+        long millis = localDateToMillis(tour.getTourDate());
+        tourdataFactory.insertTour(tour.getTourName(),
                 tour.getTourInfo(), tour.getAvailableSpots(),tour.getTourPrice(),
                 tour.getTourRegion(), tour.getDuration(), tour.getServices(),
-                tour.getTourDate());
+                millis);
     }
 
     public void deleteTour(int tourID) {

@@ -4,6 +4,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.Cursor;
 
+import java.time.Instant;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.ArrayList;
@@ -14,6 +15,12 @@ import java.sql.PreparedStatement;
 import java.sql.*;
 
 public class TourDataFactory {
+
+    public LocalDate millisToLocalDate(long millis){
+        LocalDate date = Instant.ofEpochMilli(millis).atZone(ZoneId.systemDefault()).toLocalDate();
+
+        return date;
+    }
 
     private final static String url = "jdbc:sqlite:/Tolvunarfraedi/vor2021/HBV401G-Throun_hugbunadar/Team5D-new/Team5D/database/Team5D.DB";
 
@@ -31,26 +38,25 @@ public class TourDataFactory {
         return conn;
     }
 
-    public void insertTour(int ID,String name,String info,int Spots,
+    public void insertTour(String name,String info,int Spots,
                            int price,String region,int duration,
-                           String services, LocalDate date) {
-        String sql = "INSERT INTO Tour VALUES(?,?,?,?,?,?,?,?,?,?,?)";
+                           String services, long date) {
+        String sql = "INSERT INTO Tour VALUES(null,?,?,?,?,?,?,?,?,?,?)";
         try (Connection conn = this.connect();
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
-            pstmt.setInt(1, ID);
-            pstmt.setString(2, name);
-            pstmt.setString(3, info);
-            pstmt.setInt(4, Spots);
-            pstmt.setInt(5, 0);
-            pstmt.setInt(6, price);
+
+            pstmt.setString(1, name);
+            pstmt.setString(2, info);
+            pstmt.setInt(3, Spots);
+            pstmt.setInt(4, 0);
+            pstmt.setInt(5, price);
             boolean fullyB= false;
             if (Spots<=0) { fullyB=true;}
-            pstmt.setBoolean(7,fullyB);
-            pstmt.setString(8, region);
-            pstmt.setInt(9, duration);
-            pstmt.setString(10, services);
-            java.sql.Date sqlDate = java.sql.Date.valueOf(date);
-            pstmt.setDate(11,sqlDate);
+            pstmt.setBoolean(6,fullyB);
+            pstmt.setString(7, region);
+            pstmt.setInt(8, duration);
+            pstmt.setString(9, services);
+            pstmt.setLong(10,date);
             pstmt.executeUpdate();
             System.out.println("hallo");
         } catch (SQLException e) {
@@ -89,9 +95,10 @@ public class TourDataFactory {
                 String tourRegion = rs.getString("tourRegion");
                 int duration = rs.getInt("duration");
                 String services = rs.getString("services");
-                LocalDate date = LocalDate.of(2021,4,01);
+                long date = rs.getLong("date");
+                LocalDate localDate = millisToLocalDate(date);
 
-                Tour tour= new Tour(tourName, tourInfo, date, availableSpots, tourPrice, tourRegion, duration, services);
+                Tour tour= new Tour(tourName, tourInfo, localDate, availableSpots, tourPrice, tourRegion, duration, services);
                 allTours.add(tour);
             }
 
