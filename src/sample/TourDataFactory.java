@@ -91,11 +91,6 @@ public class TourDataFactory {
                 String services = rs.getString("services");
                 LocalDate date = LocalDate.of(2021,4,01);
 
-
-
-
-
-
                 Tour tour= new Tour(tourName, tourInfo, date, availableSpots, tourPrice, tourRegion, duration, services);
                 allTours.add(tour);
             }

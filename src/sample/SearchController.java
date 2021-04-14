@@ -114,9 +114,6 @@ public class SearchController implements Initializable {
 
     public void buttonFindTourOnAction(ActionEvent actionEvent) {
         LocalDate valueStart = startDatePicker.getValue();
-        Instant i = valueStart.atStartOfDay(ZoneId.systemDefault()).toInstant();
-        long timeInMillis = i.toEpochMilli();
-        //System.currentTimeMillis();
         LocalDate valueEnd = endDatePicker.getValue();
         TourController filteredTours = new TourController();
         ObservableList filteredList = filteredTours.tourDateSearch(valueStart, valueEnd, allTours);
