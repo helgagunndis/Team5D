@@ -14,15 +14,14 @@ import java.sql.*;
 
 public class TourDataFactory{
 
-    private final static String url = "jdbc:sqlite:/Tolvunarfraedi/vor2021/HBV401G-Throun_hugbunadar/Team5D-new/Team5D/database/Team5D.DB";
+    private final static String url = "jdbc:sqlite:/Users/evamargret/Desktop/Háskóli_íslands/2.vorönn/Team5D/database/Team5D.DB";
+
 
     private Connection connect() {
         // SQLite connection string
-
         Connection conn = null;
 
         try {
-
             conn = DriverManager.getConnection(url);
             System.out.println("connection to database has been estableshed");
         } catch (SQLException e) {
@@ -67,6 +66,44 @@ public class TourDataFactory{
             pstmt.executeUpdate();
             System.out.println("hallo");
         } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+    public void insertTour(int ID,String name,String info,int Spots,
+                           int price,String region,int duration,
+                           String services, String date) {
+        String sql = "INSERT INTO Tour VALUES(?,?,?,?,?,?,?,?,?,?,?)";
+        try (Connection conn = this.connect();
+             PreparedStatement pstmt = conn.prepareStatement(sql)) {
+            pstmt.setInt(1, ID);
+            pstmt.setString(2, name);
+            pstmt.setString(3, info);
+            pstmt.setInt(4, Spots);
+            pstmt.setInt(5, 0);
+            pstmt.setInt(6, price);
+            boolean fullyB= false;
+            if (Spots<=0) { fullyB=true;}
+            pstmt.setBoolean(7,fullyB);
+            pstmt.setString(8, region);
+            pstmt.setInt(9, duration);
+            pstmt.setString(10, services);
+            //java.sql.Date sqlDate = java.sql.Date.valueOf(date);
+            pstmt.setString(11,date);
+
+             pstmt.executeUpdate();
+             System.out.println("hallo");
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+    public void deleteTour (int ID) {  // VIKRAR :D
+        String sql = "DELETE FROM Tour WHERE tourID = ?";
+        try (Connection conn = this.connect();
+             PreparedStatement pstmt = conn.prepareStatement(sql)) {
+             pstmt.setInt(1,ID);
+             pstmt.executeUpdate();
+        }
+        catch (SQLException e) {
             System.out.println(e.getMessage());
         }
     }

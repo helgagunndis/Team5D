@@ -78,5 +78,6 @@ public class BookingInfoController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         bookingSpotsTaken.setItems(bookingSpotsList);
+        bookingSpotsTaken.getSelectionModel().select("1");
     }
 }

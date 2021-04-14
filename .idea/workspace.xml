@@ -5,16 +5,19 @@
       <change beforePath="$PROJECT_DIR$/.idea/Team5D.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Team5D.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/138d4a61-cb95-4233-bf33-07293b7b62bd.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/138d4a61-cb95-4233-bf33-07293b7b62bd.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/d62d5846-71bb-4335-b445-842f37c7703a.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/d62d5846-71bb-4335-b445-842f37c7703a.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/lib.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/lib.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/database/Team5D.DB" beforeDir="false" afterPath="$PROJECT_DIR$/database/Team5D.DB" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Team5D/sample/BookingInfoController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Team5D/sample/BookingInfoController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Team5D/sample/TourBookingController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Team5D/sample/TourBookingController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Team5D/sample/TourDataFactory.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Team5D/sample/TourDataFactory.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/prufuDatabase.db" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Team5D/sample/adminChanges.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Team5D/sample/adminChanges.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Team5D/sample/adminChangesController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Team5D/sample/adminChangesController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/sample/BookingInfoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/BookingInfoController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/TourBookingController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/TourBookingController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/TourController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/TourController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/sample/TourDataFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/TourDataFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/adminChanges.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/adminChanges.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/adminChangesController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/adminChangesController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -181,7 +184,7 @@
     <property name="project.structure.proportion" value="0.15429688" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="recentsLimit" value="5" />
-    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
+    <property name="settings.editor.selected.configurable" value="database.main" />
   </component>
   <component name="RecentsManager">
     <key name="ExtractSuperBase.RECENT_KEYS">

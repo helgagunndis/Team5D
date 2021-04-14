@@ -1,7 +1,5 @@
 package sample;
 
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -10,21 +8,17 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.ListView;
+import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 public class adminChangesController implements Initializable {
-
-    private TourDataFactory tourdataFactory = new TourDataFactory();
-   //private ObservableList<Tour> tours = tourdataFactory.getTours();
-   private ObservableList<Tour> tours = FXCollections.observableArrayList();
 
     @FXML
     private Button buttonDeleteTour;
@@ -33,7 +27,7 @@ public class adminChangesController implements Initializable {
     @FXML
     private TextField textTourName;
     @FXML
-    private TextField textTourDate;
+    private DatePicker dateTourDate;
     @FXML
     private TextField textTourPrice;
     @FXML
@@ -48,11 +42,10 @@ public class adminChangesController implements Initializable {
     private TextField textTourRegion;
     @FXML
     private TextField textTourDuration;
-   // @FXML
-    //private ListView tourListView;
+    @FXML
+    private ChoiceBox choiceBoxTourRegion, choiceBoxTourServices;
 
-
-
+    TourController tourController = new TourController();
     public void backToMainPageButtonAdminCOnAction(ActionEvent actionEvent) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("search.fxml"));
         Scene tableViewScene = new Scene(root);
@@ -62,29 +55,31 @@ public class adminChangesController implements Initializable {
     }
 
     public void buttonAddTourOnAction(ActionEvent event) {
-        String tourPrice = textTourPrice.getText();
-        String maxBooking = textMaxBooking.getText();
-        String tourDuration = textTourDuration.getText();
-        int price = Integer.parseInt(tourPrice);
-        int spots = Integer.parseInt(maxBooking);
-        int duration = Integer.parseInt(tourDuration);
-        tours.add(new Tour(textTourName.getText(), textTourInfo.getText(), LocalDate.of(2021,5,6),spots,price,textTourRegion.getText(),duration,textTourServices.getText()));
+        String name = textTourName.getText();
+        String info = textTourInfo.getText();
+        int spots = Integer.parseInt(textMaxBooking.getText());
+        int price = Integer.parseInt(textTourPrice.getText());
+        String  region = choiceBoxTourRegion.getValue().toString();
+        System.out.println(region);
+        int duration = Integer.parseInt(textTourDuration.getText());
+        String services = choiceBoxTourServices.getValue().toString();
+        LocalDate date = dateTourDate.getValue();
+        Tour tour= new Tour(name,info,date,spots,price,region,duration,services);
+        tour.setTourID(50);  // þarf að skoða með þetta
+        tourController.addTour(tour);
     }
 
     public void buttonDeleteTourOnAction(ActionEvent event) {
         String s = textTourID.getText();
         int enteredTourID = Integer.parseInt(s);
-        tours.forEach((tour) -> {
-            if (enteredTourID == tour.getTourID()) {
-                tours.remove(tour);
-            }
-        });
+        tourController.deleteTour(enteredTourID);
     }
-
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        tours = tourdataFactory.getTours();
-        //tourListView.setItems(tours);
+        choiceBoxTourRegion.getItems().addAll("Akureyri", "Egilsstaðir", "Reykjavík","Ísafjörður");
+        choiceBoxTourRegion.getSelectionModel().select(" ");
+        choiceBoxTourServices.getItems().addAll("Family friendly", "Action","Wheelchair accessible","All services");
+        choiceBoxTourServices.getSelectionModel().select(" ");
     }
 }

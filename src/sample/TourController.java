@@ -39,10 +39,14 @@ public class TourController {
         return tours;
     }
     public void addTour(Tour tour) {
-
+        tourdataFactory.insertTour( tour.getTourID(),tour.getTourName(),
+                tour.getTourInfo(), tour.getAvailableSpots(),tour.getTourPrice(),
+                tour.getTourRegion(), tour.getDuration(), tour.getServices(),
+                tour.getTourDate().toString());
     }
-    public void deleteTour(int tourID) {
 
+    public void deleteTour(int tourID) {
+        tourdataFactory.deleteTour(tourID);
     }
     public Boolean isFullyBooked(int tourID){
         return false;
