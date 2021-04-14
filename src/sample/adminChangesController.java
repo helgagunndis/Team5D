@@ -65,7 +65,7 @@ public class adminChangesController implements Initializable {
         String services = choiceBoxTourServices.getValue().toString();
         LocalDate date = dateTourDate.getValue();
         Tour tour= new Tour(name,info,date,spots,price,region,duration,services);
-        tour.setTourID(50);  // þarf að skoða með þetta
+        tour.setTourID(51);  // þarf að skoða með þetta
         tourController.addTour(tour);
     }
 
@@ -79,7 +79,7 @@ public class adminChangesController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         choiceBoxTourRegion.getItems().addAll("Akureyri", "Egilsstaðir", "Reykjavík","Ísafjörður");
         choiceBoxTourRegion.getSelectionModel().select(" ");
-        choiceBoxTourServices.getItems().addAll("Family friendly", "Action","Wheelchair accessible","All services");
+        choiceBoxTourServices.getItems().addAll("Family friendly", "Action","Wheelchair accessible");
         choiceBoxTourServices.getSelectionModel().select(" ");
     }
 }

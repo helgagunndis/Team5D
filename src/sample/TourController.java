@@ -42,7 +42,7 @@ public class TourController {
         tourdataFactory.insertTour( tour.getTourID(),tour.getTourName(),
                 tour.getTourInfo(), tour.getAvailableSpots(),tour.getTourPrice(),
                 tour.getTourRegion(), tour.getDuration(), tour.getServices(),
-                tour.getTourDate().toString());
+                tour.getTourDate());
     }
 
     public void deleteTour(int tourID) {

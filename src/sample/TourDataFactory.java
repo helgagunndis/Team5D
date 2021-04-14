@@ -71,7 +71,7 @@ public class TourDataFactory{
     }
     public void insertTour(int ID,String name,String info,int Spots,
                            int price,String region,int duration,
-                           String services, String date) {
+                           String services, LocalDate date) {
         String sql = "INSERT INTO Tour VALUES(?,?,?,?,?,?,?,?,?,?,?)";
         try (Connection conn = this.connect();
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
@@ -87,11 +87,10 @@ public class TourDataFactory{
             pstmt.setString(8, region);
             pstmt.setInt(9, duration);
             pstmt.setString(10, services);
-            //java.sql.Date sqlDate = java.sql.Date.valueOf(date);
-            pstmt.setString(11,date);
-
-             pstmt.executeUpdate();
-             System.out.println("hallo");
+            java.sql.Date sqlDate = java.sql.Date.valueOf(date);
+            pstmt.setDate(11,sqlDate);
+            pstmt.executeUpdate();
+            System.out.println("hallo");
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
