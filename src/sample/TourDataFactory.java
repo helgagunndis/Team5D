@@ -21,14 +21,12 @@ public class TourDataFactory {
 
         return date;
     }
-
-    private final static String url = "jdbc:sqlite:/Tolvunarfraedi/vor2021/HBV401G-Throun_hugbunadar/Team5D-new/Team5D/database/Team5D.DB";
-
+    //private final static String url = "jdbc:sqlite:/Tolvunarfraedi/vor2021/HBV401G-Throun_hugbunadar/Team5D-new/Team5D/database/Team5D.DB";
+    private final static String url = "jdbc:sqlite:/Users/evamargret/Desktop/Háskóli_íslands/2.vorönn/Þhug/Team5D/database/Team5D.DB";
 
     private Connection connect() {
         // SQLite connection string
         Connection conn = null;
-
         try {
             conn = DriverManager.getConnection(url);
             System.out.println("connection to database has been estableshed");
@@ -58,12 +56,12 @@ public class TourDataFactory {
             pstmt.setString(9, services);
             pstmt.setLong(10,date);
             pstmt.executeUpdate();
-            System.out.println("hallo");
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
     }
-    public void deleteTour (int ID) {  // VIKRAR :D
+
+    public void deleteTour (int ID) {
         String sql = "DELETE FROM Tour WHERE tourID = ?";
         try (Connection conn = this.connect();
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
@@ -108,11 +106,84 @@ public class TourDataFactory {
         return allTours;
     }
 
+    public void insertUser(User user) {
+        String sql = "INSERT INTO User VALUES(?,?,?)";
+        try (Connection conn = this.connect();
+             PreparedStatement pstmt = conn.prepareStatement(sql)) {
+            pstmt.setString(1, user.getUserID());
+            pstmt.setString(2, user.getUserName());
+            pstmt.setString(3, user.getUserEmail());
+            pstmt.executeUpdate();
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+    public void deleteUser (String ID) {
+        String sql = "DELETE FROM User WHERE userID = ?";
+        try (Connection conn = this.connect();
+             PreparedStatement pstmt = conn.prepareStatement(sql)) {
+            pstmt.setString(1,ID);
+            pstmt.executeUpdate();
+        }
+        catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+
+    public ObservableList<User> getUsers(){
+        ObservableList<User> allUsers = FXCollections.observableArrayList();
+        String sql = "SELECT userID, userName, userEmail, date FROM Tour";
+
+        try (Connection conn = this.connect();
+             Statement stmt  = conn.createStatement();
+             ResultSet rs    = stmt.executeQuery(sql)){
+
+            // loop through the result set
+            while (rs.next()) {
+                String userID = rs.getString("userID");
+                String userName = rs.getString("userName");
+                String userEmail = rs.getString("userEmail");
+
+                User user= new User(userID,userName,userEmail);
+                allUsers.add(user);
+            }
+
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        return allUsers;
+    }
+
+    public void insertBooking(String user, int tour, int spots) {
+        String sql = "INSERT INTO Booking VALUES(null,?,?,?)";
+        try (Connection conn = this.connect();
+             PreparedStatement pstmt = conn.prepareStatement(sql)) {
+            pstmt.setString(1, user);
+            pstmt.setInt(2, tour);
+            pstmt.setInt(3, spots);
+            pstmt.executeUpdate();
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+    public void deleteBooking (int ID) {
+        String sql = "DELETE FROM Tour WHERE tourID = ?";
+        try (Connection conn = this.connect();
+             PreparedStatement pstmt = conn.prepareStatement(sql)) {
+            pstmt.setInt(1,ID);
+            pstmt.executeUpdate();
+        }
+        catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
     public ObservableList<Booking> getBookings(){
         ObservableList<Booking> bookings = FXCollections.observableArrayList();
         //TourBookingController bookingController= new TourBookingController();
-        ObservableList<User> users = getUsers(); // án í alla notendur
-        int bookingNum =1000;  // þarf að laga
+        //ObservableList<User> users = getUsers(); // án í alla notendur
 
 
        /* for (int i = 0; i <= users.size()-1; i++) {
@@ -190,7 +261,7 @@ public class TourDataFactory {
     */
 
 
-
+/*
     public ObservableList<User> getUsers() {
         ObservableList<User> users = FXCollections.observableArrayList();
         User user1 = new User("1010942039","Sigurður Jónsson","siggi@gmail.com");
@@ -219,5 +290,5 @@ public class TourDataFactory {
         users.add(user3);
 
         return users;
-    }
+    }*/
 }

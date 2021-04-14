@@ -2,24 +2,19 @@ package sample;
 
 
 import javafx.collections.ObservableList;
-
-import java.time.LocalDate;
 import java.util.ArrayList;
-
 
 public class TourBookingController{
     private TourDataFactory tourdataFactory = new TourDataFactory();
     private ObservableList<Booking> bookings= tourdataFactory.getBookings();
-    private ObservableList<Tour> tours= tourdataFactory.getTours();
-    private int numForBooking=1000; // þarf að breyta!
 
 
     public void addBooking(Booking booking) {
-        booking.setBookingID(numForBooking);
-        numForBooking++;
-        bookings.add(booking);
-        //LocalDate d1 = LocalDate.of(2021,4,01);
+        tourdataFactory.insertBooking(booking.getUser().getUserID(),
+                booking.getTour().getTourID(),
+                booking.getSpotsPerBooking());
 
+        System.out.println(booking.getTour().getTourID());
     }
 
     public ArrayList<Booking> getBooking(int tourID){

@@ -48,7 +48,6 @@ public class TourController {
 
     public LocalDate millisToLocalDate(long millis){
         LocalDate date = Instant.ofEpochMilli(millis).atZone(ZoneId.systemDefault()).toLocalDate();
-
         return date;
     }
 
@@ -63,6 +62,7 @@ public class TourController {
     public void deleteTour(int tourID) {
         tourdataFactory.deleteTour(tourID);
     }
+
     public Boolean isFullyBooked(int tourID){
         return false;
     }
