@@ -2,6 +2,8 @@ package sample;
 
 
 import javafx.collections.ObservableList;
+
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 
@@ -15,7 +17,9 @@ public class TourBookingController{
     public void addBooking(Booking booking) {
         booking.setBookingID(numForBooking);
         numForBooking++;
-        tourdataFactory.getBookings().add(booking);
+        bookings.add(booking);
+        //LocalDate d1 = LocalDate.of(2021,4,01);
+
     }
 
     public ArrayList<Booking> getBooking(int tourID){
@@ -27,7 +31,6 @@ public class TourBookingController{
         });
         return bookings;
     }
-
     public void deleteBooking(int bookingID){
         bookings.forEach((booking) -> {
             if (booking.getBookingID()== bookingID){
@@ -48,8 +51,8 @@ public class TourBookingController{
                 //bookings.remove(booking);
             }
         });
-    }
 
+    }
     public int totalBookings(int tourID) {
         int total= bookings.stream().filter(tab -> tab.getTour().getTourID() == tourID)
                 .mapToInt(Booking::getSpotsPerBooking).sum();

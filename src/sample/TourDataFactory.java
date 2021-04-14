@@ -2,12 +2,111 @@ package sample;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.scene.Cursor;
 
+import java.time.Instant;
 import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.ArrayList;
-import java.util.Date;
 
-public class TourDataFactory{
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.*;
+
+public class TourDataFactory {
+
+    public LocalDate millisToLocalDate(long millis){
+        LocalDate date = Instant.ofEpochMilli(millis).atZone(ZoneId.systemDefault()).toLocalDate();
+
+        return date;
+    }
+
+    private final static String url = "jdbc:sqlite:/Tolvunarfraedi/vor2021/HBV401G-Throun_hugbunadar/Team5D-new/Team5D/database/Team5D.DB";
+
+
+    private Connection connect() {
+        // SQLite connection string
+        Connection conn = null;
+
+        try {
+            conn = DriverManager.getConnection(url);
+            System.out.println("connection to database has been estableshed");
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        return conn;
+    }
+
+    public void insertTour(String name,String info,int Spots,
+                           int price,String region,int duration,
+                           String services, long date) {
+        String sql = "INSERT INTO Tour VALUES(null,?,?,?,?,?,?,?,?,?,?)";
+        try (Connection conn = this.connect();
+             PreparedStatement pstmt = conn.prepareStatement(sql)) {
+
+            pstmt.setString(1, name);
+            pstmt.setString(2, info);
+            pstmt.setInt(3, Spots);
+            pstmt.setInt(4, 0);
+            pstmt.setInt(5, price);
+            boolean fullyB= false;
+            if (Spots<=0) { fullyB=true;}
+            pstmt.setBoolean(6,fullyB);
+            pstmt.setString(7, region);
+            pstmt.setInt(8, duration);
+            pstmt.setString(9, services);
+            pstmt.setLong(10,date);
+            pstmt.executeUpdate();
+            System.out.println("hallo");
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+    public void deleteTour (int ID) {  // VIKRAR :D
+        String sql = "DELETE FROM Tour WHERE tourID = ?";
+        try (Connection conn = this.connect();
+             PreparedStatement pstmt = conn.prepareStatement(sql)) {
+             pstmt.setInt(1,ID);
+             pstmt.executeUpdate();
+        }
+        catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+    public ObservableList<Tour> getTours(){
+        ObservableList<Tour> allTours = FXCollections.observableArrayList();
+        String sql = "SELECT tourID, tourName, tourInfo, availableSpots, bookedSpots, tourPrice, fullyBooked, tourRegion, duration, services, date FROM Tour";
+
+        try (Connection conn = this.connect();
+             Statement stmt  = conn.createStatement();
+             ResultSet rs    = stmt.executeQuery(sql)){
+
+            // loop through the result set
+            while (rs.next()) {
+                int tourID = rs.getInt("tourID");
+                String tourName = rs.getString("tourName");
+                String tourInfo = rs.getString("tourInfo");
+                int availableSpots = rs.getInt("availableSpots");
+                int bookedSpots = rs.getInt("bookedSpots");
+                int tourPrice = rs.getInt("tourPrice");
+                boolean fullyBooked = rs.getBoolean("fullyBooked");
+                String tourRegion = rs.getString("tourRegion");
+                int duration = rs.getInt("duration");
+                String services = rs.getString("services");
+                long date = rs.getLong("date");
+                LocalDate localDate = millisToLocalDate(date);
+
+                Tour tour= new Tour(tourName, tourInfo, localDate, availableSpots, tourPrice, tourRegion, duration, services);
+                allTours.add(tour);
+            }
+
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        return allTours;
+    }
 
     public ObservableList<Booking> getBookings(){
         ObservableList<Booking> bookings = FXCollections.observableArrayList();
@@ -30,8 +129,10 @@ public class TourDataFactory{
         return bookings;
     }
 
+/*
     public ObservableList<Tour> getTours(){
         ObservableList<Tour> tours = FXCollections.observableArrayList();
+        selectAllTours();
 
         LocalDate d1 = LocalDate.of(2021,4,01);
         LocalDate d2 = LocalDate.of(2021,4,05);
@@ -45,7 +146,7 @@ public class TourDataFactory{
         LocalDate d10 = LocalDate.of(2021,8,24);
 
 
-        Tour tour1 = (new Tour( "Horseriding in Eyjafjörður","Bring warm clothes",d1, 10,10000,
+        Tour tour1 = (new Tour( "Horse riding in Eyjafjörður","Bring warm clothes",d1, 10,10000,
                 "Akureyri",7,"Family friendly"));
         tour1.setTourID(1);
         tours.add(tour1);
@@ -77,13 +178,17 @@ public class TourDataFactory{
                 "Reykjavík",8, "Family friendly"));
         tour1.setTourID(8);
         tours.add(tour8);
-        Tour tour9 = (new Tour( "Skiing in Hlíðarfjall","Skiing accuipment is available for rent",d9, 20,15000,
+        Tour tour9 = (new Tour( "Skiing in Hlíðarfjall","Skiing equipment is available for rent",d9, 20,15000,
                 "Akureyri",5, "Action"));
         tour1.setTourID(9);
         tours.add(tour9);
 
+
+
         return tours;
     }
+    */
+
 
 
     public ObservableList<User> getUsers() {

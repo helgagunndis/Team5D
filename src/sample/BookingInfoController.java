@@ -38,10 +38,12 @@ public class BookingInfoController implements Initializable {
     private Button backToMainPageButton;
 
     private Tour selectedTour;
+    private TourDataFactory tourDataFactory = new TourDataFactory();
 
     public void initData(Tour tour) {
         selectedTour = tour;
         showNameOnTour.setText(selectedTour.getTourName());
+
     }
 
     public void backToMainPageButtonOnAction(ActionEvent event) throws IOException {
@@ -62,18 +64,20 @@ public class BookingInfoController implements Initializable {
         String email= bookingEmailTextField.getText();
         User user1 = new User(SSN,name,email);
         userController.addNewUser(user1);
+        //tourDataFactory.getTours();
+        System.out.println("allar ferðir");
 
-        String s=bookingSpotsTaken.getValue().toString();
-        int pax= Integer.parseInt(s);
-        Booking booking= new Booking(user1,selectedTour,pax);
-        bookingController.addBooking(booking);
-        int bookingID=booking.getBookingID();
-        System.out.print(bookingID);
-        bookingConfirmed.setText("Your booking number is : "+ bookingID);
-
+        //String s=bookingSpotsTaken.getValue().toString();
+        //int pax= Integer.parseInt(s);
+        //Booking booking= new Booking(user1,selectedTour,pax);
+        //bookingController.addBooking(booking);
+        //int bookingID=booking.getBookingID();
+        //System.out.print(bookingID);
+        //bookingConfirmed.setText("Your booking number is : "+ bookingID);
     }
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         bookingSpotsTaken.setItems(bookingSpotsList);
+        bookingSpotsTaken.getSelectionModel().select("1");
     }
 }

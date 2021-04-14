@@ -5,6 +5,7 @@ import javafx.collections.ObservableList;
 
 import java.time.Instant;
 import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.ArrayList;
 
 
@@ -37,11 +38,30 @@ public class TourController {
 
         return tours;
     }
-    public void addTour(Tour tour) {
 
+    public long localDateToMillis (LocalDate value){
+        Instant i = value.atStartOfDay(ZoneId.systemDefault()).toInstant();
+        long timeInMillis = i.toEpochMilli();
+
+        return timeInMillis;
     }
-    public void deleteTour(int tourID) {
 
+    public LocalDate millisToLocalDate(long millis){
+        LocalDate date = Instant.ofEpochMilli(millis).atZone(ZoneId.systemDefault()).toLocalDate();
+
+        return date;
+    }
+
+    public void addTour(Tour tour) {
+        long millis = localDateToMillis(tour.getTourDate());
+        tourdataFactory.insertTour(tour.getTourName(),
+                tour.getTourInfo(), tour.getAvailableSpots(),tour.getTourPrice(),
+                tour.getTourRegion(), tour.getDuration(), tour.getServices(),
+                millis);
+    }
+
+    public void deleteTour(int tourID) {
+        tourdataFactory.deleteTour(tourID);
     }
     public Boolean isFullyBooked(int tourID){
         return false;
