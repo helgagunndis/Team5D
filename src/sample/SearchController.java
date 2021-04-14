@@ -24,6 +24,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.time.Instant;
 import java.time.LocalDate;
+import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import java.util.Locale;
@@ -113,6 +114,9 @@ public class SearchController implements Initializable {
 
     public void buttonFindTourOnAction(ActionEvent actionEvent) {
         LocalDate valueStart = startDatePicker.getValue();
+        Instant i = valueStart.atStartOfDay(ZoneId.systemDefault()).toInstant();
+        long timeInMillis = i.toEpochMilli();
+        //System.currentTimeMillis();
         LocalDate valueEnd = endDatePicker.getValue();
         TourController filteredTours = new TourController();
         ObservableList filteredList = filteredTours.tourDateSearch(valueStart, valueEnd, allTours);

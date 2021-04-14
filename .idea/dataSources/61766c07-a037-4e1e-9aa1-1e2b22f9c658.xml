@@ -1402,7 +1402,7 @@
       <Position>10</Position>
       <DataType>varchar(15)|0s</DataType>
     </column>
-    <column id="510" parent="171" name="tourDate">
+    <column id="510" parent="171" name="date">
       <Position>11</Position>
       <DataType>Date|0s</DataType>
     </column>

@@ -64,8 +64,8 @@ public class BookingInfoController implements Initializable {
         String email= bookingEmailTextField.getText();
         User user1 = new User(SSN,name,email);
         userController.addNewUser(user1);
-        tourDataFactory.insert("ferð2", 23456);
-        System.out.println("Gagnagrunnur");
+        //tourDataFactory.getTours();
+        System.out.println("allar ferðir");
 
         //String s=bookingSpotsTaken.getValue().toString();
         //int pax= Integer.parseInt(s);

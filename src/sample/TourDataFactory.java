@@ -2,19 +2,20 @@ package sample;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.scene.Cursor;
 
 import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.ArrayList;
-import java.util.Date;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.*;
 
-public class TourDataFactory{
+public class TourDataFactory {
 
-    private final static String url = "jdbc:sqlite:/Users/evamargret/Desktop/Háskóli_íslands/2.vorönn/Team5D/database/Team5D.DB";
+    private final static String url = "jdbc:sqlite:/Tolvunarfraedi/vor2021/HBV401G-Throun_hugbunadar/Team5D-new/Team5D/database/Team5D.DB";
 
 
     private Connection connect() {
@@ -29,46 +30,7 @@ public class TourDataFactory{
         }
         return conn;
     }
-/*
-    public void insert(int tourID, String tourName, String tourInfo, int availableSpots, int bookedSpots,
-                       int tourPrice, boolean fullyBooked, String tourRegion, int duration, String services, String date) {
-        String sql = "INSERT INTO tours(tourID, tourName,tourInfo,availableSpots,bookedSpots,tourPrice, fullyBooked, tourRegion, duration, services) VALUES(?,?,?,?,?,?,?,?,?,?)";
 
-        try (Connection conn = this.connect();
-             PreparedStatement pstmt = conn.prepareStatement(sql)) {
-            pstmt.setInt(1, tourID);
-            pstmt.setString(2, tourName);
-            pstmt.setString(3, tourInfo);
-            pstmt.setInt(4, availableSpots);
-            pstmt.setInt(5, bookedSpots);
-            pstmt.setInt(6, tourPrice);
-            pstmt.setBoolean(7, fullyBooked);
-            pstmt.setString(8, tourRegion);
-            pstmt.setInt(9, duration);
-            pstmt.setString(10, services);
-            pstmt.setString(11, date);
-            pstmt.executeUpdate();
-        } catch (SQLException | ClassNotFoundException e) {
-            System.out.println(e.getMessage());
-        }
-    }
-
- */
-
-    public void insert(String testTourName, int testTourID) {
-        String sql = "INSERT INTO testTour VALUES(?,?)";
-
-        try (Connection conn = this.connect();
-             PreparedStatement pstmt = conn.prepareStatement(sql)) {
-
-            pstmt.setString(1, testTourName);
-            pstmt.setInt(2, testTourID);
-            pstmt.executeUpdate();
-            System.out.println("hallo");
-        } catch (SQLException e) {
-            System.out.println(e.getMessage());
-        }
-    }
     public void insertTour(int ID,String name,String info,int Spots,
                            int price,String region,int duration,
                            String services, LocalDate date) {
@@ -107,6 +69,43 @@ public class TourDataFactory{
         }
     }
 
+    public ObservableList<Tour> getTours(){
+        ObservableList<Tour> allTours = FXCollections.observableArrayList();
+        String sql = "SELECT tourID, tourName, tourInfo, availableSpots, bookedSpots, tourPrice, fullyBooked, tourRegion, duration, services, date FROM Tour";
+
+        try (Connection conn = this.connect();
+             Statement stmt  = conn.createStatement();
+             ResultSet rs    = stmt.executeQuery(sql)){
+
+            // loop through the result set
+            while (rs.next()) {
+                int tourID = rs.getInt("tourID");
+                String tourName = rs.getString("tourName");
+                String tourInfo = rs.getString("tourInfo");
+                int availableSpots = rs.getInt("availableSpots");
+                int bookedSpots = rs.getInt("bookedSpots");
+                int tourPrice = rs.getInt("tourPrice");
+                boolean fullyBooked = rs.getBoolean("fullyBooked");
+                String tourRegion = rs.getString("tourRegion");
+                int duration = rs.getInt("duration");
+                String services = rs.getString("services");
+                LocalDate date = LocalDate.of(2021,4,01);
+
+
+
+
+
+
+                Tour tour= new Tour(tourName, tourInfo, date, availableSpots, tourPrice, tourRegion, duration, services);
+                allTours.add(tour);
+            }
+
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        return allTours;
+    }
+
     public ObservableList<Booking> getBookings(){
         ObservableList<Booking> bookings = FXCollections.observableArrayList();
         //TourBookingController bookingController= new TourBookingController();
@@ -128,9 +127,10 @@ public class TourDataFactory{
         return bookings;
     }
 
-
+/*
     public ObservableList<Tour> getTours(){
         ObservableList<Tour> tours = FXCollections.observableArrayList();
+        selectAllTours();
 
         LocalDate d1 = LocalDate.of(2021,4,01);
         LocalDate d2 = LocalDate.of(2021,4,05);
@@ -181,8 +181,12 @@ public class TourDataFactory{
         tour1.setTourID(9);
         tours.add(tour9);
 
+
+
         return tours;
     }
+    */
+
 
 
     public ObservableList<User> getUsers() {
