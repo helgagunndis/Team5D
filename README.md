@@ -3,7 +3,7 @@
 
 # Introduction
 
-The initial interface provides the user with the ability to choose a day tour based on his/her preferences by using drop-down menus to choose region, duration and services. Once user has selected tour he/she can book the tour by pressing “Next step to book” button. The user puts in information (name,SSN,e-mail) and books tour. 
+The initial interface provides the user with the ability to choose a day tour based on his/her preferences by using drop-down menus to choose region, duration and services. Once user has selected tour he/she can book the tour by pressing “Next step to book” button. The user puts in information (name, SSN, e-mail) and the books tour. 
 The initial interface also has an administrator button which leads to an admin log-in interface which then leads to the admin interface where the admin can add or delete tours to the database.
 This was programmed in IntelliJ IDEA.
 
