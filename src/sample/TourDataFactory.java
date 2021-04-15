@@ -22,7 +22,7 @@ public class TourDataFactory {
         return date;
     }
     //private final static String url = "jdbc:sqlite:/Tolvunarfraedi/vor2021/HBV401G-Throun_hugbunadar/Team5D-new/Team5D/database/Team5D.DB";
-    private final static String url = "jdbc:sqlite:/Users/evamargret/Desktop/Háskóli_íslands/2.vorönn/Þhug/Team5D/database/Team5D.DB";
+    private final static String url = "jdbc:sqlite:/Tolvunarfraedi/vor2021/HBV401G-Throun_hugbunadar/Team5D-new/Team5D/database/Team5D.DB";
 
     private Connection connect() {
         // SQLite connection string
@@ -98,6 +98,7 @@ public class TourDataFactory {
 
                 Tour tour= new Tour(tourName, tourInfo, localDate, availableSpots, tourPrice, tourRegion, duration, services);
                 allTours.add(tour);
+                tour.setTourID(tourID);
             }
 
         } catch (SQLException e) {

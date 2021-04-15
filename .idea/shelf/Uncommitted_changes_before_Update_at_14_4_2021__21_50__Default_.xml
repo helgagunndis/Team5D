@@ -1,0 +1,9 @@
+<changelist name="Uncommitted_changes_before_Update_at_14_4_2021,_21_50_[Default]" date="1618437050833" recycled="false" toDelete="true">
+  <option name="PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_14_4_2021,_21_50_[Default]/shelved.patch" />
+  <option name="DESCRIPTION" value="Uncommitted changes before Update at 14.4.2021, 21:50 [Default]" />
+  <binary>
+    <option name="BEFORE_PATH" value="database/Team5D.DB" />
+    <option name="AFTER_PATH" value="database/Team5D.DB" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_14_4_2021,_21_50_[Default]/Team5D.DB" />
+  </binary>
+</changelist>

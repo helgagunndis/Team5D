@@ -110,6 +110,7 @@ public class SearchController implements Initializable {
 
         window.setScene(tableViewScene);
         window.show();
+
     }
 
     public void buttonFindTourOnAction(ActionEvent actionEvent) {
