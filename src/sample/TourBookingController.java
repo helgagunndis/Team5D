@@ -27,25 +27,7 @@ public class TourBookingController{
         return bookings;
     }
     public void deleteBooking(int bookingID){
-        bookings.forEach((booking) -> {
-            if (booking.getBookingID()== bookingID){
-
-                //bæta við sætum í ferð sem er afbókuð
-                Tour theTour =booking.getTour();
-                //System.out.println(totalBookings(theTour.getTourID()));
-                int spots= theTour.getAvailableSpots();
-                theTour.setAvailableSpots(spots + booking.getSpotsPerBooking());
-
-                // Eyða bókunarnúmeri á User
-                User theUser =booking.getUser();
-                System.out.println(theUser.toString());
-                ArrayList<Booking> theUserBookings = theUser.getBookings();
-                //theUserBookings.remove(booking);
-
-                //Eyða Bókun
-                //bookings.remove(booking);
-            }
-        });
+        tourdataFactory.deleteBooking(bookingID);
 
     }
     public int totalBookings(int tourID) {

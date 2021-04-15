@@ -170,7 +170,7 @@ public class TourDataFactory {
         }
     }
     public void deleteBooking (int ID) {
-        String sql = "DELETE FROM Tour WHERE tourID = ?";
+        String sql = "DELETE FROM Booking WHERE bookingID = ?";
         try (Connection conn = this.connect();
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
             pstmt.setInt(1,ID);

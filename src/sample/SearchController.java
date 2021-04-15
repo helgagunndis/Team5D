@@ -478,15 +478,8 @@ public class SearchController implements Initializable {
 
     public void buttonCancelOnAction(ActionEvent actionEvent) {
         TourBookingController bookingController= new TourBookingController();
-        String bookingId= cancelBookingID.getText();
-        int id;
-        try {
-            id = Integer.parseInt(bookingId);
-        }
-        catch (NumberFormatException e)
-        {
-            id = 0;
-        }
+
+        int id = Integer.parseInt(cancelBookingID.getText());
         bookingController.deleteBooking(id);
 
     }
