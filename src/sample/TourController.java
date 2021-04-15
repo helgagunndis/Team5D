@@ -38,6 +38,15 @@ public class TourController {
 
         return tours;
     }
+    public void changesSpotsAferBooking(Tour tour, int spots){
+        int aSpots = tour.getAvailableSpots();
+        tour.setAvailableSpots(aSpots-spots);
+        int bSpots = tour.getBookedSpots();
+        tour.setBookedSpots(bSpots+spots);
+        if(tour.getAvailableSpots()==0){
+            tour.setFullyBooked(true);
+        }
+    }
     public Tour findTourByID(int ID){
         ObservableList<Tour> tours= tourdataFactory.getTours();
         Tour theTour = null;

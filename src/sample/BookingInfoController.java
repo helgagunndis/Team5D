@@ -33,6 +33,7 @@ public class BookingInfoController implements Initializable {
     private Tour selectedTour;
     TourUserController userController= new TourUserController();
     TourBookingController bookingController= new TourBookingController();
+    TourController tourController= new TourController();
 
     public void initData(Tour tour) {
         selectedTour = tour;
@@ -58,8 +59,10 @@ public class BookingInfoController implements Initializable {
             userController.addNewUser(user);
         }
         int spots= Integer.parseInt(bookingSpotsTaken.getValue().toString());
+        tourController.changesSpotsAferBooking(selectedTour,spots);
         Booking booking= new Booking(user,selectedTour,spots);
         bookingController.addBooking(booking);
+
 
         //bookingController.getAllBooking();
         //bookingConfirmed.setText("Your booking number is : "+ booking.getBookingID());
