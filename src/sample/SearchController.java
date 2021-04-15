@@ -487,7 +487,4 @@ public class SearchController implements Initializable {
 
     }
 
-    public void buttonSearchOnAction(ActionEvent actionEvent) {
-
-    }
 }

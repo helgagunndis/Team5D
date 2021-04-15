@@ -19,4 +19,15 @@ public class TourUserController {
     public void addNewUser(User user) {
         tourdataFactory.insertUser(user);
     }
+
+    public boolean isUserInSystem(String userID){
+        ObservableList<User> users = tourdataFactory.getUsers();
+        boolean inSystem= false;
+        for (User user : users) {
+            if (user.getUserID().equals(userID)){
+                inSystem= true;
+            }
+        }
+        return inSystem;
+    }
 }

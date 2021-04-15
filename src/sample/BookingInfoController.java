@@ -54,12 +54,14 @@ public class BookingInfoController implements Initializable {
         String name= bookingNameTextField.getText();
         String email= bookingEmailTextField.getText();
         User user = new User(SSN,name,email);
-        userController.addNewUser(user);
-
+        if (!userController.isUserInSystem(SSN)){
+            userController.addNewUser(user);
+        }
         int spots= Integer.parseInt(bookingSpotsTaken.getValue().toString());
-        Booking booking= new Booking(user, selectedTour,spots);
+        Booking booking= new Booking(user,selectedTour,spots);
         bookingController.addBooking(booking);
 
+        //bookingController.getAllBooking();
         //bookingConfirmed.setText("Your booking number is : "+ booking.getBookingID());
     }
     @Override

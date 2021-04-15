@@ -39,6 +39,7 @@ public class TourController {
         return tours;
     }
     public Tour findTourByID(int ID){
+        ObservableList<Tour> tours= tourdataFactory.getTours();
         Tour theTour = null;
         for (Tour tour: tours){
             if (tour.getTourID()==ID){

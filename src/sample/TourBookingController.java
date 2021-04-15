@@ -7,7 +7,12 @@ public class TourBookingController{
     private TourDataFactory tourdataFactory = new TourDataFactory();
 
     public ObservableList<Booking> getAllBooking(){
-        return tourdataFactory.getBookings();
+        ObservableList<Booking> booking=tourdataFactory.getBookings();
+        for (Booking b: booking){
+            System.out.println(b.getBookingID());
+            System.out.println(b.getUser().getUserID());
+        }
+        return booking;
     }
 
     public void addBooking(Booking booking) {
