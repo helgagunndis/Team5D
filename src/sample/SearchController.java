@@ -16,6 +16,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.text.Text;
+import javafx.scene.text.TextFlow;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
@@ -41,6 +42,7 @@ public class SearchController implements Initializable {
     private Date dateFrom, dateTo;
     @FXML
     private Button buttonFindTour,buttonBookTour, buttonAdministrator,buttonCancel;
+
     @FXML
     private TextField cancelBookingID;
     @FXML
@@ -456,6 +458,7 @@ public class SearchController implements Initializable {
                         newValue.getTourInfo() + "\n" + "\n" + "Tour Date: " +
                         newValue.getTourDate() + "\n" + "\n" + "Tour Price: " +
                         newValue.getTourPrice() + " ISK");
+
             }
         });
     }

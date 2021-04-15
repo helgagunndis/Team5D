@@ -14,12 +14,11 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 public class AdminLoginController {
+
     @FXML
     private TextField adminUsername, adminPassword;
     @FXML
     private Text textWrongPassword;
-    @FXML
-    private PasswordField passwordFieldLogin;
 
     public void backToMainPageButtonFromAOnAction(ActionEvent event) throws IOException {
         changesPages("search.fxml",event);

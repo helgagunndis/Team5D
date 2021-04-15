@@ -18,11 +18,11 @@ public class TourDataFactory {
 
     public LocalDate millisToLocalDate(long millis){
         LocalDate date = Instant.ofEpochMilli(millis).atZone(ZoneId.systemDefault()).toLocalDate();
-
         return date;
     }
+
+    private final static String url = "jdbc:sqlite:/Users/evamargret/Desktop/Háskóli_íslands/2.vorönn/Þhug/Team5D/database/Team5D.DB";
     //private final static String url = "jdbc:sqlite:/Tolvunarfraedi/vor2021/HBV401G-Throun_hugbunadar/Team5D-new/Team5D/database/Team5D.DB";
-    private final static String url = "jdbc:sqlite:/Tolvunarfraedi/vor2021/HBV401G-Throun_hugbunadar/Team5D-new/Team5D/database/Team5D.DB";
 
     private Connection connect() {
         // SQLite connection string
@@ -61,7 +61,7 @@ public class TourDataFactory {
         }
     }
 
-    public void deleteTour (int ID) {
+    public void deleteTour(int ID) {
         String sql = "DELETE FROM Tour WHERE tourID = ?";
         try (Connection conn = this.connect();
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
@@ -135,7 +135,7 @@ public class TourDataFactory {
 
     public ObservableList<User> getUsers(){
         ObservableList<User> allUsers = FXCollections.observableArrayList();
-        String sql = "SELECT userID, userName, userEmail, date FROM Tour";
+        String sql = "SELECT userID, userName, userEmail FROM User";
 
         try (Connection conn = this.connect();
              Statement stmt  = conn.createStatement();
@@ -181,25 +181,38 @@ public class TourDataFactory {
         }
     }
 
-    public ObservableList<Booking> getBookings(){
-        ObservableList<Booking> bookings = FXCollections.observableArrayList();
-        //TourBookingController bookingController= new TourBookingController();
-        //ObservableList<User> users = getUsers(); // án í alla notendur
+    public ObservableList<Booking> getBookings() {
+        ObservableList<Booking> allBookings = FXCollections.observableArrayList();
+        TourUserController userController=new TourUserController();
+        TourController tourController = new TourController();
+        String sql = "SELECT bookingID, userID, tourID, spots FROM Booking";
 
+        try (Connection conn = this.connect();
+             Statement stmt = conn.createStatement();
+             ResultSet rs = stmt.executeQuery(sql)) {
 
-       /* for (int i = 0; i <= users.size()-1; i++) {
-            User eachUser = users.get( i );
-            for (int j = 0; j <= eachUser.getBookings().size()-1; j++) {
-                Booking data = eachUser.getBookings().get(j);
-                bookingController.addBooking(data);
-                Booking eachBooking = new Booking(data.getUser(),data.getTour(),data.getSpotsPerBooking());
-                eachBooking.setBookingID(bookingNum);
-                bookingNum++;
-                bookings.add(data);
+            // loop through the result set
+            while (rs.next()) {
+                int bookingID = rs.getInt("bookingID");
+                String userID = rs.getString("userID");
+                int tourID = rs.getInt("tourID");
+                int spots = rs.getInt("spots");
+
+                User user =userController.findUserByID(userID);
+                Tour tour = tourController.findTourByID(tourID);
+
+                Booking booking = new Booking(user, tour, spots);
+                booking.setBookingID(bookingID);
+                allBookings.add(booking);
             }
-        }*/
-        return bookings;
+
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        return allBookings;
     }
+
+
 
 /*
     public ObservableList<Tour> getTours(){
@@ -260,36 +273,4 @@ public class TourDataFactory {
         return tours;
     }
     */
-
-
-/*
-    public ObservableList<User> getUsers() {
-        ObservableList<User> users = FXCollections.observableArrayList();
-        User user1 = new User("1010942039","Sigurður Jónsson","siggi@gmail.com");
-        User user2 = new User("1703817529","Andrea Ágústsdóttir","andrea90@hotmail.com");
-        User user3 = new User("0201981719", "Guðrún Helga Traustadóttir","ghelga@gmail.com");
-
-        ObservableList<Tour> tours = getTours(); // án í ferð
-
-        ArrayList<Booking> bookings1= new ArrayList<>(); // tómur listi
-        bookings1.add(new Booking(user1, tours.get(0),2));
-        bookings1.add(new Booking(user1,tours.get(2),1));
-        bookings1.add(new Booking(user1,tours.get(3),4));
-        user1.setBookings(bookings1);
-
-        ArrayList<Booking> bookings2 = new ArrayList<>(); // tómur listi
-        bookings2.add(new Booking(user2,tours.get(1),6));
-        bookings2.add(new Booking(user2,tours.get(6),2));
-        user2.setBookings(bookings2);
-
-        ArrayList<Booking> bookings3 = new ArrayList<>(); // tómur listi
-        bookings3.add(new Booking(user3,tours.get(3),2));
-        user3.setBookings(bookings3);
-
-        users.add(user1);
-        users.add(user2);
-        users.add(user3);
-
-        return users;
-    }*/
 }

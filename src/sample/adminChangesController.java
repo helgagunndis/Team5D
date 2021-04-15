@@ -21,27 +21,10 @@ import java.util.ResourceBundle;
 public class adminChangesController implements Initializable {
 
     @FXML
-    private Button buttonDeleteTour;
-    @FXML
-    private Button buttonAddTour;
-    @FXML
-    private TextField textTourName;
+    private TextField textTourName, textTourPrice, textMaxBooking, textTourInfo,
+            textTourID,textTourServices, textTourRegion, textTourDuration;
     @FXML
     private DatePicker dateTourDate;
-    @FXML
-    private TextField textTourPrice;
-    @FXML
-    private TextField textMaxBooking;
-    @FXML
-    private TextField textTourInfo;
-    @FXML
-    private TextField textTourID;
-    @FXML
-    private TextField textTourServices;
-    @FXML
-    private TextField textTourRegion;
-    @FXML
-    private TextField textTourDuration;
     @FXML
     private ChoiceBox choiceBoxTourRegion, choiceBoxTourServices;
 

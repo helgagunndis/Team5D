@@ -25,20 +25,12 @@ public class BookingInfoController implements Initializable {
     @FXML
     private Text showNameOnTour, bookingConfirmed;
     @FXML
-    private TextField bookingNameTextField;
-    @FXML
-    private TextField bookingSSNTextField;
-    @FXML
-    private TextField bookingEmailTextField;
+    private TextField bookingNameTextField, bookingSSNTextField, bookingEmailTextField;
     @FXML
     private ChoiceBox bookingSpotsTaken;
-    @FXML
-    private Button bookTourButton;
-    @FXML
-    private Button backToMainPageButton;
+
 
     private Tour selectedTour;
-    private TourDataFactory tourDataFactory = new TourDataFactory();
     TourUserController userController= new TourUserController();
     TourBookingController bookingController= new TourBookingController();
 

@@ -38,6 +38,15 @@ public class TourController {
 
         return tours;
     }
+    public Tour findTourByID(int ID){
+        Tour theTour = null;
+        for (Tour tour: tours){
+            if (tour.getTourID()==ID){
+                theTour=tour;
+            }
+        }
+        return theTour;
+    }
 
     public long localDateToMillis (LocalDate value){
         Instant i = value.atStartOfDay(ZoneId.systemDefault()).toInstant();
@@ -64,7 +73,14 @@ public class TourController {
     }
 
     public Boolean isFullyBooked(int tourID){
-        return false;
+        boolean isFull=false;
+        for (Tour tour: tours){
+            if (tour.getTourID()==tourID){
+                if(tour.getAvailableSpots()<=0)
+                    isFull=true;
+            }
+        }
+        return isFull;
     }
 
     public ObservableList<Tour> tourRegionSearch(String region, ObservableList<Tour> full) {

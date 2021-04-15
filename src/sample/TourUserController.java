@@ -2,7 +2,6 @@ package sample;
 
 import javafx.collections.ObservableList;
 
-
 public class TourUserController {
     private TourDataFactory tourdataFactory = new TourDataFactory();
 
