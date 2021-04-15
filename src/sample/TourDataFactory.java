@@ -73,6 +73,28 @@ public class TourDataFactory {
         }
     }
 
+    public void updateSpotsForTour(int tourID , int availableSpots, int bookedSpots){
+        String sql = "UPDATE Tour SET availableSpots = ? , "
+                + "bookedSpots = ? , fullyBooked =?"
+                + "WHERE tourID = ?";
+        try (Connection conn = this.connect();
+             PreparedStatement pstmt = conn.prepareStatement(sql)) {
+
+            pstmt.setInt(1,availableSpots );
+            pstmt.setInt(2,bookedSpots);
+            boolean isFull = false;
+            if (availableSpots<=0){
+                isFull = true;
+            }
+            pstmt.setBoolean(3, isFull);
+            pstmt.setInt(4, tourID);
+
+            pstmt.executeUpdate();
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
     public ObservableList<Tour> getTours(){
         ObservableList<Tour> allTours = FXCollections.observableArrayList();
         String sql = "SELECT tourID, tourName, tourInfo, availableSpots, bookedSpots, tourPrice, fullyBooked, tourRegion, duration, services, date FROM Tour";

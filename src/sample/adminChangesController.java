@@ -22,7 +22,7 @@ public class adminChangesController implements Initializable {
 
     @FXML
     private TextField textTourName, textTourPrice, textMaxBooking, textTourInfo,
-            textTourID,textTourServices, textTourRegion, textTourDuration;
+            textTourID, textTourDuration;
     @FXML
     private DatePicker dateTourDate;
     @FXML

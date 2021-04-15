@@ -34,57 +34,24 @@ import java.util.ResourceBundle;
 import static javafx.fxml.FXMLLoader.load;
 
 public class SearchController implements Initializable {
+
     @FXML
     private ListView<Tour> tourListView;
     @FXML
     private TextArea infoOnTourTextArea;
     @FXML
-    private Date dateFrom, dateTo;
+    private TextField cancelBookingID,showFilterTextField;
     @FXML
-    private Button buttonFindTour,buttonBookTour, buttonAdministrator,buttonCancel;
-
+    private DatePicker startDatePicker, endDatePicker;
     @FXML
-    private TextField cancelBookingID;
+    private MenuItem filterAllRegions,filterAkureyriRegion,filterEgilsstadirRegion,
+            filterReykjavikRegion,filterIsafjordurRegion;
     @FXML
-    private TextField showFilterTextField;
+    private MenuItem filterAllDurations,filterToThreeHours,filterThreeToFiveHours,
+            filterFiveToSevenHours, filterFullDay;
     @FXML
-    private DatePicker startDatePicker;
-    @FXML
-    private DatePicker endDatePicker;
-    @FXML
-    private SplitMenuButton regionSplitMenuButton;
-    @FXML
-    private SplitMenuButton durationSplitMenuButton;
-    @FXML
-    private SplitMenuButton servicesSplitMenuButton;
-    @FXML
-    private MenuItem filterAllRegions;
-    @FXML
-    private MenuItem filterAkureyriRegion;
-    @FXML
-    private MenuItem filterEgilsstadirRegion;
-    @FXML
-    private MenuItem filterReykjavikRegion;
-    @FXML
-    private MenuItem filterIsafjordurRegion;
-    @FXML
-    private MenuItem filterAllDurations;
-    @FXML
-    private MenuItem filterToThreeHours;
-    @FXML
-    private MenuItem filterThreeToFiveHours;
-    @FXML
-    private MenuItem filterFiveToSevenHours;
-    @FXML
-    private MenuItem filterFullDay;
-    @FXML
-    private MenuItem filterAllServices;
-    @FXML
-    private MenuItem filterServicesWheelchairAccessible;
-    @FXML
-    private MenuItem filterServicesFamilyFriendly;
-    @FXML
-    private MenuItem filterServicesAction;
+    private MenuItem filterAllServices,filterServicesWheelchairAccessible,
+            filterServicesFamilyFriendly,filterServicesAction;
 
 
     private TourDataFactory tourdataFactory = new TourDataFactory();
@@ -464,11 +431,6 @@ public class SearchController implements Initializable {
     }
 
 
-    public void addButtonOnActivity(ActionEvent actionEvent) {
-        System.out.println("halló");
-    }
-
-
     public void buttonAdministratorOnAction(ActionEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("adminLogin.fxml"));
@@ -481,10 +443,11 @@ public class SearchController implements Initializable {
 
     public void buttonCancelOnAction(ActionEvent actionEvent) {
         TourBookingController bookingController= new TourBookingController();
-
+        TourController tourController= new TourController();
         int id = Integer.parseInt(cancelBookingID.getText());
+        Booking booking=bookingController.getThisBooking(id);
+        tourController.changesSpotsAfterDeleteBooking(booking.getTour(),booking.getSpotsPerBooking());
         bookingController.deleteBooking(id);
-
     }
 
 }

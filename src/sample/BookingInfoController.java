@@ -59,10 +59,9 @@ public class BookingInfoController implements Initializable {
             userController.addNewUser(user);
         }
         int spots= Integer.parseInt(bookingSpotsTaken.getValue().toString());
-        tourController.changesSpotsAferBooking(selectedTour,spots);
+        tourController.changesSpotsAfterBooking(selectedTour,spots);
         Booking booking= new Booking(user,selectedTour,spots);
         bookingController.addBooking(booking);
-
 
         //bookingController.getAllBooking();
         //bookingConfirmed.setText("Your booking number is : "+ booking.getBookingID());
