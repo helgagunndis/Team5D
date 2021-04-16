@@ -1,0 +1,176 @@
+Index: src/sample/TourBookingController.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/sample/TourBookingController.java b/src/sample/TourBookingController.java
+--- a/src/sample/TourBookingController.java	(revision 2392464c179c7af508daff9676eea622b5097b72)
++++ b/src/sample/TourBookingController.java	(date 1618568846957)
+@@ -45,7 +45,6 @@
+         return bookings;
+     }
+ 
+-
+     public int totalBookings(int tourID) {
+         ObservableList<Booking> allBookings =getAllBooking();
+         int total=0;
+Index: src/sample/SearchController.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/sample/SearchController.java b/src/sample/SearchController.java
+--- a/src/sample/SearchController.java	(revision 2392464c179c7af508daff9676eea622b5097b72)
++++ b/src/sample/SearchController.java	(date 1618569999662)
+@@ -52,6 +52,8 @@
+     @FXML
+     private MenuItem filterAllServices,filterServicesWheelchairAccessible,
+             filterServicesFamilyFriendly,filterServicesAction;
++    @FXML
++    private Text fullyBookedText;
+ 
+ 
+     private TourDataFactory tourdataFactory = new TourDataFactory();
+@@ -425,6 +427,15 @@
+                         newValue.getTourInfo() + "\n" + "\n" + "Tour Date: " +
+                         newValue.getTourDate() + "\n" + "\n" + "Tour Price: " +
+                         newValue.getTourPrice() + " ISK");
++                if (filteredTours.isFullyBooked(newValue.getTourID())){
++                    //fullyBookedText.setText("This tour is fully booked");
++
++                }
++                else {
++                    //fullyBookedText.setText("");
++                }
++
++
+ 
+             }
+         });
+Index: src/sample/adminChangesController.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/sample/adminChangesController.java b/src/sample/adminChangesController.java
+--- a/src/sample/adminChangesController.java	(revision 2392464c179c7af508daff9676eea622b5097b72)
++++ b/src/sample/adminChangesController.java	(date 1618569032112)
+@@ -48,6 +48,7 @@
+         String services = choiceBoxTourServices.getValue().toString();
+         LocalDate date = dateTourDate.getValue();
+         Tour tour= new Tour(name,info,date,spots,price,region,duration,services);
++        tour.setBookedSpots(0);
+         tourController.addTour(tour);
+     }
+ 
+Index: src/sample/TourDataFactory.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/sample/TourDataFactory.java b/src/sample/TourDataFactory.java
+--- a/src/sample/TourDataFactory.java	(revision 2392464c179c7af508daff9676eea622b5097b72)
++++ b/src/sample/TourDataFactory.java	(date 1618569322147)
+@@ -73,21 +73,19 @@
+         }
+     }
+ 
+-    public void updateSpotsForTour(int tourID , int availableSpots, int bookedSpots){
+-        String sql = "UPDATE Tour SET availableSpots = ? , "
+-                + "bookedSpots = ? , fullyBooked =?"
++    public void updateSpotsForTour(int tourID , int availableSpots){
++        String sql = "UPDATE Tour SET availableSpots = ? , fullyBooked =?"
+                 + "WHERE tourID = ?";
+         try (Connection conn = this.connect();
+              PreparedStatement pstmt = conn.prepareStatement(sql)) {
+ 
+             pstmt.setInt(1,availableSpots );
+-            pstmt.setInt(2,bookedSpots);
+             boolean isFull = false;
+             if (availableSpots<=0){
+                 isFull = true;
+             }
+-            pstmt.setBoolean(3, isFull);
+-            pstmt.setInt(4, tourID);
++            pstmt.setBoolean(2, isFull);
++            pstmt.setInt(3, tourID);
+ 
+             pstmt.executeUpdate();
+         } catch (SQLException e) {
+Index: src/sample/TourController.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/sample/TourController.java b/src/sample/TourController.java
+--- a/src/sample/TourController.java	(revision 2392464c179c7af508daff9676eea622b5097b72)
++++ b/src/sample/TourController.java	(date 1618569322158)
+@@ -27,13 +27,11 @@
+ 
+     public void changesSpotsAfterBooking(Tour tour, int spots){
+         int newAvailableSpots= tour.getAvailableSpots()-spots;
+-        int newBookedSpots= tour.getBookedSpots()+spots;
+-        tourdataFactory.updateSpotsForTour(tour.getTourID(),newAvailableSpots,newBookedSpots);
++        tourdataFactory.updateSpotsForTour(tour.getTourID(),newAvailableSpots);
+     }
+     public void changesSpotsAfterDeleteBooking(Tour tour, int spots){
+         int newAvailableSpots= tour.getAvailableSpots() +spots;
+-        int newBookedSpots= tour.getBookedSpots()-spots;
+-        tourdataFactory.updateSpotsForTour(tour.getTourID(),newAvailableSpots,newBookedSpots);
++        tourdataFactory.updateSpotsForTour(tour.getTourID(),newAvailableSpots);
+     }
+ 
+     public Tour findTourByID(int ID){
+@@ -47,7 +45,6 @@
+         return theTour;
+     }
+ 
+-
+     public void addTour(Tour tour) {
+         long millis = localDateToMillis(tour.getTourDate());
+         tourdataFactory.insertTour(tour.getTourName(),
+@@ -121,8 +118,5 @@
+ 
+         return tours;
+     }
+-
+-
+-
+ }
+ 
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	(revision 2392464c179c7af508daff9676eea622b5097b72)
++++ b/.idea/workspace.xml	(date 1618570391332)
+@@ -2,17 +2,12 @@
+ <project version="4">
+   <component name="ChangeListManager">
+     <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="">
+-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_08_04_2021,_20_52_[Default]/TourBookingController.class" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_08_04_2021,_20_52_[Default]/shelved.patch" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_08_04_2021__20_52__Default_.xml" beforeDir="false" />
+       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/database/Team5D.DB" beforeDir="false" afterPath="$PROJECT_DIR$/database/Team5D.DB" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/out/production/Team5D/sample/BookingInfoController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Team5D/sample/BookingInfoController.class" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/out/production/Team5D/sample/TourBookingController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Team5D/sample/TourBookingController.class" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/out/production/Team5D/sample/TourController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Team5D/sample/TourController.class" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/out/production/Team5D/sample/TourDataFactory.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Team5D/sample/TourDataFactory.class" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/out/production/Team5D/sample/adminChangesController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Team5D/sample/adminChangesController.class" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/sample/BookingInfoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/BookingInfoController.java" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/src/sample/SearchController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/SearchController.java" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/src/sample/TourBookingController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/TourBookingController.java" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/src/sample/TourController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/TourController.java" afterDir="false" />
+@@ -329,7 +324,8 @@
+       <workItem from="1618405220830" duration="1197000" />
+       <workItem from="1618512971005" duration="2000" />
+       <workItem from="1618514090640" duration="66000" />
+-      <workItem from="1618525267040" duration="4825000" />
++      <workItem from="1618525267040" duration="5215000" />
++      <workItem from="1618567487726" duration="2466000" />
+     </task>
+     <servers />
+   </component>

@@ -21,9 +21,9 @@ public class TourDataFactory {
         return date;
     }
 
-    //private final static String url = "jdbc:sqlite:/Users/evamargret/Desktop/Háskóli_íslands/2.vorönn/Þhug/Team5D/database/Team5D.DB";
+    private final static String url = "jdbc:sqlite:/Users/evamargret/Desktop/Háskóli_íslands/2.vorönn/Þhug/Team5D/database/Team5D.DB";
     //private final static String url = "jdbc:sqlite:/Tolvunarfraedi/vor2021/HBV401G-Throun_hugbunadar/Team5D-new/Team5D/database/Team5D.DB";
-    private final static String url = "jdbc:sqlite:/Users/thorhallureythorsson/Desktop/Skólinn/Vor 21/HBV401G - Þróun Hugbúnaðar/Team5D/database/Team5D.DB";
+    //private final static String url = "jdbc:sqlite:/Users/thorhallureythorsson/Desktop/Skólinn/Vor 21/HBV401G - Þróun Hugbúnaðar/Team5D/database/Team5D.DB";
 
     private Connection connect() {
         // SQLite connection string
@@ -74,21 +74,19 @@ public class TourDataFactory {
         }
     }
 
-    public void updateSpotsForTour(int tourID , int availableSpots, int bookedSpots){
-        String sql = "UPDATE Tour SET availableSpots = ? , "
-                + "bookedSpots = ? , fullyBooked =?"
+    public void updateSpotsForTour(int tourID , int availableSpots){
+        String sql = "UPDATE Tour SET availableSpots = ? , fullyBooked =?"
                 + "WHERE tourID = ?";
         try (Connection conn = this.connect();
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
 
             pstmt.setInt(1,availableSpots );
-            pstmt.setInt(2,bookedSpots);
             boolean isFull = false;
             if (availableSpots<=0){
                 isFull = true;
             }
-            pstmt.setBoolean(3, isFull);
-            pstmt.setInt(4, tourID);
+            pstmt.setBoolean(2, isFull);
+            pstmt.setInt(3, tourID);
 
             pstmt.executeUpdate();
         } catch (SQLException e) {

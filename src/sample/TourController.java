@@ -27,13 +27,11 @@ public class TourController {
 
     public void changesSpotsAfterBooking(Tour tour, int spots){
         int newAvailableSpots= tour.getAvailableSpots()-spots;
-        int newBookedSpots= tour.getBookedSpots()+spots;
-        tourdataFactory.updateSpotsForTour(tour.getTourID(),newAvailableSpots,newBookedSpots);
+        tourdataFactory.updateSpotsForTour(tour.getTourID(),newAvailableSpots);
     }
     public void changesSpotsAfterDeleteBooking(Tour tour, int spots){
         int newAvailableSpots= tour.getAvailableSpots() +spots;
-        int newBookedSpots= tour.getBookedSpots()-spots;
-        tourdataFactory.updateSpotsForTour(tour.getTourID(),newAvailableSpots,newBookedSpots);
+        tourdataFactory.updateSpotsForTour(tour.getTourID(),newAvailableSpots);
     }
 
     public Tour findTourByID(int ID){
@@ -46,7 +44,6 @@ public class TourController {
         }
         return theTour;
     }
-
 
     public void addTour(Tour tour) {
         long millis = localDateToMillis(tour.getTourDate());
@@ -121,8 +118,5 @@ public class TourController {
 
         return tours;
     }
-
-
-
 }
 

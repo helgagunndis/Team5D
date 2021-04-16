@@ -52,6 +52,10 @@ public class SearchController implements Initializable {
     @FXML
     private MenuItem filterAllServices,filterServicesWheelchairAccessible,
             filterServicesFamilyFriendly,filterServicesAction;
+    @FXML
+    private Text fullyBookedTour;
+    @FXML
+    private Button buttonBookTour;
 
 
     private TourDataFactory tourdataFactory = new TourDataFactory();
@@ -425,11 +429,29 @@ public class SearchController implements Initializable {
                         newValue.getTourInfo() + "\n" + "\n" + "Tour Date: " +
                         newValue.getTourDate() + "\n" + "\n" + "Tour Price: " +
                         newValue.getTourPrice() + " ISK");
-
+                int spots =newValue.getAvailableSpots();
+                switch (spots) {
+                    case 0:
+                        fullyBookedTour.setText("This tour is fully booked");
+                        break;
+                    case 1:
+                        fullyBookedTour.setText("One spot Available");
+                        break;
+                    case 2:
+                        fullyBookedTour.setText("Two spots Available");
+                        break;
+                    case 3:
+                        fullyBookedTour.setText("Three spots Available");
+                        break;
+                    case 4:
+                        fullyBookedTour.setText("Four spots Available");
+                        break;
+                    default:
+                        fullyBookedTour.setText("");
+                }
             }
         });
     }
-
 
     public void buttonAdministratorOnAction(ActionEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader();

@@ -45,7 +45,6 @@ public class TourBookingController{
         return bookings;
     }
 
-
     public int totalBookings(int tourID) {
         ObservableList<Booking> allBookings =getAllBooking();
         int total=0;

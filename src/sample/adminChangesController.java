@@ -48,6 +48,7 @@ public class adminChangesController implements Initializable {
         String services = choiceBoxTourServices.getValue().toString();
         LocalDate date = dateTourDate.getValue();
         Tour tour= new Tour(name,info,date,spots,price,region,duration,services);
+        tour.setBookedSpots(0);
         tourController.addTour(tour);
     }
 
