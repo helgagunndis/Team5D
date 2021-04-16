@@ -1,0 +1,14 @@
+<changelist name="Uncommitted_changes_before_Update_at_16_4_2021,_14_18_[Default]" date="1618582722886" recycled="true" deleted="true">
+  <option name="PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_16_4_2021,_14_18_[Default]/shelved.patch" />
+  <option name="DESCRIPTION" value="Uncommitted changes before Update at 16.4.2021, 14:18 [Default]" />
+  <binary>
+    <option name="BEFORE_PATH" value="out/production/Team5D/sample/TourDataFactory.class" />
+    <option name="AFTER_PATH" value="out/production/Team5D/sample/TourDataFactory.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_16_4_2021,_14_18_[Default]/TourDataFactory.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="database/Team5D.DB" />
+    <option name="AFTER_PATH" value="database/Team5D.DB" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_16_4_2021,_14_18_[Default]/Team5D.DB" />
+  </binary>
+</changelist>
