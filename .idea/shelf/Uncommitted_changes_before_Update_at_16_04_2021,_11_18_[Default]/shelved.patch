@@ -1,0 +1,53 @@
+Index: out/production/Team5D/sample/bookingInfo.fxml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/out/production/Team5D/sample/bookingInfo.fxml b/out/production/Team5D/sample/bookingInfo.fxml
+--- a/out/production/Team5D/sample/bookingInfo.fxml	(revision 7dbde33609595bd4f4f600ff52033be8a7b64ae8)
++++ b/out/production/Team5D/sample/bookingInfo.fxml	(date 1618570486909)
+@@ -44,7 +44,7 @@
+                   <Font size="11.0" />
+                </font>
+             </Text>
+-            <Text layoutX="98.0" layoutY="335.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Þegar búið er að ýta á bóka-&gt; bókun tókst bókunar númerið þitt er:" wrappingWidth="245.21630859375" />
++            <Text fx:id="bookingConfirmed" layoutX="98.0" layoutY="335.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="245.21630859375" />
+          </children>
+       </AnchorPane>
+    </right>
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	(revision 7dbde33609595bd4f4f600ff52033be8a7b64ae8)
++++ b/.idea/workspace.xml	(date 1618571585914)
+@@ -2,17 +2,8 @@
+ <project version="4">
+   <component name="ChangeListManager">
+     <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="">
+-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/61766c07-a037-4e1e-9aa1-1e2b22f9c658.xml" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/61766c07-a037-4e1e-9aa1-1e2b22f9c658/storage_v2/_src_/schema/main.uQUzAA.meta" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/.idea/libraries/lib.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/lib.xml" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/database/Team5D.DB" beforeDir="false" afterPath="$PROJECT_DIR$/database/Team5D.DB" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/out/production/Team5D/sample/TourController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Team5D/sample/TourController.class" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/out/production/Team5D/sample/TourDataFactory.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Team5D/sample/TourDataFactory.class" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/sample/TourDataFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/TourDataFactory.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/sample/bookingInfo.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/bookingInfo.fxml" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/out/production/Team5D/sample/bookingInfo.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Team5D/sample/bookingInfo.fxml" afterDir="false" />
+     </list>
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+@@ -179,7 +170,7 @@
+     <property name="node.js.selected.package.eslint" value="(autodetect)" />
+     <property name="node.js.selected.package.tslint" value="(autodetect)" />
+     <property name="nodejs_package_manager_path" value="npm" />
+-    <property name="project.structure.last.edited" value="Modules" />
++    <property name="project.structure.last.edited" value="Libraries" />
+     <property name="project.structure.proportion" value="0.15429688" />
+     <property name="project.structure.side.proportion" value="0.2" />
+     <property name="recentsLimit" value="5" />
