@@ -447,8 +447,7 @@ public class SearchController implements Initializable {
         TourController tourController= new TourController();
         int id = Integer.parseInt(cancelBookingID.getText());
         Booking booking=bookingController.getThisBooking(id);
-        //tourController.changesSpotsAfterDeleteBooking(booking.getTour(),booking.getSpotsPerBooking());
+        tourController.changesSpotsAfterDeleteBooking(booking.getTour(),booking.getSpotsPerBooking());
         bookingController.deleteBooking(id);
     }
-
 }
