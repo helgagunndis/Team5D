@@ -48,7 +48,7 @@
                   <MenuItem fx:id="filterAllServices" mnemonicParsing="false" text="All services" />
               </items>
             </SplitMenuButton>
-            <TextField fx:id="showFilterTextField" layoutX="17.0" layoutY="293.0" prefHeight="39.0" prefWidth="120.0" disable="true" />
+            <TextField fx:id="showFilterTextField" disable="true" layoutX="17.0" layoutY="293.0" prefHeight="39.0" prefWidth="120.0" />
          </children>
       </AnchorPane>
    </left>
@@ -74,7 +74,8 @@
             <Text layoutX="20.0" layoutY="320.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Cancel your booking:" />
             <TextField fx:id="cancelBookingID" layoutX="19.0" layoutY="330.0" prefHeight="27.0" prefWidth="135.0" promptText="Enter your booking ID" />
             <Button fx:id="buttonCancel" layoutX="163.0" layoutY="330.0" mnemonicParsing="false" onAction="#buttonCancelOnAction" prefHeight="27.0" prefWidth="61.0" text="Cancel" />
-            <TextArea fx:id="infoOnTourTextArea" layoutX="260.0" layoutY="136.0" prefHeight="162.0" prefWidth="172.0" wrapText="true" disable="true" />
+            <TextArea fx:id="infoOnTourTextArea" disable="true" layoutX="260.0" layoutY="136.0" prefHeight="162.0" prefWidth="172.0" wrapText="true" />
+            <Text fx:id="fullyBookedTour" layoutX="298.0" layoutY="312.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="96.21875" />
          </children>
       </AnchorPane>
    </center>
