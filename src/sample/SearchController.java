@@ -54,8 +54,6 @@ public class SearchController implements Initializable {
             filterServicesFamilyFriendly,filterServicesAction;
     @FXML
     private Text fullyBookedTour;
-    @FXML
-    private Button buttonBookTour;
 
 
     private TourDataFactory tourdataFactory = new TourDataFactory();
@@ -402,25 +400,6 @@ public class SearchController implements Initializable {
 
         tourListView.setItems(allTours);
 
-/*
-        tourListView.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
-            if(tourListView.isFocused()){
-                String info = String.format(newValue.getTourName() + "\n" + "\n" +
-                        newValue.getTourInfo() + "\n" + "\n" + "Tour Date: " + newValue.getTourDate() + "\n" + "\n" + "Tour Price: " + newValue.getTourPrice() + " ISK");
-                infoOnTourTextArea.setText(info);
-            }
-        });
-
-
-
-
-        tourListView.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
-                    public void changed(ObservableValue<? extends String> ov, String old_val, String new_val) {
-                        infoOnTourTextArea.setText(new_val);
-                        label.setTextFill(Color.web(new_val));
-                    }
-                });
-*/
 
         tourListView.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Tour>() {
             @Override
@@ -435,16 +414,16 @@ public class SearchController implements Initializable {
                         fullyBookedTour.setText("This tour is fully booked");
                         break;
                     case 1:
-                        fullyBookedTour.setText("One spot Available");
+                        fullyBookedTour.setText("One spot available");
                         break;
                     case 2:
-                        fullyBookedTour.setText("Two spots Available");
+                        fullyBookedTour.setText("Two spots available");
                         break;
                     case 3:
-                        fullyBookedTour.setText("Three spots Available");
+                        fullyBookedTour.setText("Three spots available");
                         break;
                     case 4:
-                        fullyBookedTour.setText("Four spots Available");
+                        fullyBookedTour.setText("Four spots available");
                         break;
                     default:
                         fullyBookedTour.setText("");
@@ -468,7 +447,7 @@ public class SearchController implements Initializable {
         TourController tourController= new TourController();
         int id = Integer.parseInt(cancelBookingID.getText());
         Booking booking=bookingController.getThisBooking(id);
-        tourController.changesSpotsAfterDeleteBooking(booking.getTour(),booking.getSpotsPerBooking());
+        //tourController.changesSpotsAfterDeleteBooking(booking.getTour(),booking.getSpotsPerBooking());
         bookingController.deleteBooking(id);
     }
 

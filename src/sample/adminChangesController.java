@@ -50,6 +50,11 @@ public class adminChangesController implements Initializable {
         Tour tour= new Tour(name,info,date,spots,price,region,duration,services);
         tour.setBookedSpots(0);
         tourController.addTour(tour);
+        textTourName.setText("");
+        textTourInfo.setText("");
+        textMaxBooking.setText("");
+        textTourPrice.setText("");
+        textTourDuration.setText("");
     }
 
     public void buttonDeleteTourOnAction(ActionEvent event) {

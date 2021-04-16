@@ -63,8 +63,10 @@ public class BookingInfoController implements Initializable {
         Booking booking= new Booking(user,selectedTour,spots);
         bookingController.addBooking(booking);
 
-        //bookingController.getAllBooking();
-        //bookingConfirmed.setText("Your booking number is : "+ booking.getBookingID());
+        bookingConfirmed.setText("Booking confirmed");
+        bookingSSNTextField.setText("");
+        bookingNameTextField.setText("");
+        bookingEmailTextField.setText("");
     }
     @Override
     public void initialize(URL location, ResourceBundle resources) {

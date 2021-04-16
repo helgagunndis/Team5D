@@ -1,0 +1,282 @@
+Index: src/sample/TourBookingController.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/sample/TourBookingController.java b/src/sample/TourBookingController.java
+--- a/src/sample/TourBookingController.java	(revision 2538063b910816b9c64c492598c0e8598ba08678)
++++ b/src/sample/TourBookingController.java	(date 1618572629093)
+@@ -5,8 +5,6 @@
+ 
+ public class TourBookingController{
+     private TourDataFactory tourdataFactory = new TourDataFactory();
+-    private TourController tourController= new TourController();
+-    private TourUserController userController= new TourUserController();
+ 
+     public ObservableList<Booking> getAllBooking(){
+         ObservableList<Booking> booking=tourdataFactory.getBookings();
+Index: src/sample/SearchController.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/sample/SearchController.java b/src/sample/SearchController.java
+--- a/src/sample/SearchController.java	(revision 2538063b910816b9c64c492598c0e8598ba08678)
++++ b/src/sample/SearchController.java	(date 1618573193021)
+@@ -402,25 +402,6 @@
+ 
+         tourListView.setItems(allTours);
+ 
+-/*
+-        tourListView.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+-            if(tourListView.isFocused()){
+-                String info = String.format(newValue.getTourName() + "\n" + "\n" +
+-                        newValue.getTourInfo() + "\n" + "\n" + "Tour Date: " + newValue.getTourDate() + "\n" + "\n" + "Tour Price: " + newValue.getTourPrice() + " ISK");
+-                infoOnTourTextArea.setText(info);
+-            }
+-        });
+-
+-
+-
+-
+-        tourListView.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
+-                    public void changed(ObservableValue<? extends String> ov, String old_val, String new_val) {
+-                        infoOnTourTextArea.setText(new_val);
+-                        label.setTextFill(Color.web(new_val));
+-                    }
+-                });
+-*/
+ 
+         tourListView.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Tour>() {
+             @Override
+Index: src/sample/adminChangesController.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/sample/adminChangesController.java b/src/sample/adminChangesController.java
+--- a/src/sample/adminChangesController.java	(revision 2538063b910816b9c64c492598c0e8598ba08678)
++++ b/src/sample/adminChangesController.java	(date 1618573193009)
+@@ -50,6 +50,11 @@
+         Tour tour= new Tour(name,info,date,spots,price,region,duration,services);
+         tour.setBookedSpots(0);
+         tourController.addTour(tour);
++        textTourName.setText("");
++        textTourInfo.setText("");
++        textMaxBooking.setText("");
++        textTourPrice.setText("");
++        textTourDuration.setText("");
+     }
+ 
+     public void buttonDeleteTourOnAction(ActionEvent event) {
+Index: src/sample/BookingInfoController.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/sample/BookingInfoController.java b/src/sample/BookingInfoController.java
+--- a/src/sample/BookingInfoController.java	(revision 2538063b910816b9c64c492598c0e8598ba08678)
++++ b/src/sample/BookingInfoController.java	(date 1618573233343)
+@@ -63,8 +63,10 @@
+         Booking booking= new Booking(user,selectedTour,spots);
+         bookingController.addBooking(booking);
+ 
+-        //bookingController.getAllBooking();
+-        //bookingConfirmed.setText("Your booking number is : "+ booking.getBookingID());
++        bookingConfirmed.setText("Booking confirmed");
++        bookingSSNTextField.setText("");
++        bookingNameTextField.setText("");
++        bookingEmailTextField.setText("");
+     }
+     @Override
+     public void initialize(URL location, ResourceBundle resources) {
+Index: src/sample/TourDataFactory.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/sample/TourDataFactory.java b/src/sample/TourDataFactory.java
+--- a/src/sample/TourDataFactory.java	(revision 2538063b910816b9c64c492598c0e8598ba08678)
++++ b/src/sample/TourDataFactory.java	(date 1618573193014)
+@@ -141,7 +141,7 @@
+         }
+     }
+ 
+-    public void deleteUser (String ID) {
++    /*public void deleteUser (String ID) {
+         String sql = "DELETE FROM User WHERE userID = ?";
+         try (Connection conn = this.connect();
+              PreparedStatement pstmt = conn.prepareStatement(sql)) {
+@@ -151,8 +151,7 @@
+         catch (SQLException e) {
+             System.out.println(e.getMessage());
+         }
+-    }
+-
++    }*/
+ 
+     public ObservableList<User> getUsers(){
+         ObservableList<User> allUsers = FXCollections.observableArrayList();
+@@ -232,66 +231,4 @@
+         }
+         return allBookings;
+     }
+-
+-
+-
+-/*
+-    public ObservableList<Tour> getTours(){
+-        ObservableList<Tour> tours = FXCollections.observableArrayList();
+-        selectAllTours();
+-
+-        LocalDate d1 = LocalDate.of(2021,4,01);
+-        LocalDate d2 = LocalDate.of(2021,4,05);
+-        LocalDate d3 = LocalDate.of(2021,5,11);
+-        LocalDate d4 = LocalDate.of(2021,5,21);
+-        LocalDate d5 = LocalDate.of(2021,6,04);
+-        LocalDate d6 = LocalDate.of(2021,6,16);
+-        LocalDate d7 = LocalDate.of(2021,7,10);
+-        LocalDate d8 = LocalDate.of(2021,7,11);
+-        LocalDate d9 = LocalDate.of(2021,8,07);
+-        LocalDate d10 = LocalDate.of(2021,8,24);
+-
+-
+-        Tour tour1 = (new Tour( "Horse riding in Eyjafjörður","Bring warm clothes",d1, 10,10000,
+-                "Akureyri",7,"Family friendly"));
+-        tour1.setTourID(1);
+-        tours.add(tour1);
+-        Tour tour2= (new Tour( "Buggy Tour in Rauðhólar","Children must be under parent supervision",
+-                d2,20,20000, "Reykjavík",5, "Action"));
+-        tour2.setTourID(2);
+-        tours.add(tour2);
+-        Tour tour3=(new Tour( "Kajaking in Lagarfljót","Bring warm clothes, you could get wet.",d3,10,15000,
+-                "Egilsstaðir", 3, "Family friendly"));
+-        tour3.setTourID(3);
+-        tours.add(tour3);
+-        Tour tour4=(new Tour( "Walk around Skaftafell","Bring warm clothes and packed lunch.",d4,50,20000,
+-                "Reykjavík", 15, "Family friendly"));
+-        tour4.setTourID(4);
+-        tours.add(tour4);
+-        Tour tour5=(new Tour( "Diving in Silfra","Bring dry clothes.",d5,25,18000,
+-                "Reykjavík", 6, "Action"));
+-        tour5.setTourID(5);
+-        tours.add(tour5);
+-        Tour tour6=(new Tour( "Snowmobil trip","Bring warm clothes.",d6,15,25000,
+-                "Ísafjörður", 6, "Action"));
+-        tour6.setTourID(6);
+-        tours.add(tour6);
+-        Tour tour7 = (new Tour( "Walk around Reykjavík","Come dressed according to weather.",d7, 25,7000,
+-                "Reykjavík",2, "Wheelchair accessible"));
+-        tour1.setTourID(7);
+-        tours.add(tour7);
+-        Tour tour8 = (new Tour( "Biking around Þingvellir","Bring warm clothes. Bikes are available for rent.",d8, 15,10000,
+-                "Reykjavík",8, "Family friendly"));
+-        tour1.setTourID(8);
+-        tours.add(tour8);
+-        Tour tour9 = (new Tour( "Skiing in Hlíðarfjall","Skiing equipment is available for rent",d9, 20,15000,
+-                "Akureyri",5, "Action"));
+-        tour1.setTourID(9);
+-        tours.add(tour9);
+-
+-
+-
+-        return tours;
+-    }
+-    */
+ }
+Index: src/sample/TourController.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/sample/TourController.java b/src/sample/TourController.java
+--- a/src/sample/TourController.java	(revision 2538063b910816b9c64c492598c0e8598ba08678)
++++ b/src/sample/TourController.java	(date 1618573193025)
+@@ -20,11 +20,6 @@
+         return timeInMillis;
+     }
+ 
+-    public LocalDate millisToLocalDate(long millis){
+-        LocalDate date = Instant.ofEpochMilli(millis).atZone(ZoneId.systemDefault()).toLocalDate();
+-        return date;
+-    }
+-
+     public void changesSpotsAfterBooking(Tour tour, int spots){
+         int newAvailableSpots= tour.getAvailableSpots()-spots;
+         tourdataFactory.updateSpotsForTour(tour.getTourID(),newAvailableSpots);
+@@ -107,16 +102,26 @@
+         }
+         return result;
+     }
+-    public ArrayList<User> getTourEmailList(String tourID){
++    public ArrayList<User> getTourEmailList(int tourID){
+         ArrayList<User> users = new ArrayList<>();
+-
++        ObservableList<Booking> bookings= tourdataFactory.getBookings();
++        for (Booking booking : bookings){
++            if (booking.getTour().getTourID()==tourID){
++                users.add(booking.getUser());
++            }
++        }
+         return users;
+     }
+ 
+-    public ArrayList<Tour> findTourByName(String tourName){
+-        ArrayList<Tour> tours = new ArrayList<>();
+-
+-        return tours;
++    public Tour findTourByName(String tourName){
++        Tour theTour =null;
++        ObservableList<Tour> tour= tourdataFactory.getTours();
++        for (Tour t: tour){
++            if (t.getTourName().equals(tourName)){
++                theTour=t;
++            }
++        }
++        return theTour;
+     }
+ }
+ 
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	(revision 2538063b910816b9c64c492598c0e8598ba08678)
++++ b/.idea/workspace.xml	(date 1618573193226)
+@@ -2,33 +2,8 @@
+ <project version="4">
+   <component name="ChangeListManager">
+     <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="">
+-      <change beforePath="$PROJECT_DIR$/.idea/Team5D.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Team5D.iml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/.idea/libraries/lib.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/lib.xml" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/database/Team5D.DB" beforeDir="false" afterPath="$PROJECT_DIR$/database/Team5D.DB" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/out/production/Team5D/sample/SearchController$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Team5D/sample/SearchController$1.class" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/out/production/Team5D/sample/SearchController$10.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Team5D/sample/SearchController$10.class" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/out/production/Team5D/sample/SearchController$11.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Team5D/sample/SearchController$11.class" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/out/production/Team5D/sample/SearchController$12.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Team5D/sample/SearchController$12.class" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/out/production/Team5D/sample/SearchController$13.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Team5D/sample/SearchController$13.class" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/out/production/Team5D/sample/SearchController$14.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Team5D/sample/SearchController$14.class" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/out/production/Team5D/sample/SearchController$15.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Team5D/sample/SearchController$15.class" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/out/production/Team5D/sample/SearchController$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Team5D/sample/SearchController$2.class" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/out/production/Team5D/sample/SearchController$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Team5D/sample/SearchController$3.class" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/out/production/Team5D/sample/SearchController$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Team5D/sample/SearchController$4.class" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/out/production/Team5D/sample/SearchController$5.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Team5D/sample/SearchController$5.class" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/out/production/Team5D/sample/SearchController$6.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Team5D/sample/SearchController$6.class" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/out/production/Team5D/sample/SearchController$7.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Team5D/sample/SearchController$7.class" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/out/production/Team5D/sample/SearchController$8.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Team5D/sample/SearchController$8.class" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/out/production/Team5D/sample/SearchController$9.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Team5D/sample/SearchController$9.class" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/out/production/Team5D/sample/SearchController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Team5D/sample/SearchController.class" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/out/production/Team5D/sample/TourBookingController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Team5D/sample/TourBookingController.class" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/out/production/Team5D/sample/TourController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Team5D/sample/TourController.class" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/out/production/Team5D/sample/TourDataFactory.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Team5D/sample/TourDataFactory.class" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/out/production/Team5D/sample/adminChangesController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Team5D/sample/adminChangesController.class" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/out/production/Team5D/sample/bookingInfo.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Team5D/sample/bookingInfo.fxml" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/sample/BookingInfoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/BookingInfoController.java" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/src/sample/SearchController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/SearchController.java" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/src/sample/TourBookingController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/TourBookingController.java" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/src/sample/TourController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/TourController.java" afterDir="false" />

@@ -20,11 +20,6 @@ public class TourController {
         return timeInMillis;
     }
 
-    public LocalDate millisToLocalDate(long millis){
-        LocalDate date = Instant.ofEpochMilli(millis).atZone(ZoneId.systemDefault()).toLocalDate();
-        return date;
-    }
-
     public void changesSpotsAfterBooking(Tour tour, int spots){
         int newAvailableSpots= tour.getAvailableSpots()-spots;
         tourdataFactory.updateSpotsForTour(tour.getTourID(),newAvailableSpots);
@@ -107,16 +102,26 @@ public class TourController {
         }
         return result;
     }
-    public ArrayList<User> getTourEmailList(String tourID){
+    public ArrayList<User> getTourEmailList(int tourID){
         ArrayList<User> users = new ArrayList<>();
-
+        ObservableList<Booking> bookings= tourdataFactory.getBookings();
+        for (Booking booking : bookings){
+            if (booking.getTour().getTourID()==tourID){
+                users.add(booking.getUser());
+            }
+        }
         return users;
     }
 
-    public ArrayList<Tour> findTourByName(String tourName){
-        ArrayList<Tour> tours = new ArrayList<>();
-
-        return tours;
+    public Tour findTourByName(String tourName){
+        Tour theTour =null;
+        ObservableList<Tour> tour= tourdataFactory.getTours();
+        for (Tour t: tour){
+            if (t.getTourName().equals(tourName)){
+                theTour=t;
+            }
+        }
+        return theTour;
     }
 }
 

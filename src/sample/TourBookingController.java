@@ -5,8 +5,6 @@ import java.util.ArrayList;
 
 public class TourBookingController{
     private TourDataFactory tourdataFactory = new TourDataFactory();
-    private TourController tourController= new TourController();
-    private TourUserController userController= new TourUserController();
 
     public ObservableList<Booking> getAllBooking(){
         ObservableList<Booking> booking=tourdataFactory.getBookings();
@@ -14,10 +12,11 @@ public class TourBookingController{
     }
     public Booking getThisBooking(int bookingID){
         ObservableList<Booking> booking =getAllBooking();
-        Booking thisBooking =null;
+        Booking thisBooking = null;
         for (Booking allBooking: booking){
-            if (allBooking.getBookingID()==bookingID){
-                System.out.println(allBooking.getTour().getTourID());
+            System.out.println(allBooking.getSpotsPerBooking());
+            System.out.println("booking Id " + allBooking.getBookingID());
+           if (allBooking.getBookingID()==bookingID){
                 thisBooking = new Booking(allBooking.getUser(),allBooking.getTour(),allBooking.getSpotsPerBooking());
             }
         }
